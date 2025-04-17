@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchCampaigns, selectCampaignsWithLoadingState } from '../../store/slices/campaignSlice';
-import { updateCampaignStatusesWithSideEffects } from '../../lib/campaignUtils';
+import { selectCampaignsWithLoadingState } from '../../store/slices/campaignSlice';
 import { selectSpecialties } from '../../store/slices/referenceDataSlice';
 import { addNotification } from '../../store/slices/uiSlice';
+import { getSampleCampaigns } from '../../lib/sampleCampaignData';
 import { Campaign } from '../../types';
 import { Button } from '../ui/Button';
 import { cn } from '../../utils/cn';
 import { 
   ListFilter, 
-  ChevronRight, 
   Target, 
   Plus, 
-  Calendar, 
   Search,
   RefreshCw,
   Filter,
@@ -22,7 +20,6 @@ import {
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
 import { ExpandableCampaignCard } from '../ui/ExpandableCampaignCard';
-
 
 export function CampaignList() {
   const navigate = useNavigate();
@@ -34,66 +31,97 @@ export function CampaignList() {
   const [showFilters, setShowFilters] = useState(false);
   const [highlightedCampaignId, setHighlightedCampaignId] = useState<string | null>(null);
 
-  // Use memoized selector to get campaigns and loading state
-  const { campaigns, isLoading } = useAppSelector(selectCampaignsWithLoadingState);
-
+  // Create local state for campaigns and loading
+  const [localCampaigns, setLocalCampaigns] = useState<any[]>([]);
+  const [localIsLoading, setLocalIsLoading] = useState(true);
+  
   // Get specialties for filtering with memoized selector
   const specialties = useAppSelector(selectSpecialties);
 
   useEffect(() => {
-    dispatch(fetchCampaigns());
-    
-    // Check if there's a newly created campaign to highlight
-    const newCampaignId = localStorage.getItem('newCampaignId');
-    if (newCampaignId) {
-      setHighlightedCampaignId(newCampaignId);
-      
-      // Show success message when returning from campaign creation
-      dispatch(addNotification({
-        type: 'success',
-        message: 'Campaign created and ready to view!'
-      }));
-      
-      // Clear the stored ID after 3 seconds
-      setTimeout(() => {
-        setHighlightedCampaignId(null);
-        localStorage.removeItem('newCampaignId');
-      }, 3000);
-    }
-  }, [dispatch]);
-
-  // Effect to check for automatic campaign status updates
-  useEffect(() => {
-    if (campaigns.length > 0) {
-      // Update campaign statuses with side effects (database update + prescription data generation)
-      updateCampaignStatusesWithSideEffects(campaigns)
-        .then(updatedCampaigns => {
-          // Check if any statuses changed
-          const statusChanged = updatedCampaigns.some((updated, index) => 
-            updated.status !== campaigns[index].status
-          );
-          
-          // If status changes occurred, refresh the campaign list
-          if (statusChanged) {
-            dispatch(fetchCampaigns());
-            dispatch(addNotification({
-              type: 'info',
-              message: 'Campaign statuses have been automatically updated based on dates'
-            }));
+    // Use sample data instead of fetching from Supabase
+    const loadSampleCampaigns = async () => {
+      try {
+        // Get sample campaigns with results
+        const sampleCampaigns = getSampleCampaigns();
+        
+        // Convert to Campaign type
+        const mappedCampaigns = sampleCampaigns.map(sample => ({
+          id: sample.id,
+          name: sample.name,
+          description: sample.description,
+          status: sample.status as any,
+          target_geographic_area: sample.target.geographic,
+          target_specialty: sample.target.specialty,
+          created_at: sample.created_at,
+          start_date: sample.startDate,
+          end_date: sample.endDate,
+          created_by: 'sample-user', // Add required field
+          targeting_metadata: {
+            condition: sample.target.condition,
+            medication: sample.target.medication,
+            medicationCategory: sample.target.category,
+            affected_providers: Array(sample.metrics.providerCount).fill(0).map((_, i) => `provider-${i}`)
           }
-        })
-        .catch(err => console.error('Error updating campaign statuses:', err));
-    }
-  }, [campaigns, dispatch]);
+        }));
+        
+        // Set campaigns directly
+        setLocalCampaigns(mappedCampaigns);
+        setLocalIsLoading(false);
+        
+        // Check if there's a newly created campaign to highlight
+        const newCampaignId = localStorage.getItem('newCampaignId');
+        if (newCampaignId) {
+          setHighlightedCampaignId(newCampaignId);
+          
+          // Show success message when returning from campaign creation
+          dispatch(addNotification({
+            type: 'success',
+            message: 'Campaign created and ready to view!'
+          }));
+          
+          // Clear the stored ID after 3 seconds
+          setTimeout(() => {
+            setHighlightedCampaignId(null);
+            localStorage.removeItem('newCampaignId');
+          }, 3000);
+        }
+      } catch (error) {
+        console.error('Error loading sample campaigns:', error);
+        setLocalIsLoading(false);
+      }
+    };
+    
+    loadSampleCampaigns();
+  }, [dispatch]);
 
   const handleRefresh = async () => {
     setIsRefreshing(true);
-    await dispatch(fetchCampaigns());
+    // Simulate refresh with sample data
+    const sampleCampaigns = getSampleCampaigns();
+    setLocalCampaigns(sampleCampaigns.map(sample => ({
+      id: sample.id,
+      name: sample.name,
+      description: sample.description,
+      status: sample.status as any,
+      target_geographic_area: sample.target.geographic,
+      target_specialty: sample.target.specialty,
+      created_at: sample.created_at,
+      start_date: sample.startDate,
+      end_date: sample.endDate,
+      created_by: 'sample-user', // Add required field
+      targeting_metadata: {
+        condition: sample.target.condition,
+        medication: sample.target.medication,
+        medicationCategory: sample.target.category,
+        affected_providers: Array(sample.metrics.providerCount).fill(0).map((_, i) => `provider-${i}`)
+      }
+    })));
     setIsRefreshing(false);
   };
 
   // Filter campaigns based on search query and filters
-  const filteredCampaigns = campaigns.filter((campaign: Campaign) => {
+  const filteredCampaigns = localCampaigns.filter((campaign: Campaign) => {
     // Apply search filter
     const matchesSearch = searchQuery === '' || 
       campaign.name?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -183,24 +211,28 @@ export function CampaignList() {
           
           {showFilters && (
             <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Select
-                label="Status"
-                options={statusOptions}
-                value={statusFilter}
-                onChange={(value) => setStatusFilter(value)}
-              />
-              <Select
-                label="Specialty"
-                options={specialtyOptionsWithDefaults}
-                value={specialtyFilter}
-                onChange={(value) => setSpecialtyFilter(value)}
-              />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                <Select
+                  options={statusOptions}
+                  value={statusFilter}
+                  onChange={(value) => setStatusFilter(value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Specialty</label>
+                <Select
+                  options={specialtyOptionsWithDefaults}
+                  value={specialtyFilter}
+                  onChange={(value) => setSpecialtyFilter(value)}
+                />
+              </div>
             </div>
           )}
         </div>
       </div>
 
-      {isLoading ? (
+      {localIsLoading ? (
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
         </div>
@@ -234,19 +266,31 @@ export function CampaignList() {
                 const providers = campaign.targeting_metadata?.affected_providers?.length || baseProviderCount;
                 const audienceCounts = {
                   providers: providers,
-                  patients: providers * 250, // Each provider reaches ~250 patients
+                  patients: providers * 25, // Each provider reaches ~25 patients (more realistic)
                   identityMatched: Math.round(providers * 0.92), // 92% match rate
                   identityMatchRate: 92
                 };
                 
+                // Get sample campaign data for metrics
+                const sampleCampaign = getSampleCampaigns().find(c => c.id === campaign.id);
+                
                 // Generate metrics if not available
-                const metrics = {
+                const metrics = sampleCampaign ? {
+                  impressions: sampleCampaign.metrics.impressions,
+                  clicks: sampleCampaign.metrics.clicks,
+                  conversions: sampleCampaign.metrics.conversions,
+                  scriptLift: sampleCampaign.metrics.scriptLift.toString(),
+                  marketShareChange: sampleCampaign.metrics.marketShareChange.toString(),
+                  providerReach: sampleCampaign.metrics.providerReach,
+                  providerCount: sampleCampaign.metrics.providerCount
+                } : {
                   impressions: Math.round(providers * 150), // ~150 impressions per provider
                   clicks: Math.round(providers * 7.5), // ~5% CTR
                   conversions: Math.round(providers * 3), // ~40% conversion from clicks
                   scriptLift: (Math.random() * 10 + 10).toFixed(1), // Random between 10-20%
-                  roi: (Math.random() * 5 + 8).toFixed(1), // Random between 8-13x
-                  providerReach: providers
+                  marketShareChange: (Math.random() * 5 + 3).toFixed(1), // Random between 3-8%
+                  providerReach: providers,
+                  providerCount: providers
                 };
                 
                 return (
@@ -258,7 +302,7 @@ export function CampaignList() {
                     <ExpandableCampaignCard
                       id={campaign.id || `campaign-${index}`}
                       name={campaign.name || `Campaign ${index + 1}`}
-                      status={campaign.status || 'draft'}
+                      status={(campaign.status as any) || 'draft'}
                       startDate={campaign.start_date}
                       endDate={campaign.end_date}
                       target={target}

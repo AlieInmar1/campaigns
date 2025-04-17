@@ -1,0 +1,175 @@
+code,name,category,subcategory,specialty,generic_name,is_brand_name,is_target_medication,is_sample_data
+med-isotretinoin-gen,Isotretinoin (Generic),Dermatologic,Acne Treatment,Dermatology,,false,false,true
+med-absorica-brand,Absorica (Brand),Dermatologic,Acne Treatment,Dermatology,Isotretinoin,true,false,true
+med-tretinoin-gen,Tretinoin (Generic),Dermatologic,Acne Treatment,Dermatology,,false,false,true
+med-retin-a-brand,Retin-A (Brand),Dermatologic,Acne Treatment,Dermatology,Tretinoin,true,false,true
+med-adapalene-gen,Adapalene (Generic),Dermatologic,Acne Treatment,Dermatology,,false,false,true
+med-differin-brand,Differin (Brand),Dermatologic,Acne Treatment,Dermatology,Adapalene,true,false,true
+med-clobetasolpropionate-gen,Clobetasol Propionate (Generic),Dermatologic,Topical Corticosteroid,Dermatology,,false,false,true
+med-temovate-brand,Temovate (Brand),Dermatologic,Topical Corticosteroid,Dermatology,Clobetasol Propionate,true,false,true
+med-betamethasonedipropionate-gen,Betamethasone Dipropionate (Generic),Dermatologic,Topical Corticosteroid,Dermatology,,false,false,true
+med-diprolene-brand,Diprolene (Brand),Dermatologic,Topical Corticosteroid,Dermatology,Betamethasone Dipropionate,true,false,true
+med-tacrolimus-gen,Tacrolimus (Generic),Dermatologic,Immunomodulator,Dermatology,,false,false,true
+med-protopic-brand,Protopic (Brand),Dermatologic,Immunomodulator,Dermatology,Tacrolimus,true,false,true
+med-pimecrolimus-gen,Pimecrolimus (Generic),Dermatologic,Immunomodulator,Dermatology,,false,false,true
+med-elidel-brand,Elidel (Brand),Dermatologic,Immunomodulator,Dermatology,Pimecrolimus,true,false,true
+med-calcipotriene-gen,Calcipotriene (Generic),Dermatologic,Psoriasis Treatment,Dermatology,,false,false,true
+med-dovonex-brand,Dovonex (Brand),Dermatologic,Psoriasis Treatment,Dermatology,Calcipotriene,true,false,true
+med-methotrexate-gen,Methotrexate (Generic),Dermatologic,Psoriasis Treatment,Dermatology,,false,false,true
+med-otrexup-brand,Otrexup (Brand),Dermatologic,Psoriasis Treatment,Dermatology,Methotrexate,true,false,true
+med-apremilast-gen,Apremilast (Generic),Dermatologic,Psoriasis Treatment,Dermatology,,false,false,true
+med-otezla-brand,Otezla (Brand),Dermatologic,Psoriasis Treatment,Dermatology,Apremilast,true,false,true
+med-secukinumab-gen,Secukinumab (Generic),Dermatologic,Psoriasis Treatment,Dermatology,,false,false,true
+med-cosentyx-brand,Cosentyx (Brand),Dermatologic,Psoriasis Treatment,Dermatology,Secukinumab,true,false,true
+med-dupilumab-gen,Dupilumab (Generic),Dermatologic,Monoclonal Antibody,Dermatology,,false,false,true
+med-dupixent-brand,Dupixent (Brand),Dermatologic,Monoclonal Antibody,Dermatology,Dupilumab,true,false,true
+med-ivermectin-gen,Ivermectin (Generic),Dermatologic,Antiparasitic,Dermatology,,false,false,true
+med-soolantra-brand,Soolantra (Brand),Dermatologic,Antiparasitic,Dermatology,Ivermectin,true,false,true
+med-mupirocin-gen,Mupirocin (Generic),Dermatologic,Topical Antibiotic,Dermatology,,false,false,true
+med-bactroban-brand,Bactroban (Brand),Dermatologic,Topical Antibiotic,Dermatology,Mupirocin,true,false,true
+med-azelaic-acid-gen,Azelaic Acid (Generic),Dermatologic,Acne Treatment,Dermatology,,false,false,true
+med-finacea-brand,Finacea (Brand),Dermatologic,Acne Treatment,Dermatology,Azelaic Acid,true,false,true
+med-clindamycin-gen,Clindamycin (Generic),Dermatologic,Topical Antibiotic,Dermatology,,false,false,true
+med-cleocin-t-brand,Cleocin T (Brand),Dermatologic,Topical Antibiotic,Dermatology,Clindamycin,true,false,true
+med-erythromycin-gen,Erythromycin (Generic),Dermatologic,Topical Antibiotic,Dermatology,,false,false,true
+med-emgel-brand,Emgel (Brand),Dermatologic,Topical Antibiotic,Dermatology,Erythromycin,true,false,true
+med-benzoyl-peroxide-gen,Benzoyl Peroxide (Generic),Dermatologic,Acne Treatment,Dermatology,,false,false,true
+med-benzac-brand,Benzac (Brand),Dermatologic,Acne Treatment,Dermatology,Benzoyl Peroxide,true,false,true
+med-triamcinolone-gen,Triamcinolone (Generic),Dermatologic,Topical Corticosteroid,Dermatology,,false,false,true
+med-kenalog-brand,Kenalog (Brand),Dermatologic,Topical Corticosteroid,Dermatology,Triamcinolone,true,false,true
+med-hydrocortisone-gen,Hydrocortisone (Generic),Dermatologic,Topical Corticosteroid,Dermatology,,false,false,true
+med-cortaid-brand,Cortaid (Brand),Dermatologic,Topical Corticosteroid,Dermatology,Hydrocortisone,true,false,true
+med-ketoconazole-gen,Ketoconazole (Generic),Dermatologic,Antifungal,Dermatology,,false,false,true
+med-nizoral-brand,Nizoral (Brand),Dermatologic,Antifungal,Dermatology,Ketoconazole,true,false,true
+med-terbinafine-gen,Terbinafine (Generic),Dermatologic,Antifungal,Dermatology,,false,false,true
+med-lamisil-brand,Lamisil (Brand),Dermatologic,Antifungal,Dermatology,Terbinafine,true,false,true
+med-fluconazole-gen,Fluconazole (Generic),Dermatologic,Antifungal,Dermatology,,false,false,true
+med-diflucan-brand,Diflucan (Brand),Dermatologic,Antifungal,Dermatology,Fluconazole,true,false,true
+med-alitretinoin-gen,Alitretinoin (Generic),Dermatologic,Skin Cancer,Dermatology,,false,false,true
+med-panretin-brand,Panretin (Brand),Dermatologic,Skin Cancer,Dermatology,Alitretinoin,true,false,true
+med-esomeprazole-gen,Esomeprazole (Generic),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,,false,false,true
+med-nexium-brand,Nexium (Brand),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,Esomeprazole,true,false,true
+med-lansoprazole-gen,Lansoprazole (Generic),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,,false,false,true
+med-prevacid-brand,Prevacid (Brand),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,Lansoprazole,true,false,true
+med-omeprazole-gen,Omeprazole (Generic),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,,false,false,true
+med-prilosec-brand,Prilosec (Brand),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,Omeprazole,true,false,true
+med-pantoprazole-gen,Pantoprazole (Generic),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,,false,false,true
+med-protonix-brand,Protonix (Brand),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,Pantoprazole,true,false,true
+med-dexlansoprazole-gen,Dexlansoprazole (Generic),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,,false,false,true
+med-dexilant-brand,Dexilant (Brand),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,Dexlansoprazole,true,false,true
+med-rabeprazole-gen,Rabeprazole (Generic),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,,false,false,true
+med-aciphex-brand,Aciphex (Brand),Gastrointestinal,Proton Pump Inhibitor,Gastroenterology,Rabeprazole,true,false,true
+med-ranitidine-gen,Ranitidine (Generic),Gastrointestinal,H2 Receptor Antagonist,Gastroenterology,,false,false,true
+med-zantac-brand,Zantac (Brand),Gastrointestinal,H2 Receptor Antagonist,Gastroenterology,Ranitidine,true,false,true
+med-famotidine-gen,Famotidine (Generic),Gastrointestinal,H2 Receptor Antagonist,Gastroenterology,,false,false,true
+med-pepcid-brand,Pepcid (Brand),Gastrointestinal,H2 Receptor Antagonist,Gastroenterology,Famotidine,true,false,true
+med-cimetidine-gen,Cimetidine (Generic),Gastrointestinal,H2 Receptor Antagonist,Gastroenterology,,false,false,true
+med-tagamet-brand,Tagamet (Brand),Gastrointestinal,H2 Receptor Antagonist,Gastroenterology,Cimetidine,true,false,true
+med-infliximab-gen,Infliximab (Generic),Gastrointestinal,TNF Inhibitor,Gastroenterology,,false,false,true
+med-remicade-brand,Remicade (Brand),Gastrointestinal,TNF Inhibitor,Gastroenterology,Infliximab,true,false,true
+med-adalimumab-gen,Adalimumab (Generic),Gastrointestinal,TNF Inhibitor,Gastroenterology,,false,false,true
+med-humira-brand,Humira (Brand),Gastrointestinal,TNF Inhibitor,Gastroenterology,Adalimumab,true,false,true
+med-vedolizumab-gen,Vedolizumab (Generic),Gastrointestinal,Integrin Receptor Antagonist,Gastroenterology,,false,false,true
+med-entyvio-brand,Entyvio (Brand),Gastrointestinal,Integrin Receptor Antagonist,Gastroenterology,Vedolizumab,true,false,true
+med-ustekinumab-gen,Ustekinumab (Generic),Gastrointestinal,IL-12/IL-23 Inhibitor,Gastroenterology,,false,false,true
+med-stelara-brand,Stelara (Brand),Gastrointestinal,IL-12/IL-23 Inhibitor,Gastroenterology,Ustekinumab,true,false,true
+med-budesonide-gen,Budesonide (Generic),Gastrointestinal,Corticosteroid,Gastroenterology,,false,false,true
+med-entocortec-brand,Entocort EC (Brand),Gastrointestinal,Corticosteroid,Gastroenterology,Budesonide,true,false,true
+med-sulfasalazine-gen,Sulfasalazine (Generic),Gastrointestinal,Aminosalicylate,Gastroenterology,,false,false,true
+med-azulfidine-brand,Azulfidine (Brand),Gastrointestinal,Aminosalicylate,Gastroenterology,Sulfasalazine,true,false,true
+med-mesalamine-gen,Mesalamine (Generic),Gastrointestinal,Aminosalicylate,Gastroenterology,,false,false,true
+med-lialda-brand,Lialda (Brand),Gastrointestinal,Aminosalicylate,Gastroenterology,Mesalamine,true,false,true
+med-balsalazide-gen,Balsalazide (Generic),Gastrointestinal,Aminosalicylate,Gastroenterology,,false,false,true
+med-colazal-brand,Colazal (Brand),Gastrointestinal,Aminosalicylate,Gastroenterology,Balsalazide,true,false,true
+med-ondansetron-gen,Ondansetron (Generic),Gastrointestinal,Antiemetic,Gastroenterology,,false,false,true
+med-zofran-brand,Zofran (Brand),Gastrointestinal,Antiemetic,Gastroenterology,Ondansetron,true,false,true
+med-linaclotide-gen,Linaclotide (Generic),Gastrointestinal,Guanylate Cyclase-C Agonist,Gastroenterology,,false,false,true
+med-linzess-brand,Linzess (Brand),Gastrointestinal,Guanylate Cyclase-C Agonist,Gastroenterology,Linaclotide,true,false,true
+med-plecanatide-gen,Plecanatide (Generic),Gastrointestinal,Guanylate Cyclase-C Agonist,Gastroenterology,,false,false,true
+med-trulance-brand,Trulance (Brand),Gastrointestinal,Guanylate Cyclase-C Agonist,Gastroenterology,Plecanatide,true,false,true
+med-lubiprostone-gen,Lubiprostone (Generic),Gastrointestinal,Chloride Channel Activator,Gastroenterology,,false,false,true
+med-amitiza-brand,Amitiza (Brand),Gastrointestinal,Chloride Channel Activator,Gastroenterology,Lubiprostone,true,false,true
+med-amoxicillin-gen,Amoxicillin (Generic),Antibiotic,Penicillin,Infectious Disease,,false,false,true
+med-amoxil-brand,Amoxil (Brand),Antibiotic,Penicillin,Infectious Disease,Amoxicillin,true,false,true
+med-amoxicillinclavulanate-gen,Amoxicillin/Clavulanate (Generic),Antibiotic,Penicillin,Infectious Disease,,false,false,true
+med-augmentin-brand,Augmentin (Brand),Antibiotic,Penicillin,Infectious Disease,Amoxicillin/Clavulanate,true,false,true
+med-piperacillintazobactam-gen,Piperacillin/Tazobactam (Generic),Antibiotic,Penicillin,Infectious Disease,,false,false,true
+med-zosyn-brand,Zosyn (Brand),Antibiotic,Penicillin,Infectious Disease,Piperacillin/Tazobactam,true,false,true
+med-cephalexin-gen,Cephalexin (Generic),Antibiotic,Cephalosporin,Infectious Disease,,false,false,true
+med-keflex-brand,Keflex (Brand),Antibiotic,Cephalosporin,Infectious Disease,Cephalexin,true,false,true
+med-cefuroxime-gen,Cefuroxime (Generic),Antibiotic,Cephalosporin,Infectious Disease,,false,false,true
+med-ceftin-brand,Ceftin (Brand),Antibiotic,Cephalosporin,Infectious Disease,Cefuroxime,true,false,true
+med-ceftriaxone-gen,Ceftriaxone (Generic),Antibiotic,Cephalosporin,Infectious Disease,,false,false,true
+med-rocephin-brand,Rocephin (Brand),Antibiotic,Cephalosporin,Infectious Disease,Ceftriaxone,true,false,true
+med-cefdinir-gen,Cefdinir (Generic),Antibiotic,Cephalosporin,Infectious Disease,,false,false,true
+med-omnicef-brand,Omnicef (Brand),Antibiotic,Cephalosporin,Infectious Disease,Cefdinir,true,false,true
+med-ciprofloxacin-gen,Ciprofloxacin (Generic),Antibiotic,Fluoroquinolone,Infectious Disease,,false,false,true
+med-cipro-brand,Cipro (Brand),Antibiotic,Fluoroquinolone,Infectious Disease,Ciprofloxacin,true,false,true
+med-levofloxacin-gen,Levofloxacin (Generic),Antibiotic,Fluoroquinolone,Infectious Disease,,false,false,true
+med-levaquin-brand,Levaquin (Brand),Antibiotic,Fluoroquinolone,Infectious Disease,Levofloxacin,true,false,true
+med-moxifloxacin-gen,Moxifloxacin (Generic),Antibiotic,Fluoroquinolone,Infectious Disease,,false,false,true
+med-avelox-brand,Avelox (Brand),Antibiotic,Fluoroquinolone,Infectious Disease,Moxifloxacin,true,false,true
+med-azithromycin-gen,Azithromycin (Generic),Antibiotic,Macrolide,Infectious Disease,,false,false,true
+med-zithromax-brand,Zithromax (Brand),Antibiotic,Macrolide,Infectious Disease,Azithromycin,true,false,true
+med-clarithromycin-gen,Clarithromycin (Generic),Antibiotic,Macrolide,Infectious Disease,,false,false,true
+med-biaxin-brand,Biaxin (Brand),Antibiotic,Macrolide,Infectious Disease,Clarithromycin,true,false,true
+med-doxycycline-gen,Doxycycline (Generic),Antibiotic,Tetracycline,Infectious Disease,,false,false,true
+med-vibramycin-brand,Vibramycin (Brand),Antibiotic,Tetracycline,Infectious Disease,Doxycycline,true,false,true
+med-minocycline-gen,Minocycline (Generic),Antibiotic,Tetracycline,Infectious Disease,,false,false,true
+med-minocin-brand,Minocin (Brand),Antibiotic,Tetracycline,Infectious Disease,Minocycline,true,false,true
+med-trimethoprimsulfamethoxazole-gen,Trimethoprim/Sulfamethoxazole (Generic),Antibiotic,Sulfonamide,Infectious Disease,,false,false,true
+med-bactrim-brand,Bactrim (Brand),Antibiotic,Sulfonamide,Infectious Disease,Trimethoprim/Sulfamethoxazole,true,false,true
+med-clindamycin-gen,Clindamycin (Generic),Antibiotic,Lincosamide,Infectious Disease,,false,false,true
+med-cleocin-brand,Cleocin (Brand),Antibiotic,Lincosamide,Infectious Disease,Clindamycin,true,false,true
+med-acyclovir-gen,Acyclovir (Generic),Antiviral,Herpes Treatment,Infectious Disease,,false,false,true
+med-zovirax-brand,Zovirax (Brand),Antiviral,Herpes Treatment,Infectious Disease,Acyclovir,true,false,true
+med-valacyclovir-gen,Valacyclovir (Generic),Antiviral,Herpes Treatment,Infectious Disease,,false,false,true
+med-valtrex-brand,Valtrex (Brand),Antiviral,Herpes Treatment,Infectious Disease,Valacyclovir,true,false,true
+med-oseltamivir-gen,Oseltamivir (Generic),Antiviral,Influenza Treatment,Infectious Disease,,false,false,true
+med-tamiflu-brand,Tamiflu (Brand),Antiviral,Influenza Treatment,Infectious Disease,Oseltamivir,true,false,true
+med-baloxavir-gen,Baloxavir (Generic),Antiviral,Influenza Treatment,Infectious Disease,,false,false,true
+med-xofluza-brand,Xofluza (Brand),Antiviral,Influenza Treatment,Infectious Disease,Baloxavir,true,false,true
+med-furosemide-gen,Furosemide (Generic),Nephrology,Loop Diuretic,Nephrology,,false,false,true
+med-lasix-brand,Lasix (Brand),Nephrology,Loop Diuretic,Nephrology,Furosemide,true,false,true
+med-bumetanide-gen,Bumetanide (Generic),Nephrology,Loop Diuretic,Nephrology,,false,false,true
+med-bumex-brand,Bumex (Brand),Nephrology,Loop Diuretic,Nephrology,Bumetanide,true,false,true
+med-torsemide-gen,Torsemide (Generic),Nephrology,Loop Diuretic,Nephrology,,false,false,true
+med-demadex-brand,Demadex (Brand),Nephrology,Loop Diuretic,Nephrology,Torsemide,true,false,true
+med-metolazone-gen,Metolazone (Generic),Nephrology,Thiazide-like Diuretic,Nephrology,,false,false,true
+med-zaroxolyn-brand,Zaroxolyn (Brand),Nephrology,Thiazide-like Diuretic,Nephrology,Metolazone,true,false,true
+med-hydrochlorothiazide-gen,Hydrochlorothiazide (Generic),Nephrology,Thiazide Diuretic,Nephrology,,false,false,true
+med-microzide-brand,Microzide (Brand),Nephrology,Thiazide Diuretic,Nephrology,Hydrochlorothiazide,true,false,true
+med-chlorthalidone-gen,Chlorthalidone (Generic),Nephrology,Thiazide-like Diuretic,Nephrology,,false,false,true
+med-thalitone-brand,Thalitone (Brand),Nephrology,Thiazide-like Diuretic,Nephrology,Chlorthalidone,true,false,true
+med-spironolactone-gen,Spironolactone (Generic),Nephrology,Potassium-Sparing Diuretic,Nephrology,,false,false,true
+med-aldactone-brand,Aldactone (Brand),Nephrology,Potassium-Sparing Diuretic,Nephrology,Spironolactone,true,false,true
+med-triamterene-gen,Triamterene (Generic),Nephrology,Potassium-Sparing Diuretic,Nephrology,,false,false,true
+med-dyrenium-brand,Dyrenium (Brand),Nephrology,Potassium-Sparing Diuretic,Nephrology,Triamterene,true,false,true
+med-amiloride-gen,Amiloride (Generic),Nephrology,Potassium-Sparing Diuretic,Nephrology,,false,false,true
+med-midamor-brand,Midamor (Brand),Nephrology,Potassium-Sparing Diuretic,Nephrology,Amiloride,true,false,true
+med-potassiumchloride-gen,Potassium Chloride (Generic),Nephrology,Electrolyte Supplement,Nephrology,,false,false,true
+med-klor-con-brand,Klor-Con (Brand),Nephrology,Electrolyte Supplement,Nephrology,Potassium Chloride,true,false,true
+med-sodiumpolystyrenesulfonate-gen,Sodium Polystyrene Sulfonate (Generic),Nephrology,Potassium Binder,Nephrology,,false,false,true
+med-kayexalate-brand,Kayexalate (Brand),Nephrology,Potassium Binder,Nephrology,Sodium Polystyrene Sulfonate,true,false,true
+med-patiromer-gen,Patiromer (Generic),Nephrology,Potassium Binder,Nephrology,,false,false,true
+med-veltassa-brand,Veltassa (Brand),Nephrology,Potassium Binder,Nephrology,Patiromer,true,false,true
+med-sodiumzirconiumcyclosilicate-gen,Sodium Zirconium Cyclosilicate (Generic),Nephrology,Potassium Binder,Nephrology,,false,false,true
+med-lokelma-brand,Lokelma (Brand),Nephrology,Potassium Binder,Nephrology,Sodium Zirconium Cyclosilicate,true,false,true
+med-sevelamer-gen,Sevelamer (Generic),Nephrology,Phosphate Binder,Nephrology,,false,false,true
+med-renvela-brand,Renvela (Brand),Nephrology,Phosphate Binder,Nephrology,Sevelamer,true,false,true
+med-lanthanumcarbonate-gen,Lanthanum Carbonate (Generic),Nephrology,Phosphate Binder,Nephrology,,false,false,true
+med-fosrenol-brand,Fosrenol (Brand),Nephrology,Phosphate Binder,Nephrology,Lanthanum Carbonate,true,false,true
+med-calciumacetate-gen,Calcium Acetate (Generic),Nephrology,Phosphate Binder,Nephrology,,false,false,true
+med-phoslo-brand,PhosLo (Brand),Nephrology,Phosphate Binder,Nephrology,Calcium Acetate,true,false,true
+med-ferriccitrate-gen,Ferric Citrate (Generic),Nephrology,Phosphate Binder,Nephrology,,false,false,true
+med-auryxia-brand,Auryxia (Brand),Nephrology,Phosphate Binder,Nephrology,Ferric Citrate,true,false,true
+med-epoetinalfa-gen,Epoetin Alfa (Generic),Nephrology,Erythropoiesis-Stimulating Agent,Nephrology,,false,false,true
+med-epogen-brand,Epogen (Brand),Nephrology,Erythropoiesis-Stimulating Agent,Nephrology,Epoetin Alfa,true,false,true
+med-darbepoetinalfa-gen,Darbepoetin Alfa (Generic),Nephrology,Erythropoiesis-Stimulating Agent,Nephrology,,false,false,true
+med-aranesp-brand,Aranesp (Brand),Nephrology,Erythropoiesis-Stimulating Agent,Nephrology,Darbepoetin Alfa,true,false,true
+med-methoxypeg-epoetinbeta-gen,Methoxy Polyethylene Glycol-Epoetin Beta (Generic),Nephrology,Erythropoiesis-Stimulating Agent,Nephrology,,false,false,true
+med-mircera-brand,Mircera (Brand),Nephrology,Erythropoiesis-Stimulating Agent,Nephrology,Methoxy Polyethylene Glycol-Epoetin Beta,true,false,true
+med-capecitabine-gen,Capecitabine (Generic),Oncology,Antimetabolite,Oncology,,false,false,true
+med-xeloda-brand,Xeloda (Brand),Oncology,Antimetabolite,Oncology,Capecitabine,true,false,true
+med-lenalidomide-gen,Lenalidomide (Generic),Oncology,Immunomodulator,Oncology,,false,false,true
+med-revlimid-brand,Revlimid (Brand),

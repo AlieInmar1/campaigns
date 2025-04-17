@@ -11,9 +11,12 @@ import {
   Filter,
   MapPin,
   Building,
-  UserCheck
+  UserCheck,
+  Pill
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import { supabase } from '../../lib/supabase';
+import { getProvidersByFilter } from '../../lib/providerDataService';
 
 export function ProviderList() {
   const dispatch = useAppDispatch();
@@ -23,41 +26,20 @@ export function ProviderList() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
-  // We'll create a placeholder for the provider data
-  // In a real implementation, this would come from a Redux store
+  // Provider data state
   const [providers, setProviders] = useState<Array<{
     id: string;
+    provider_id: string;
     name: string;
     specialty: string;
     geographic_area: string;
     practice_size: string;
+    prescribing_volume: string;
     identity_matched?: boolean;
-  }>>([
-    {
-      id: '1',
-      name: 'Dr. Sarah Johnson',
-      specialty: 'Cardiology',
-      geographic_area: 'Northeast US',
-      practice_size: 'Medium',
-      identity_matched: true
-    },
-    {
-      id: '2',
-      name: 'Dr. Michael Chen',
-      specialty: 'Primary Care',
-      geographic_area: 'West US',
-      practice_size: 'Large',
-      identity_matched: true
-    },
-    {
-      id: '3',
-      name: 'Dr. Robert Williams',
-      specialty: 'Neurology',
-      geographic_area: 'Southeast US',
-      practice_size: 'Small',
-      identity_matched: false
-    }
-  ]);
+  }>>([]);
+  
+  // Medication filter state
+  const [medicationFilter, setMedicationFilter] = useState<string>('');
 
   // Get specialties for filtering
   const specialties = useAppSelector(state => {
@@ -71,29 +53,104 @@ export function ProviderList() {
     return refData.geographicRegions || [];
   });
 
-  const handleRefresh = async () => {
-    setIsRefreshing(true);
-    // Simulate API call
-    setTimeout(() => {
+  // Get medications for filtering
+  const medications = useAppSelector(state => {
+    const refData = state.referenceData as { medications: any[] };
+    return refData.medications || [];
+  });
+
+  // Load providers when component mounts
+  useEffect(() => {
+    loadFilteredProviders();
+  }, []);
+
+  // Load providers with filters
+  const loadFilteredProviders = async () => {
+    try {
+      setIsRefreshing(true);
+      
+      // If medication filter is set, use the provider data service
+      if (medicationFilter) {
+        // Create filter object
+        const filter = {
+          medicationIds: [medicationFilter],
+          specialties: specialtyFilter ? [specialtyFilter] : [],
+          regions: regionFilter ? [regionFilter] : []
+        };
+        
+        // Get provider IDs that match the filter
+        const providerIds = await getProvidersByFilter(filter);
+        
+        if (providerIds.length > 0) {
+          // Get provider details for the IDs
+          const { data, error } = await supabase
+            .from('providers')
+            .select('*')
+            .in('provider_id', providerIds)
+            .limit(100);
+          
+          if (error) throw error;
+          
+          // Transform data to match component's expected format
+          const formattedProviders = data.map(provider => ({
+            ...provider,
+            id: provider.id || provider.provider_id,
+            identity_matched: Math.random() > 0.3 // Simulate identity matching for now
+          }));
+          
+          setProviders(formattedProviders);
+        } else {
+          setProviders([]);
+        }
+      } else {
+        // Use regular database query with filters
+        let query = supabase.from('providers').select('*');
+        
+        if (specialtyFilter) {
+          query = query.eq('specialty', specialtyFilter);
+        }
+        
+        if (regionFilter) {
+          query = query.eq('geographic_area', regionFilter);
+        }
+        
+        const { data, error } = await query.limit(100);
+        
+        if (error) throw error;
+        
+        // Transform data to match component's expected format
+        const formattedProviders = data.map(provider => ({
+          ...provider,
+          id: provider.id || provider.provider_id,
+          identity_matched: Math.random() > 0.3 // Simulate identity matching for now
+        }));
+        
+        setProviders(formattedProviders);
+      }
+    } catch (error) {
+      console.error('Error loading providers:', error);
+    } finally {
       setIsRefreshing(false);
-    }, 1000);
+    }
+  };
+  
+  // Load providers when filters change
+  useEffect(() => {
+    loadFilteredProviders();
+  }, [medicationFilter, specialtyFilter, regionFilter]);
+  
+  // Handle refresh button click
+  const handleRefresh = async () => {
+    await loadFilteredProviders();
   };
 
-  // Filter providers based on search query and filters
+  // Filter providers based on search query
   const filteredProviders = providers.filter(provider => {
     // Apply search filter
     const matchesSearch = searchQuery === '' || 
       provider.name?.toLowerCase().includes(searchQuery.toLowerCase());
     
-    // Apply specialty filter
-    const matchesSpecialty = specialtyFilter === '' || 
-      provider.specialty === specialtyFilter;
-    
-    // Apply region filter
-    const matchesRegion = regionFilter === '' || 
-      provider.geographic_area === regionFilter;
-    
-    return matchesSearch && matchesSpecialty && matchesRegion;
+    return matchesSearch;
   });
 
   // Generate options for select inputs
@@ -168,7 +225,7 @@ export function ProviderList() {
           </div>
           
           {showFilters && (
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
               <Select
                 label="Specialty"
                 options={specialtyOptions}
@@ -180,6 +237,22 @@ export function ProviderList() {
                 options={regionOptions}
                 value={regionFilter}
                 onChange={(value) => setRegionFilter(value)}
+              />
+              <Select
+                label="Medication"
+                options={[
+                  { value: '', label: 'All Medications' },
+                  ...(medications.length > 0 
+                    ? medications.map(med => ({ value: med.id, label: med.name }))
+                    : [
+                        { value: 'med1', label: 'Medication 1' },
+                        { value: 'med2', label: 'Medication 2' },
+                        { value: 'med3', label: 'Medication 3' }
+                      ]
+                  )
+                ]}
+                value={medicationFilter}
+                onChange={(value) => setMedicationFilter(value)}
               />
             </div>
           )}
@@ -239,7 +312,7 @@ export function ProviderList() {
                 <Users className="h-10 w-10 text-gray-400 mx-auto mb-2" />
                 <p className="text-gray-500 mb-2">No providers found</p>
                 <p className="text-gray-400 text-sm">
-                  {searchQuery || specialtyFilter || regionFilter 
+                  {searchQuery || specialtyFilter || regionFilter || medicationFilter 
                     ? 'Try adjusting your search or filters'
                     : 'Please add providers to get started'}
                 </p>

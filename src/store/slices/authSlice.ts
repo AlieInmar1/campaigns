@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { User } from '../../types';
+import { User, UserProfile } from '../../types';
 import { supabase, getSupabaseErrorDetails } from '../../lib/supabase';
 
 // Function to copy sample data for a new user
@@ -19,7 +19,7 @@ const copySampleData = async (userId: string) => {
       // Call our RPC function to copy sample data
       const { data, error } = await supabase.rpc(
         'copy_sample_data_for_new_user', 
-        { user_id: userId }
+        { p_user_id: userId }
       );
       
       if (error) {
@@ -74,10 +74,31 @@ export const signIn = createAsyncThunk(
       // Copy sample data for the user if they don't have any campaigns yet
       await copySampleData(data.user.id);
       
-      return {
+      // Fetch user profile to get role information
+      const { data: profileData, error: profileError } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', data.user.id)
+        .single();
+      
+      if (profileError) {
+        console.warn('Could not fetch user profile:', profileError);
+      }
+      
+      // Create user object with profile information
+      const user: User = {
         id: data.user.id,
         email: data.user.email || '',
-      } as User;
+        // Use profile data if available, otherwise default to 'user' role
+        role: profileData?.role || 'user',
+        fullName: profileData?.full_name,
+        company: profileData?.company,
+        title: profileData?.title,
+        // Helper flag for easy admin checks
+        isAdmin: profileData?.role === 'admin'
+      };
+      
+      return user;
     } catch (error) {
       console.error('Unexpected error during sign-in:', error);
       return rejectWithValue(getSupabaseErrorDetails(error) || 'Failed to sign in. Please try again.');
@@ -124,13 +145,52 @@ export const signUp = createAsyncThunk(
 
       console.log('Sign-up successful:', data.user.id);
       
+      // Ensure the user has a profile (using our new backup function)
+      try {
+        const { error: profileCreationError } = await supabase.rpc(
+          'ensure_user_profile',
+          { 
+            user_id: data.user.id,
+            user_role: 'user', 
+            user_full_name: '' 
+          }
+        );
+        
+        if (profileCreationError) {
+          console.warn('Error ensuring user profile via RPC:', profileCreationError);
+        }
+      } catch (profileError) {
+        console.warn('Exception ensuring user profile:', profileError);
+      }
+      
       // Copy sample data for new users on signup
       await copySampleData(data.user.id);
       
-      return {
+      // Fetch user profile to get role information
+      const { data: profileData, error: profileError } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', data.user.id)
+        .single();
+      
+      if (profileError) {
+        console.warn('Could not fetch user profile after signup:', profileError);
+      }
+      
+      // Create user object with profile information
+      const user: User = {
         id: data.user.id,
         email: data.user.email || '',
-      } as User;
+        // Use profile data if available, otherwise default to 'user' role
+        role: profileData?.role || 'user',
+        fullName: profileData?.full_name,
+        company: profileData?.company,
+        title: profileData?.title,
+        // Helper flag for easy admin checks
+        isAdmin: profileData?.role === 'admin'
+      };
+      
+      return user;
     } catch (error) {
       console.error('Unexpected error during sign-up:', error);
       return rejectWithValue(getSupabaseErrorDetails(error) || 'Failed to sign up. Please try again.');
@@ -167,10 +227,31 @@ export const getCurrentUser = createAsyncThunk(
         // Also check for sample data when resuming session
         await copySampleData(data.user.id);
         
-        return {
+        // Fetch user profile to get role information
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', data.user.id)
+          .single();
+        
+        if (profileError) {
+          console.warn('Could not fetch user profile on session restore:', profileError);
+        }
+        
+        // Create user object with profile information
+        const user: User = {
           id: data.user.id,
           email: data.user.email || '',
-        } as User;
+          // Use profile data if available, otherwise default to 'user' role
+          role: profileData?.role || 'user',
+          fullName: profileData?.full_name,
+          company: profileData?.company,
+          title: profileData?.title,
+          // Helper flag for easy admin checks
+          isAdmin: profileData?.role === 'admin'
+        };
+        
+        return user;
       }
       
       return null;

@@ -51,8 +51,8 @@ const MOCK_REGIONS = [
   'Rocky Mountains'
 ];
 
-// Generate mock provider IDs
-const MOCK_PROVIDER_IDS = Array.from({ length: 500 }, (_, i) => `provider-${i + 1}`);
+// Generate mock provider IDs - increased to 150k for initial display
+const MOCK_PROVIDER_IDS = Array.from({ length: 150000 }, (_, i) => `provider-${i + 1}`);
 
 /**
  * Check if the patient prescriptions feature flag is enabled

@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchCampaigns } from '../../store/slices/campaignSlice';
-import { fetchProviders } from '../../store/slices/providerSlice';
-import { fetchTableData } from '../../lib/database';
+import { 
+  getSampleCampaigns, 
+  getSampleCampaignMetricsSummary, 
+  getSampleCampaignPerformanceData,
+  getSampleCampaignComparisonData,
+  getSampleSpecialtyDistributionData,
+  getSampleRegionDistributionData
+} from '../../lib/sampleCampaignData';
 import {
   TrendingUp,
   Users,
@@ -30,176 +35,16 @@ import { MetricCard } from '../ui/MetricCard';
 import { ChartContainer } from '../ui/ChartContainer';
 import { CampaignCard } from '../ui/CampaignCard';
 
-/**
- * Generate campaign performance data based on timeframe and actual campaign count
- * This is a transitional function that uses real campaign counts but mock metrics
- * Later this can be replaced with actual API data
- */
-const generateCampaignPerformanceData = (
-  timeframe: string, 
-  campaigns: any[]
-) => {
-  // Determine how many months to show based on timeframe
-  const monthCount = timeframe === '1m' ? 1 : 
-                     timeframe === '3m' ? 3 : 
-                     timeframe === '6m' ? 6 : 12;
-  
-  // Create month labels going back from current month
-  const today = new Date();
-  const months = [];
-  for (let i = monthCount - 1; i >= 0; i--) {
-    const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
-    months.push(d.toLocaleString('default', { month: 'short' }));
-  }
-  
-  // Use campaign count to scale the metrics
-  const activeCampaignCount = campaigns.filter(c => c.status === 'active').length || 1;
-  const scaleFactor = activeCampaignCount / 3; // Assuming 3 is an average baseline
-  
-  // Generate data with some randomness but trending upward
-  return months.map((month, index) => {
-    // Base numbers that increase each month
-    const baseImpressions = 15000 + (index * 2000);
-    const baseClicks = 3500 + (index * 300);
-    const basePrescriptions = 900 + (index * 100);
-    const baseConversions = 1800 + (index * 150);
-    
-    // Add some randomness and scale by active campaigns
-    return {
-      month,
-      impressions: Math.round((baseImpressions + (Math.random() * 2000 - 1000)) * scaleFactor),
-      clicks: Math.round((baseClicks + (Math.random() * 400 - 200)) * scaleFactor),
-      prescriptions: Math.round((basePrescriptions + (Math.random() * 100 - 50)) * scaleFactor),
-      conversions: Math.round((baseConversions + (Math.random() * 300 - 150)) * scaleFactor)
-    };
-  });
-};
-
-/**
- * Generate campaign comparison data from actual campaigns
- * This transforms the actual campaign data into a format suitable for bar charts
- */
-const generateCampaignComparisonData = (campaigns: any[]) => {
-  // Get active campaigns, sorted by script lift (descending)
-  return campaigns
-    .filter(c => c.status === 'active')
-    .sort((a, b) => {
-      // Use default metrics if not available in campaign data
-      const liftA = a.metrics?.scriptLift || 0;
-      const liftB = b.metrics?.scriptLift || 0;
-      return liftB - liftA; // Descending order
-    })
-    .slice(0, 5) // Take top 5 campaigns
-    .map(campaign => {
-      // Extract or generate metrics
-      return {
-        campaign: campaign.name || 'Unnamed Campaign',
-        roi: campaign.metrics?.roi || (Math.random() * 5 + 8).toFixed(1), // Random between 8-13
-        providerReach: campaign.metrics?.providerReach || Math.round(Math.random() * 1000 + 500),
-        scriptLift: campaign.metrics?.scriptLift || (Math.random() * 10 + 10).toFixed(1), // Random between 10-20
-        clicks: campaign.metrics?.clicks || Math.round(Math.random() * 3000 + 2000)
-      };
-    });
-};
-
-// Fallback data if no campaigns are available
-const fallbackComparisonData = [
-  { campaign: 'Lipitor Q1', roi: 12.5, providerReach: 1250, scriptLift: 18.3, clicks: 3800 },
-  { campaign: 'Plavix Q1', roi: 9.8, providerReach: 980, scriptLift: 14.2, clicks: 2900 },
-  { campaign: 'Metformin Q2', roi: 15.2, providerReach: 1580, scriptLift: 22.7, clicks: 4700 },
-  { campaign: 'Januvia Q2', roi: 11.3, providerReach: 1140, scriptLift: 16.8, clicks: 3500 },
-  { campaign: 'Crestor Q2', roi: 13.7, providerReach: 1350, scriptLift: 19.5, clicks: 4100 },
-];
-
-const specialtyDistributionData = [
-  { name: 'Primary Care', value: 42 },
-  { name: 'Cardiology', value: 23 },
-  { name: 'Endocrinology', value: 15 },
-  { name: 'Psychiatry', value: 12 },
-  { name: 'Other', value: 8 },
-];
-
-const regionDistributionData = [
-  { name: 'Northeast', value: 32 },
-  { name: 'Midwest', value: 27 },
-  { name: 'South', value: 25 },
-  { name: 'West', value: 16 },
-];
-
-// Sample campaign data with detailed metrics
-const sampleCampaignData = [
-  {
-    id: 'c1',
-    name: 'Lipitor Awareness Campaign',
-    target: {
-      specialty: 'Cardiology',
-      geographic: 'Northeast',
-      condition: 'Hyperlipidemia',
-      medication: 'Lipitor'
-    },
-    metrics: {
-      impressions: 156000,
-      clicks: 7800,
-      conversions: 3120,
-      scriptLift: 17.8,
-      roi: 13.2,
-      providerReach: 1250
-    },
-    status: 'active',
-    startDate: '2025-01-15',
-    endDate: '2025-04-15'
-  },
-  {
-    id: 'c2',
-    name: 'Metformin Targeting Campaign',
-    target: {
-      specialty: 'Endocrinology',
-      geographic: 'Nationwide',
-      condition: 'Type 2 Diabetes',
-      medication: 'Metformin'
-    },
-    metrics: {
-      impressions: 203000,
-      clicks: 9500,
-      conversions: 4270,
-      scriptLift: 22.3,
-      roi: 15.7,
-      providerReach: 1580
-    },
-    status: 'active',
-    startDate: '2025-02-01',
-    endDate: '2025-05-01'
-  },
-  {
-    id: 'c3',
-    name: 'Plavix Provider Engagement',
-    target: {
-      specialty: 'Cardiology',
-      geographic: 'Midwest',
-      condition: 'Post-MI Maintenance',
-      medication: 'Plavix'
-    },
-    metrics: {
-      impressions: 142000,
-      clicks: 6100,
-      conversions: 2440,
-      scriptLift: 14.2,
-      roi: 9.8,
-      providerReach: 980
-    },
-    status: 'active',
-    startDate: '2025-01-10',
-    endDate: '2025-04-10'
-  }
-];
 
 export function Dashboard() {
-  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [timeframe, setTimeframe] = useState('6m');
-  // Default to overview tab since we removed the campaigns tab
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedCampaignId, setSelectedCampaignId] = useState<string | undefined>();
+  const [dbError, setDbError] = useState<string | null>(null);
+  
+  // Get sample campaign data
+  const [campaigns, setCampaigns] = useState(getSampleCampaigns());
   
   // Get timeframe for medication section
   const getTimeframeForMedicationSection = () => {
@@ -210,107 +55,39 @@ export function Dashboard() {
   };
   
   // Handle campaign selection from campaign cards
+  // Note: We no longer switch tabs since only Overview is shown
   const handleCampaignSelect = (campaignId: string) => {
     setSelectedCampaignId(campaignId);
-    setActiveTab('medications'); // Switch to medication analysis tab
   };
-  
-  // Get state with type assertions for now
-  const campaigns = useAppSelector(state => {
-    const campaignsState = state.campaigns as { campaigns: any[]; isLoading: boolean };
-    return campaignsState.campaigns || [];
-  });
-  
-  const providers = useAppSelector(state => {
-    const providersState = state.providers as { providers: any[]; isLoading: boolean };
-    return providersState.providers || [];
-  });
-
-  // Get reference data
-  const specialties = useAppSelector(state => {
-    const refData = state.referenceData as { specialties: any[] };
-    return refData.specialties || [];
-  });
-
-  // State for actual DB data
-  const [prescriptionData, setPrescriptionData] = useState<any[]>([]);
-  const [dbError, setDbError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch campaign and provider data from Redux
-        await Promise.all([
-          dispatch(fetchCampaigns()),
-          dispatch(fetchProviders())
-        ]);
-        
-        // Try to fetch prescription data directly from the database
-        try {
-          const { data, error } = await fetchTableData('prescriptions', ['id', 'provider_id', 'medication_id', 'condition_id', 'prescription_date'], 100);
-          if (error) {
-            setDbError(`Failed to fetch prescription data: ${error}`);
-          } else {
-            setPrescriptionData(data || []);
-          }
-        } catch (dbError: any) {
-          setDbError(dbError.message || 'Database error');
-          console.error('Database error:', dbError);
-        }
-      } catch (error) {
-        console.error('Error fetching dashboard data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [dispatch]);
-
-  // Calculate metrics from real data with trend calculation
-  // Get campaigns created in the last month for trend calculation
-  const now = new Date();
-  const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+    // Simulate loading data
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
-  // Filter campaigns by creation date
-  const recentCampaigns = campaigns.filter((c: any) => {
-    const createdAt = c.created_at ? new Date(c.created_at) : null;
-    return createdAt && createdAt >= oneMonthAgo;
-  });
-  
-  // Calculate active campaign metrics
-  const activeCampaigns = campaigns.filter((c: any) => c.status === 'active').length || 0;
-  const recentActiveCampaigns = recentCampaigns.filter((c: any) => c.status === 'active').length || 0;
-  const campaignsTrend = [12, 14, 15, 14, 16, activeCampaigns]; // Last 6 periods ending with current
-  
-  // Calculate provider metrics
-  const providerCount = providers.length || 0;
-  const identityMatchedCount = providers.filter((p: any) => p.identity_matched).length || 0;
-  const providersTrend = [700, 850, 920, 980, 1020, providerCount]; // Simulate historical trend
+  // Get metrics from sample data
+  const metricsSummary = getSampleCampaignMetricsSummary();
   
   const metrics = {
-    activeCampaigns,
-    totalProviders: providerCount,
-    scriptLift: '18.3%',
-    totalPrescriptions: prescriptionData.length || 0,
-    aggregateROI: '11.8x',
+    activeCampaigns: metricsSummary.campaignCount,
+    totalProviders: 150000,
+    scriptLift: `${metricsSummary.averageScriptLift.toFixed(1)}%`,
+    totalPrescriptions: 3750000, // 150,000 providers * 25 prescriptions avg
+    marketShareChange: `${metricsSummary.averageMarketShareChange.toFixed(1)}%`,
     providerEngagement: '42.5%',
-    identityMatched: identityMatchedCount,
-    identityMatchRate: providerCount 
-      ? `${((identityMatchedCount / providerCount) * 100).toFixed(1)}%` 
-      : '0%',
+    identityMatched: 127500, // 85% of 150,000
+    identityMatchRate: '85.0%',
     // Add trend data
-    campaignsTrend,
-    providersTrend,
+    campaignsTrend: [1, 2, 2, 3, 3, metricsSummary.campaignCount],
+    providersTrend: [105000, 117000, 129000, 138000, 145000, 150000],
     // Add change values
-    campaignsChange: `+${recentActiveCampaigns}`,
-    providersChange: '+7.5%' // For now, hardcoded but could be calculated
+    campaignsChange: '+1',
+    providersChange: '+3.3%'
   };
-
-  // Debug log to confirm we're using real data
-  console.log('Active Campaigns Count:', metrics.activeCampaigns);
-  console.log('Total Providers Count:', metrics.totalProviders);
-  console.log('Recently Added Active Campaigns:', recentActiveCampaigns);
 
   if (isLoading) {
     return (
@@ -354,43 +131,14 @@ export function Dashboard() {
         </div>
       </div>
 
-      {/* Tab Navigation */}
+      {/* Tab Navigation - Only Overview tab is shown */}
       <div className="border-b border-gray-200 overflow-x-auto pb-px">
         <div className="flex min-w-max space-x-2 sm:space-x-6">
           <button
             onClick={() => setActiveTab('overview')}
-            className={cn(
-              "py-2 px-2 sm:py-3 sm:px-0 font-medium text-xs sm:text-sm border-b-2 transition-colors min-w-[4rem]",
-              activeTab === 'overview'
-                ? "border-primary-500 text-primary-600"
-                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-            )}
+            className="py-2 px-2 sm:py-3 sm:px-0 font-medium text-xs sm:text-sm border-b-2 transition-colors min-w-[4rem] border-primary-500 text-primary-600"
           >
             Overview
-          </button>
-          <button
-            onClick={() => setActiveTab('providers')}
-            className={cn(
-              "py-2 px-2 sm:py-3 sm:px-0 font-medium text-xs sm:text-sm border-b-2 transition-colors",
-              activeTab === 'providers'
-                ? "border-primary-500 text-primary-600"
-                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-            )}
-          >
-            <span className="sm:hidden">Providers</span>
-            <span className="hidden sm:inline">Provider Analysis</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('medications')}
-            className={cn(
-              "py-2 px-2 sm:py-3 sm:px-0 font-medium text-xs sm:text-sm border-b-2 transition-colors",
-              activeTab === 'medications'
-                ? "border-primary-500 text-primary-600"
-                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-            )}
-          >
-            <span className="sm:hidden">Meds</span>
-            <span className="hidden sm:inline">Medication Analysis</span>
           </button>
         </div>
       </div>
@@ -422,8 +170,8 @@ export function Dashboard() {
         </div>
       )}
 
-      {/* Overview Tab Content */}
-      {activeTab === 'overview' && (
+      {/* Overview Tab Content - Always shown */}
+      {(
         <>
           {/* Key Metrics Cards with real data */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -437,7 +185,7 @@ export function Dashboard() {
               trend={metrics.campaignsTrend}
             />
             <MetricCard
-              title="Rx Lift"
+              title="Script Lift"
               value={metrics.scriptLift}
               subValue="across all campaigns"
               changeValue="+3.2%"
@@ -447,23 +195,23 @@ export function Dashboard() {
               trend={[12, 15, 14, 18, 16, 20]}
             />
             <MetricCard
-              title="Provider Reach"
+              title="Provider Database"
               value={metrics.totalProviders.toLocaleString()}
-              subValue="unique providers"
+              subValue="total providers"
               changeValue={metrics.providersChange}
               changeType="increase"
               icon={<Stethoscope className="h-5 w-5" />}
               trend={metrics.providersTrend}
             />
             <MetricCard
-              title="Patient Reach"
-              value={`${(metrics.totalProviders * 250).toLocaleString()}`}
-              subValue="estimated patients"
-              changeValue="+12.5%"
+              title="Market Share Gain"
+              value={metrics.marketShareChange}
+              subValue="category share increase"
+              changeValue="+1.2%"
               changeType="increase"
               icon={<Activity className="h-5 w-5" />}
               variant="gradient"
-              trend={[220000, 230000, 245000, 258000, 270000, 290000]}
+              trend={[3.2, 3.8, 4.5, 5.1, 5.8, 6.2]}
             />
           </div>
 
@@ -472,7 +220,7 @@ export function Dashboard() {
             <ChartContainer
               title="Campaign Performance"
               subtitle="Impressions, clicks, and prescriptions over time"
-              data={generateCampaignPerformanceData(timeframe, campaigns)}
+              data={getSampleCampaignPerformanceData(timeframe as any)}
               type="line"
               height={320}
               xAxisKey="month"
@@ -488,9 +236,7 @@ export function Dashboard() {
             <ChartContainer
               title="Prescription Impact"
               subtitle="Campaign influence on prescription behavior"
-              data={campaigns.length > 0 
-                ? generateCampaignComparisonData(campaigns) 
-                : fallbackComparisonData}
+              data={getSampleCampaignComparisonData()}
               type="bar"
               height={320}
               xAxisKey="campaign"
@@ -508,7 +254,7 @@ export function Dashboard() {
             <ChartContainer
               title="Provider Specialty Distribution"
               subtitle="Breakdown of targeted providers by specialty"
-              data={specialtyDistributionData}
+              data={getSampleSpecialtyDistributionData()}
               type="pie"
               height={300}
               xAxisKey="name"
@@ -521,7 +267,7 @@ export function Dashboard() {
             <ChartContainer
               title="Geographic Targeting Distribution"
               subtitle="Campaign reach by geographic region"
-              data={regionDistributionData}
+              data={getSampleRegionDistributionData()}
               type="pie"
               height={300}
               xAxisKey="name"
@@ -545,9 +291,7 @@ export function Dashboard() {
               <ChartContainer
                 title="Patient Reach & Script Lift by Campaign"
                 subtitle="Comparing patient outcomes across campaigns"
-                data={campaigns.length > 0 
-                  ? generateCampaignComparisonData(campaigns) 
-                  : fallbackComparisonData}
+                data={getSampleCampaignComparisonData()}
                 type="bar"
                 height={400}
                 xAxisKey="campaign"
@@ -572,7 +316,7 @@ export function Dashboard() {
             <ChartContainer
               title="Provider Specialty Distribution"
               subtitle="Target audience by medical specialty"
-              data={specialtyDistributionData}
+              data={getSampleSpecialtyDistributionData()}
               type="pie"
               height={350}
               xAxisKey="name"

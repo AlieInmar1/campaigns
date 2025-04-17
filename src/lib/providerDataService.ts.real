@@ -1,0 +1,449 @@
+import { supabase } from './supabase';
+
+/**
+ * Interface for provider filtering criteria
+ */
+export interface ProviderFilter {
+  medicationIds?: string[];
+  excludedMedicationIds?: string[];
+  specialties?: string[];
+  regions?: string[];
+  useAndLogic?: boolean; // Keep this for backward compatibility
+}
+
+const CHUNK_SIZE = 1000; // Number of records to process per batch
+
+/**
+ * Check if the patient prescriptions feature flag is enabled
+ */
+export async function isPatientPrescriptionsEnabled(): Promise<boolean> {
+  try {
+    const { data, error } = await supabase.rpc('is_feature_enabled', {
+      flag_name: 'use_patient_prescriptions_for_targeting'
+    });
+
+    if (error) {
+      console.error('Error checking feature flag:', error);
+      return false;
+    }
+
+    return data || false;
+  } catch (error) {
+    console.error('Error checking feature flag:', error);
+    return false;
+  }
+}
+
+/**
+ * Enable the patient prescriptions feature flag
+ */
+export async function enablePatientPrescriptionsFeature(): Promise<boolean> {
+  try {
+    const { data, error } = await supabase
+      .from('feature_flags')
+      .update({ enabled: true, updated_at: new Date().toISOString() })
+      .eq('flag_name', 'use_patient_prescriptions_for_targeting');
+
+    if (error) {
+      console.error('Error enabling feature flag:', error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error enabling feature flag:', error);
+    return false;
+  }
+}
+
+/**
+ * Get direct count of providers based on filter criteria
+ * This is optimized for just getting the count without fetching all provider IDs
+ */
+export async function getDirectProviderCount(filter: ProviderFilter = {}): Promise<number> {
+  try {
+    // Start with a base query for providers with count option
+    let query = supabase.from('providers').select('*', { count: 'exact', head: true });
+    
+    // Apply specialty filter if provided
+    if (filter.specialties?.length) {
+      query = query.in('specialty', filter.specialties);
+    }
+    
+    // Apply region filter if provided
+    if (filter.regions?.length) {
+      query = query.in('geographic_area', filter.regions);
+    }
+    
+    // Execute query
+    const { count, error } = await query;
+    
+    if (error) {
+      console.error('Error getting direct provider count:', error);
+      return 0;
+    }
+    
+    console.log(`Direct provider count: ${count}`);
+    return count || 0;
+  } catch (error) {
+    console.error('Error getting direct provider count:', error);
+    return 0;
+  }
+}
+
+/**
+ * Count providers based on filter criteria
+ */
+export async function countProvidersByFilter(filter: ProviderFilter): Promise<number> {
+  try {
+    // Enable the feature flag if not already enabled
+    await enablePatientPrescriptionsFeature();
+    
+    // If no medication filters, use the direct count method for efficiency
+    if (!filter.medicationIds?.length && !filter.excludedMedicationIds?.length) {
+      return await getDirectProviderCount(filter);
+    }
+    
+    // Otherwise get provider IDs and count them (needed for medication filtering)
+    const providerIds = await getProvidersByFilter(filter);
+    return providerIds.length;
+  } catch (error) {
+    console.error('Error counting providers:', error);
+    return 0;
+  }
+}
+
+/**
+ * Get provider IDs based on filter criteria
+ * This is the core function that applies all filters
+ */
+export async function getProvidersByFilter(filter: ProviderFilter): Promise<string[]> {
+  try {
+    // Enable the feature flag if not already enabled
+    await enablePatientPrescriptionsFeature();
+
+    // If we're filtering by medications, we need a different approach
+    if (filter.medicationIds?.length) {
+      console.log(`Filtering by medications: ${filter.medicationIds.join(', ')}`);
+      
+      // First, get all providers who prescribe the given medications
+      // We need to handle this in batches to avoid timeouts and limits on large result sets
+      console.log("Getting all providers who prescribe the selected medications");
+      let allMedicationProviderIds = new Set<string>();
+      
+      // Get the first batch to see total count
+      const { data: initialBatch, count, error: countError } = await supabase
+        .from('patient_prescriptions')
+        .select('provider_id', { count: 'exact' })
+        .in('medication_id', filter.medicationIds)
+        .limit(1);
+        
+      if (countError) {
+        console.error('Error getting medication provider count:', countError);
+        // Proceed with empty results
+      } else {
+        console.log(`Total prescriptions matching medications: ${count}`);
+        
+        // Now get all results in chunks using .range()
+        const QUERY_CHUNK_SIZE = 10000; // Larger chunk size for queries
+        let fetched = 0;
+        
+        while (fetched < (count || 0)) {
+          console.log(`Fetching prescriptions ${fetched} to ${fetched + QUERY_CHUNK_SIZE - 1}`);
+          
+          const { data: prescriptionChunk, error: chunkError } = await supabase
+            .from('patient_prescriptions')
+            .select('provider_id')
+            .in('medication_id', filter.medicationIds)
+            .range(fetched, fetched + QUERY_CHUNK_SIZE - 1);
+            
+          if (chunkError) {
+            console.error(`Error fetching prescriptions ${fetched}-${fetched + QUERY_CHUNK_SIZE - 1}:`, chunkError);
+            break;
+          }
+          
+          if (prescriptionChunk) {
+            prescriptionChunk.forEach(p => allMedicationProviderIds.add(p.provider_id));
+            console.log(`Added ${prescriptionChunk.length} prescriptions, unique providers so far: ${allMedicationProviderIds.size}`);
+          }
+          
+          fetched += QUERY_CHUNK_SIZE;
+          
+          // If this batch was smaller than the chunk size, we've got everything
+          if (prescriptionChunk && prescriptionChunk.length < QUERY_CHUNK_SIZE) {
+            break;
+          }
+        }
+      }
+      
+      // Convert Set to Array for further processing
+      const medicationProviderIds = Array.from(allMedicationProviderIds);
+      console.log(`Found ${medicationProviderIds.length} unique providers who prescribe the selected medications`);
+      
+      // If no providers match the medication filter, return empty array
+      if (medicationProviderIds.length === 0) {
+        return [];
+      }
+      
+      // We need to handle potentially large medicationProviderIds arrays by chunking
+      let matchingProviderIds: string[] = [];
+      
+      // If we need to apply specialty or region filters, we'll need to query providers again
+      if (filter.specialties?.length || filter.regions?.length) {
+        console.log("Applying specialty/region filters to medication providers");
+        
+        // Process in chunks to avoid hitting PostgreSQL's IN clause limitations
+        const PROVIDER_CHUNK_SIZE = 1000; // PostgreSQL typically has a limit of ~32k parameters
+        
+        for (let i = 0; i < medicationProviderIds.length; i += PROVIDER_CHUNK_SIZE) {
+          const providerChunk = medicationProviderIds.slice(i, i + PROVIDER_CHUNK_SIZE);
+          
+          // Build the query for this chunk
+          let query = supabase.from('providers').select('id');
+          
+          // Add the provider IDs filter for this chunk
+          query = query.in('id', providerChunk);
+          
+          // Apply specialty filter if provided
+          if (filter.specialties?.length) {
+            query = query.in('specialty', filter.specialties);
+          }
+          
+          // Apply region filter if provided
+          if (filter.regions?.length) {
+            query = query.in('geographic_area', filter.regions);
+          }
+          
+      // Execute the query for this chunk
+      const { data: chunkResults, error: chunkError } = await query;
+      
+      if (chunkError) {
+        console.error(`Error filtering chunk ${i}-${i + PROVIDER_CHUNK_SIZE - 1}:`, chunkError);
+        continue;
+      }
+      
+      if (chunkResults) {
+        // Add results from this chunk to our running total
+        matchingProviderIds = [...matchingProviderIds, ...chunkResults.map(p => p.id)];
+        console.log(`Added ${chunkResults.length} providers from chunk ${i}-${i + PROVIDER_CHUNK_SIZE - 1}`);
+      }
+        }
+      } else {
+        // No need for additional filtering, use all medication providers
+        matchingProviderIds = medicationProviderIds;
+      }
+      console.log(`After specialty/region filters: ${matchingProviderIds.length} providers`);
+      
+      // Apply medication exclusion filter if needed
+      if (filter.excludedMedicationIds?.length && matchingProviderIds.length > 0) {
+        // Get providers who prescribe excluded medications
+        const { data: excludedProviders, error: excludedError } = await supabase
+          .from('patient_prescriptions')
+          .select('provider_id')
+          .in('medication_id', filter.excludedMedicationIds);
+        
+        if (excludedError) {
+          console.error('Error fetching excluded medication providers:', excludedError);
+        } else {
+          // Create a set of provider IDs to exclude
+          const excludedProviderIds = new Set(excludedProviders?.map(p => p.provider_id) || []);
+          console.log(`Excluding ${excludedProviderIds.size} providers who prescribe excluded medications`);
+          
+          // Filter out the excluded providers
+          matchingProviderIds = matchingProviderIds.filter(id => !excludedProviderIds.has(id));
+        }
+      }
+      
+      return matchingProviderIds;
+    } 
+    else {
+      // Traditional approach for non-medication filters or all providers
+      let query = supabase.from('providers').select('id', { count: 'exact' });
+      
+      // Apply specialty filter if provided
+      if (filter.specialties?.length) {
+        query = query.in('specialty', filter.specialties);
+      }
+      
+      // Apply region filter if provided
+      if (filter.regions?.length) {
+        query = query.in('geographic_area', filter.regions);
+      }
+      
+      // If there are exclusion filters but no inclusion filters
+      if (filter.excludedMedicationIds?.length) {
+        // Get all providers who have prescribed these excluded medications
+        const { data: excludedProviders, error: excludedError } = await supabase
+          .from('patient_prescriptions')
+          .select('provider_id')
+          .in('medication_id', filter.excludedMedicationIds);
+        
+        if (excludedError) {
+          console.error('Error fetching excluded medication providers:', excludedError);
+        } else {
+          // Create a set of provider IDs to exclude
+          const excludedProviderIds = new Set(excludedProviders?.map(p => p.provider_id) || []);
+          console.log(`Excluding ${excludedProviderIds.size} providers who prescribe excluded medications`);
+          
+          // Add a filter to exclude these providers
+          if (excludedProviderIds.size > 0) {
+            // Get array from Set
+            const excludedArray = Array.from(excludedProviderIds);
+            // Split into chunks if needed (for large exclusion sets)
+            const EXCLUSION_CHUNK_SIZE = 5000; // Most databases have limits on IN clause size
+            
+            if (excludedArray.length <= EXCLUSION_CHUNK_SIZE) {
+              query = query.not('id', 'in', excludedArray);
+            } else {
+              // Execute the query without exclusions first
+              const { data: allProviders, error: providerError } = await query;
+              
+              if (providerError) {
+                console.error('Error fetching providers:', providerError);
+                return [];
+              }
+              
+              // Filter out the excluded providers client-side
+              return (allProviders?.map(p => p.id) || [])
+                .filter(id => !excludedProviderIds.has(id));
+            }
+          }
+        }
+      }
+      
+      // Execute the query
+      const { data, error } = await query;
+      
+      if (error) {
+        console.error('Error fetching providers:', error);
+        return [];
+      }
+      
+      return data?.map(p => p.id) || [];
+    }
+  } catch (error) {
+    console.error('Error getting providers:', error);
+    return [];
+  }
+}
+
+/**
+ * Get providers with combined filters in a single query
+ * This is more efficient for simple queries but may not work for complex combinations
+ */
+export async function getProvidersByCombinedFilter(filter: ProviderFilter): Promise<string[]> {
+  try {
+    // Enable the feature flag if not already enabled
+    await enablePatientPrescriptionsFeature();
+    
+    // For included medications, first get the provider IDs
+    let includedProviderIds: string[] = [];
+    if (filter.medicationIds?.length) {
+      const { data: includedProviders, error: includedError } = await supabase
+        .from('patient_prescriptions')
+        .select('provider_id')
+        .in('medication_id', filter.medicationIds);
+        
+      if (includedError) {
+        console.error('Error getting included medications:', includedError);
+        return [];
+      }
+      
+      includedProviderIds = [...new Set(includedProviders?.map(p => p.provider_id) || [])];
+      
+      if (includedProviderIds.length === 0) {
+        return []; // No providers match the included medications
+      }
+    }
+    
+    // For excluded medications, get the provider IDs to exclude
+    let excludedProviderIds: string[] = [];
+    if (filter.excludedMedicationIds?.length) {
+      const { data: excludedProviders, error: excludedError } = await supabase
+        .from('patient_prescriptions')
+        .select('provider_id')
+        .in('medication_id', filter.excludedMedicationIds);
+        
+      if (excludedError) {
+        console.error('Error getting excluded medications:', excludedError);
+        return [];
+      }
+      
+      excludedProviderIds = [...new Set(excludedProviders?.map(p => p.provider_id) || [])];
+    }
+    
+    // Start with a base query
+    let query = supabase.from('providers').select('id');
+    
+    // Apply specialty filter
+    if (filter.specialties?.length) {
+      query = query.in('specialty', filter.specialties);
+    }
+    
+    // Apply region filter
+    if (filter.regions?.length) {
+      query = query.in('geographic_area', filter.regions);
+    }
+    
+    // Apply medication inclusion filter
+    if (includedProviderIds.length > 0) {
+      query = query.in('id', includedProviderIds);
+    }
+    
+    // Apply medication exclusion filter
+    if (excludedProviderIds.length > 0) {
+      query = query.not('id', 'in', excludedProviderIds);
+    }
+    
+    // Execute the query
+    const { data, error } = await query;
+    
+    if (error) {
+      console.error('Error in combined filter query:', error);
+      return [];
+    }
+    
+    return data?.map(p => p.id) || [];
+  } catch (error) {
+    console.error('Error in combined filter:', error);
+    return [];
+  }
+}
+
+/**
+ * Get full provider details for a list of provider IDs
+ */
+export async function getProviderDetails(providerIds: string[]) {
+  if (!providerIds.length) {
+    return [];
+  }
+  
+  try {
+    // Process in chunks to handle large datasets
+    let allProviders: any[] = [];
+    
+    for (let i = 0; i < providerIds.length; i += CHUNK_SIZE) {
+      const chunk = providerIds.slice(i, i + CHUNK_SIZE);
+      
+      const { data, error } = await supabase
+        .from('providers')
+        .select('*')
+        .in('id', chunk)
+        .order('name');
+        
+      if (error) {
+        console.error('Error fetching provider details:', error);
+        continue;
+      }
+      
+      if (data) {
+        allProviders = [...allProviders, ...data];
+      }
+    }
+    
+    return allProviders;
+  } catch (error) {
+    console.error('Error getting provider details:', error);
+    return [];
+  }
+}

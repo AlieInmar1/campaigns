@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../lib/supabase';
 import { Target, Send, AlertCircle } from 'lucide-react';
+import { countProvidersByFilter, getProvidersByFilter } from '../lib/providerDataService';
 
 interface CampaignForm {
   name: string;
@@ -54,7 +55,7 @@ export function CampaignCreator() {
 
   const updateProviderCount = async () => {
     try {
-      let query = supabase.from('providers').select('id');
+      // Get total provider count
       const { count: totalCount } = await supabase
         .from('providers')
         .select('*', { count: 'exact', head: true });
@@ -64,32 +65,11 @@ export function CampaignCreator() {
         return;
       }
 
-      let andQuery = supabase.from('providers').select('*', { count: 'exact' });
-      let orQuery = supabase.from('providers').select('*', { count: 'exact' });
-      let hasFilter = false;
-
-      if (watchedValues.target_condition_id) {
-        hasFilter = true;
-        andQuery = andQuery.eq('condition_id', watchedValues.target_condition_id);
-        orQuery = orQuery.or(`condition_id.eq.${watchedValues.target_condition_id}`);
-      }
-
-      if (watchedValues.target_medication_id) {
-        hasFilter = true;
-        andQuery = andQuery.eq('medication_id', watchedValues.target_medication_id);
-        orQuery = orQuery.or(`medication_id.eq.${watchedValues.target_medication_id}`);
-      }
-
-      if (watchedValues.target_specialty) {
-        hasFilter = true;
-        andQuery = andQuery.eq('specialty', watchedValues.target_specialty);
-        orQuery = orQuery.eq('specialty', watchedValues.target_specialty);
-      }
-      if (watchedValues.target_geographic_area) {
-        hasFilter = true;
-        andQuery = andQuery.eq('geographic_area', watchedValues.target_geographic_area);
-        orQuery = orQuery.eq('geographic_area', watchedValues.target_geographic_area);
-      }
+      // Check if we have any filters
+      const hasFilter = watchedValues.target_condition_id || 
+                        watchedValues.target_medication_id || 
+                        watchedValues.target_specialty || 
+                        watchedValues.target_geographic_area;
 
       if (!hasFilter) {
         setProviderCount(null);
@@ -97,28 +77,29 @@ export function CampaignCreator() {
         return;
       }
 
-      // Get counts
-      const [{ count: baseCount }, { count: andCount }, { count: orCount }] = await Promise.all([
-        query,
-        andQuery,
-        orQuery
-      ]);
+      // Convert form values to filter format
+      const filter = {
+        medicationIds: watchedValues.target_medication_id ? [watchedValues.target_medication_id] : [],
+        specialties: watchedValues.target_specialty ? [watchedValues.target_specialty] : [],
+        regions: watchedValues.target_geographic_area ? [watchedValues.target_geographic_area] : []
+      };
 
-      const isOnlyCondition = watchedValues.target_condition_id && 
-        !watchedValues.target_medication_id && 
-        !watchedValues.target_specialty && 
-        !watchedValues.target_geographic_area;
-      
-      const conditionCount = isOnlyCondition ? andCount : null;
+      // Get filtered counts using the provider data service
+      const andCount = await countProvidersByFilter({...filter, useAndLogic: true});
+      const orCount = await countProvidersByFilter({...filter, useAndLogic: false});
 
       setTargetingCounts({
-        total: baseCount || 0,
-        andLogic: conditionCount || andCount || 0,
-        orLogic: conditionCount || orCount || 0
+        total: totalCount || 0,
+        andLogic: andCount || 0,
+        orLogic: orCount || 0
       });
+
+      // Set the provider count based on the current logic selection
+      setProviderCount(useAndLogic ? andCount : orCount);
     } catch (error) {
       console.error('Error counting providers:', error);
       setTargetingCounts(null);
+      setProviderCount(null);
     }
   };
 
@@ -223,6 +204,17 @@ export function CampaignCreator() {
         throw new Error('User not authenticated');
       }
 
+      // Convert form values to filter format for getting targeted providers
+      const filter = {
+        medicationIds: data.target_medication_id ? [data.target_medication_id] : [],
+        specialties: data.target_specialty ? [data.target_specialty] : [],
+        regions: data.target_geographic_area ? [data.target_geographic_area] : [],
+        useAndLogic: useAndLogic
+      };
+
+      // Get the list of targeted provider IDs
+      const targetedProviders = await getProvidersByFilter(filter);
+
       const campaign = {
         ...data,
         creative_content: {
@@ -232,7 +224,9 @@ export function CampaignCreator() {
         },
         status: 'draft',
         targeting_logic: useAndLogic ? 'and' : 'or',
-        created_by: user.id
+        created_by: user.id,
+        targeted_providers: targetedProviders, // Save the list of targeted providers
+        provider_count: targetedProviders.length // Save the count for quick reference
       };
 
       const { error: insertError } = await supabase

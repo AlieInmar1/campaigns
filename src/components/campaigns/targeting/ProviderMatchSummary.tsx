@@ -56,9 +56,6 @@ export function ProviderMatchSummary({
     );
   }
 
-  // Determine if we should show the medication tip
-  const showMedicationTip = providerCount && providerCount > 1000;
-
   return (
     <div className={`mb-4 p-3 bg-primary-50 rounded-lg border border-primary-100 ${className}`}>
       <div className="flex justify-between">
@@ -76,11 +73,9 @@ export function ProviderMatchSummary({
         </div>
       </div>
       
-      {showMedicationTip && (
-        <div className="mt-2 text-xs text-primary-600 bg-primary-50 p-2 rounded border border-primary-100">
-          <span className="font-medium">Pro Tip:</span> Adding more medications increases your provider count and potential reach.
-        </div>
-      )}
+      <div className="mt-2 text-xs text-gray-600 bg-primary-50 p-2 rounded border border-primary-100">
+        Adding more medications or broadening your specialty/geographic criteria increases your provider count and potential reach.
+      </div>
     </div>
   );
 }

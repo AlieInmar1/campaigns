@@ -1,0 +1,727 @@
+id,medication_name,medication_ndc,brand_generic,category,specialty,created_at
+012be092-588c-4e8e-96a1-c5fccd8a8414,Valium 5mg,00140-0004-01,Brand,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+01b99f03-7db6-4fc0-943a-d743782a8742,Norvasc 10mg,00069-1540-68,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+01bf0bc4-1186-46af-98a9-2566c98b103e,Risperidone 2mg,00093-7487-56,Generic,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+01d7458c-debf-4030-8173-6ba424a1dd1b,Gelatin-thrombin matrix 8mL,0009-0396-01,Generic,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+0238106c-d41c-4ca1-b2d6-f416b3b0cdc5,Gadoterate meglumine 376.9mg/mL,59535-0050-10,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+024dee34-bdee-45a3-85e8-a3eb01dd4c6d,Vesicare 5mg,51248-0151-01,Brand,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+031d7abc-00d8-42d8-a2c2-320323cd7a68,Gadopentetate dimeglumine 469.01mg/mL,00270-5313-90,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+0328b60f-7ad6-4535-92b7-35e4511a561e,Levetiracetam 500mg,00093-4152-01,Generic,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+03511402-e7ab-4ba3-8b54-1f7af1218702,Letrozole 2.5mg,00093-7523-56,Generic,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+0368b57c-16c2-4fc0-a2b5-3f36f1258a37,Crestor 20mg,00310-0756-90,Brand,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+038ae4db-502c-4166-b7cb-938a409be9ff,Capecitabine 500mg,00093-7524-86,Generic,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+03e6395f-e21c-47d1-af64-dc4ca30897f8,Silvadene 1% cream,00085-0612-05,Brand,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+042a987c-5548-46bc-8d14-5a0ebd22bcaf,Tacrolimus 0.1% ointment,00093-2483-15,Generic,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+048916e6-f542-4939-92ad-e840933c9588,Naprosyn 500mg,00025-1921-50,Brand,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+04f29584-f68f-40e1-979b-ac8b54f128f4,Pregabalin 75mg,00071-1014-68,Generic,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+05ff26c5-18d1-4564-a76a-f2f8fa21a46b,Bactroban 2% ointment,00029-1527-15,Brand,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+069bc424-9475-43a9-94eb-bcacb84c15b0,Januvia 100mg,00006-0221-31,Brand,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+06d09767-bbb0-43df-8f2c-cca78ef687a5,Ezetimibe 10mg,00093-7770-56,Generic,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+06faa266-b6d6-4960-8c23-8a6aee996745,Adalimumab 40mg/0.8mL,00074-0243-01,Generic,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+072f4275-886e-4bd4-9319-2c83b272bf84,Tizanidine 4mg,00093-7093-01,Generic,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+079de80b-0002-453e-88eb-b8856c9dcbec,Phenergan 25mg/mL,00641-2470-35,Brand,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+082c8d25-183c-4277-b52d-bdc21dbc2fa5,Cytotec 200mcg,00025-1461-60,Brand,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+09b8e278-2e64-4777-a72c-3412d986d25c,Lamotrigine 100mg,00093-7208-56,Generic,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+09f3a6fb-f7d7-4b53-87f6-085cb5f6a89e,Protamine Sulfate,00517-1905-05,Brand,Reversal agents,Radiology,2025-03-31 10:39:56.376706+00
+09f68b3d-8b14-4973-baa5-f5106c73194f,Pioglitazone 30mg,00093-7273-56,Generic,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+0a1e8502-deeb-4f2f-a5f4-3f106adff26a,Diovan 160mg,00078-0358-15,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+0a201e1a-09d0-4862-b86c-a9bc3a8003f5,Flecainide 50mg,00093-0890-01,Generic,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+0a26e41d-2f21-4851-8463-4b1c6f46a4df,Tolterodine 2mg,00093-0038-01,Generic,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+0aafc31e-53f6-462f-bd15-0edc577fd2de,Cytosar-U 1g,00013-1094-95,Brand,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+0ad9c9ea-1dbb-4f6d-905a-2bf8113b9604,Suprane,10019-0641-24,Brand,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+0b829006-b970-4eca-93e6-c9da3583f385,Gadobutrol 604.7mg/mL,50419-0325-01,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+0b8ba696-579c-444f-ba59-df14f456d5d6,Protamine 10mg/mL,00517-1905-05,Generic,Reversal agents,Radiology,2025-03-31 10:39:56.376706+00
+0bfa32b5-99c3-4a79-8cc8-f449be9376d9,Finasteride 1mg,00093-7380-56,Generic,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+0c0f3dbb-b6ca-4879-acf3-135706aff1ad,Lidex 0.05% cream,00089-1577-30,Brand,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+0c1d8ffa-1700-4c52-aaea-87d4482c7d64,Tadalafil 10mg,00093-5554-09,Generic,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+0c456a39-202d-4b35-8e54-9a3c652c1819,Clopidogrel 75mg,00093-7463-56,Generic,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+0ca1b7d5-1f27-4edb-a6fd-74f5e2789173,Cerubidine 20mg,67457-0443-05,Brand,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+0cb42898-eb47-47a1-8e57-f774df453b02,Lovenox 40mg/0.4mL,00185-0237-30,Brand,Anticoagulants,General Surgery,2025-03-31 10:39:56.376706+00
+0d1d56e9-37ce-4a80-8593-55dd78e26e39,Mepolizumab 100mg,00173-0892-01,Generic,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+0df8fc48-f997-4474-b043-a32643bbc3d2,Concerta 18mg,50458-0585-01,Brand,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+0ec36cfc-4209-4e68-a45f-1c2868a0e5d2,Pancuronium 1mg/mL,00409-3214-01,Generic,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+0efd7d58-6b09-4332-a7f5-31dcfb5d0104,Fluoxetine 20mg,00093-7198-56,Generic,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+0fab2c92-a69f-422a-a2ea-4d97322d6914,Memantine/Donepezil 28/10mg,00456-1240-14,Generic,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+0ff95dac-ae81-4de2-a11f-72e1a62521e6,Fluorouracil 500mg/10mL,00703-3019-12,Generic,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+100fc163-3475-414d-9b6e-9150230734e7,Cleocin T 1% topical,00009-3331-01,Brand,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+10bf02d6-fe8e-4c9d-8bff-08dfa667cd0a,Reglan 10mg,00054-8202-25,Brand,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+10d21771-8632-4007-83f5-1cf72079ed65,Atorvastatin 40mg,00093-7518-56,Generic,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+1203f248-758f-4c76-9074-5feafd1a3d29,Ethinyl Estradiol/Norethindrone 1/20,00555-9058-67,Generic,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+123642de-f26c-4129-9384-14b11cccd7b3,Mometasone 0.1% cream,00093-2158-05,Generic,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+1273eca2-b797-45bd-8e95-cffb7747a6a3,Seasonique,00555-9042-84,Brand,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+13123e58-82c2-4002-9718-7b6b13bf9104,Baclofen 10mg,00093-1072-01,Generic,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+13eb2cce-c3e3-4c58-b2fc-1bbbe8e7914d,Voltaren 75mg,00781-1079-01,Brand,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+14d01f48-5263-4cbf-ad5b-b6187a434497,Romazicon 0.1mg/mL,00004-6910-01,Brand,Reversal agents,Radiology,2025-03-31 10:39:56.376706+00
+15ab3551-58a5-4d92-a593-1b94b185ac26,Ciclopirox 0.77% cream,00093-9896-31,Generic,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+160fe528-5e53-44f9-a0da-a14fdf9c04de,Sitagliptin 100mg,00006-0221-31,Generic,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+1670fc0b-1c4c-4d41-9ae2-931c340471d2,Lidocaine 1%,00409-4270-01,Generic,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+171a295e-30a9-4e5b-b041-b32a314bf9f1,Azilect 1mg,00378-0616-91,Brand,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+172a7a39-5c43-4b0d-bfba-6919faed6292,Lisinopril 20mg,00093-0131-01,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+177ef27d-6607-4a1c-a364-500f9e8d2ed1,Apremilast 30mg,59572-0729-56,Generic,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+17da261f-342d-4b0c-9ace-d0580da20254,Diphenhydramine 50mg/mL,00409-2305-10,Generic,Emergency medications,Radiology,2025-03-31 10:39:56.376706+00
+17ed0200-d314-4e06-b520-190333bae4da,Neostigmine 0.5mg/mL,00409-2790-50,Generic,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+180aaceb-3d84-4861-af1c-9ee4a3fe3e5c,Cardura 4mg,00049-2760-66,Brand,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+1819c014-1d4b-431b-9aa0-c40f29ce1779,Toprol-XL 50mg,00186-1088-05,Brand,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+18f18044-6c72-4d19-9cda-140eebf5cb26,Digoxin 0.125mg,00093-0147-01,Generic,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+191d7f1f-01ed-4d3e-8f77-0061a48b28da,Rythmol 150mg,00173-0733-65,Brand,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+1930741a-041e-484d-ad73-7a39a6951494,Lovenox 40mg/0.4mL,00075-0624-40,Brand,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+194e5d4c-0d42-4f69-8463-bcb254d5acd0,Lithobid 300mg,00245-0080-11,Brand,Mood stabilizers,Psychiatry,2025-03-31 10:39:56.376706+00
+1952ee88-1c66-40a8-a0a9-1505b749d919,Methylphenidate ER 20mg,00591-2214-01,Generic,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+1aec7e7a-cd26-4537-95ee-b106696108f9,Lanoxin 0.125mg,73334-0243-01,Brand,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+1aedaea8-1667-4819-aa72-b7c7ff066e1e,Pregnyl 10,000 units,00052-0315-01,Brand,Fertility treatments,2025-03-31 10:39:56.376706+00
+1c26bc0a-8d92-4cf8-a610-1016efe82f73,Deltasone 10mg,00054-4741-25,Brand,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+1c670a0f-af8f-4079-a947-538f896232d7,Cisplatin 50mg/50mL,00703-5748-11,Generic,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+1cd21937-e79a-4f84-b323-6a8cd7a8ed6b,Sulfamethoxazole/Trimethoprim 800/160mg,00093-0148-01,Generic,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+1ce97aa3-be5c-4685-a356-f2a4ee30f78d,Meloxicam 15mg,00093-7297-01,Generic,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+1d484db3-1055-49c5-a80b-b338870691ab,Pavulon 1mg/mL,00052-0503-02,Brand,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+1e0cce30-a57d-4880-9775-ad8bee24a830,Spectazole 1% cream,00085-0946-01,Brand,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+1f11f630-6738-40be-ac2f-53218fe62f24,Jardiance 10mg,00597-0152-30,Brand,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+1fbd9610-8ee3-4457-b9de-969741de1c29,Fluocinonide 0.05% cream,00093-0021-01,Generic,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+21646475-7582-45d1-acbf-4c7fb765aeb2,Fluticasone/Salmeterol 250/50,00093-7848-67,Generic,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+21a0b3fa-2757-4b75-8873-e06c34619b7a,Nitrofurantoin Mono/Macro 100mg,00093-9053-01,Generic,Anti-infectives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+21f971dd-5a99-40c9-ba02-52ad1cd2a5af,Iodixanol 320mg I/mL,00407-1417-70,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+2272a250-4157-424a-9420-8a59244d1d9d,Ocaliva 10mg,65580-0202-31,Brand,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+2274a618-a182-4656-bead-178a4a6ddf09,Tiotropium 1.25mcg,00597-0160-30,Generic,Respiratory medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+2377def5-7657-4c11-9656-3b6f67406aa2,Dupilumab 300mg/2mL,00024-5914-02,Generic,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+2378d517-3b40-4d9e-aa5e-7ff0d6fef0e9,Enablex 7.5mg,00078-0419-34,Brand,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+2380ec67-a3cd-476e-b6cd-efbf5939c9ca,Vivelle-Dot 0.05mg/24hr,00078-0367-61,Brand,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+23cfe675-ee4c-48ff-8ed3-aed2331fc337,Vardenafil 10mg,00093-5531-09,Generic,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+23eb2b75-3b47-4c4a-a355-a761cb7a2a21,Isovue 370,00270-1371-50,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+23f84c53-c9cd-4794-b06f-ca49832d5e12,Abilify 10mg,59148-0012-60,Brand,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+2425779a-6841-496f-8a4a-7331173696e8,Isoflurane,66794-0017-25,Generic,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+254ba687-2379-4a1d-a35c-c9ec2df9da2e,Ciprofloxacin 500mg,00093-7290-01,Generic,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+25528543-f2dd-4211-af63-cea87ea9d51e,Spironolactone 100mg,00093-0734-01,Generic,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+2590169e-34a4-4b54-b666-61e0ec779935,Carbamazepine 200mg,00093-7160-01,Generic,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+25a1ab5f-e37e-4362-89c6-8d4b8763fb82,Zyrtec 10mg,00501-0659-23,Brand,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+25b4b8a0-cfb4-4a8b-8b89-adfb7b18732f,Methylprednisolone 125mg,00009-0758-01,Generic,Emergency medications,Radiology,2025-03-31 10:39:56.376706+00
+26a7067b-0e11-4669-b869-dc2898861dce,Fluticasone propionate 110mcg,00093-5317-09,Generic,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+2743f90e-9a23-434d-8f04-b3d5bd69be55,Nimbex 2mg/mL,00074-3385-05,Brand,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+27476eb1-43e5-4179-b41a-24b8022132a9,Xolair 150mg,50242-0040-62,Brand,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+27fc74fe-6310-4a86-8337-de5c7dd2739c,Zanaflex 4mg,59075-0731-60,Brand,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+298083e3-6593-4a84-a4ef-eafcccbcbeeb,Prinivil 10mg,00006-0074-54,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+29e030b4-43e8-4083-99a9-dddabaf0df71,Temovate 0.05% cream,00462-0358-30,Brand,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+2a4b09e7-dc7f-4b0e-a368-da2f9ee4c785,Azulfidine 500mg,00013-0101-01,Brand,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+2ab93633-8844-47af-b990-d35421df7ff2,Dutasteride/Tamsulosin 0.5/0.4mg,00173-0755-66,Generic,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+2ae1ac29-4ea0-43ba-b8d3-7a04e30e78d5,Polyethylene Glycol 3350,00093-7248-35,Generic,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+2b2c4e48-1e17-4e53-8c78-f262996e1ff3,Aldactone 100mg,00025-1041-31,Brand,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+2d7e2709-5d5f-44d8-a7c9-91928b4ac89c,Amlodipine 5mg,00093-7168-56,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+2dae109d-1e27-4239-b936-2eb6866d8da2,Taxotere 80mg/4mL,00075-8001-01,Brand,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+2e47872e-f57a-4630-a885-3f3cee0314ec,Entyvio 300mg,00069-6010-01,Brand,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+2e53b97d-886d-4ae6-a28c-5f569af53ecc,Adapalene 0.1% gel,00713-0288-29,Generic,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+2e616720-c154-434e-950d-0d4dd87e8d09,Amlodipine 10mg,00093-7168-56,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+2ebb9f2b-9105-4def-ad60-8fff8b25b5e8,Terbinafine 1% cream,00093-3787-36,Generic,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+2f0a3ec6-16c2-4d1b-b431-9787917e946b,Solifenacin 5mg,00093-4087-56,Generic,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+2f34b03e-327f-4b94-bd20-218fab6c41ea,Transderm-Scop 1.5mg patch,00067-4346-01,Brand,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+2f4c7539-50ae-4600-b864-aa03565bfaf6,Budesonide 0.5mg/2mL,00186-0914-95,Generic,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+2f4dd22e-6a6c-46b6-a427-e2bd18fc0390,Pepcid 40mg,00067-0358-94,Brand,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+2f69a27e-01b1-484f-a1a0-067fc0f9b843,Nitrofurantoin 100mg,00093-9154-10,Generic,Urinary analgesics/antibiotics,Urology,2025-03-31 10:39:56.376706+00
+2f77f852-2011-4bc3-9a32-b1876e219460,Fibrin sealant 4mL,00944-0374-01,Generic,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+2fee1c31-2d57-4f8f-b5d6-e2fe7e145dd8,Rivaroxaban 20mg (hold),50458-0579-30,Generic,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+304c5853-ac60-43e1-96d0-91b25fc3c938,Plavix 75mg (hold),00024-5862-90,Brand,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+3073fa12-b3d4-49ba-95f1-b155547186da,Cytarabine 1g,00703-4225-15,Generic,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+307b2fce-bfcf-41f5-a384-41e820d16823,Carboprost Tromethamine 250mcg/mL,00009-0856-04,Generic,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+30853f13-5e18-4a53-a426-839f86542c73,Insulin glargine 100units/mL,00088-5020-01,Generic,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+30f11c12-3eba-4d4f-a473-459a902e0382,Percocet 10/325mg,63481-0625-70,Brand,Analgesics,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+310d12f6-9607-4a55-9ca2-2959642a5903,Lopressor 50mg,00039-0059-50,Brand,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+317bba36-1569-4c58-b72c-63e847077121,Eliquis 5mg,00003-0894-21,Brand,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+31a79686-a868-4f6f-b208-ea37f1f5c986,Pembrolizumab 100mg/4mL,00006-3025-02,Generic,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+31f2ee36-6430-4e02-87ae-aa36ae90d6cd,Xarelto 20mg,50458-0579-30,Brand,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+32274f67-2ed5-4da1-9dec-c5a453d5ed26,Oxycodone/Acetaminophen 5/325mg,00093-5760-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+32471578-3e61-4bf7-9cda-8255b92daf18,Singulair chewable 5mg,00006-0275-31,Brand,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+328c0d51-cb9d-47d4-bfe3-de3c8274889a,Protopic 0.1% ointment,50222-0205-15,Brand,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+32d82a9e-b6fd-48a3-9bd2-c3305f83c736,Trexall 2.5mg,00083-2150-01,Brand,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+32e06521-f0de-4853-aaba-39c592e0edd8,Tenormin 50mg,00310-0105-10,Brand,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+333e1ff9-131e-446d-aba6-7caa2c0c98e9,Ondansetron 4mg/2mL,00781-3196-76,Generic,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+33694f67-32f6-49c7-8aa0-81ae86e7a746,Etomidate 2mg/mL,00074-6457-02,Generic,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+347d4a3c-9a3e-48ef-a345-c77386312e5f,Accutane 40mg,00004-0139-49,Brand,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+349d1aa4-e82e-48b6-8c07-327d1b93367f,Premarin 0.625mg,00046-1101-91,Brand,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+34cb8c2a-0946-43cc-8442-ca745c7e5b8e,Comtan 200mg,00078-0327-05,Brand,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+35657533-d62b-4d6e-be31-dd0e7b014c09,Mitoxantrone 20mg/10mL,00069-0640-01,Generic,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+358dc099-4d79-4d49-bdc8-5a1f2e769440,Garamycin 0.1% cream,00781-7050-01,Brand,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+35d8a112-2abb-4dd5-ad56-989c6b7f8bc2,Docetaxel 80mg/4mL,00703-5825-01,Generic,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+362271de-03df-4659-9217-029e824df35d,Microzide 12.5mg,00485-0045-01,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+362cc2c2-b771-4142-bade-ecfec1494732,Metronidazole 0.75% gel,00093-0417-60,Generic,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+367ed7e5-a17b-42a1-ae9c-ca6519b02687,Vibramycin 100mg,00006-0690-04,Brand,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+3697f242-cce4-4563-b736-2804830819b5,Famotidine 40mg,00093-1068-01,Generic,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+37d8a01b-b9fc-49c4-959d-31570852685a,Finasteride/Tadalafil 5/5mg,16571-0420-10,Generic,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+3833991d-a847-494e-a6cb-a04880f54405,Cyclobenzaprine 10mg,00093-1073-01,Generic,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+38687821-1313-4018-9731-2b79eeae6c6e,Xeljanz 10mg,00069-1002-01,Brand,IBD medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+38faffca-f2da-46c6-943a-2a474c3da7bc,Fentanyl 50mcg/mL,00409-9093-32,Generic,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+39354a61-4550-4e24-90b5-00f525a5d0bc,Otezla 30mg,59572-0729-56,Brand,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+397f2c73-837d-4876-8dbe-4ceb2d425af5,Ropinirole 2mg,00093-5315-01,Generic,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+39e878f6-8433-4457-b82e-881daa7e4238,Glucotrol 5mg,00049-1520-66,Brand,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+3a14bcf6-e678-463e-8a25-fc75dbf9d65c,Iohexol 300mg I/mL,00186-1736-01,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+3a282fbf-c350-48c1-a93c-b0de02a66eb2,Vincasar PFS 1mg/mL,63323-0271-05,Brand,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+3a378129-f6f2-4307-810e-ebfa071d9372,Wellbutrin XL 150mg,00187-0730-02,Brand,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+3a69188d-d031-4aec-8f98-c23438f63251,Loestrin 1/20,00430-0420-14,Brand,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+3acd737f-887d-4a6d-a917-3eba73665996,Divalproex Sodium DR 500mg,00093-7300-01,Generic,Mood stabilizers,Psychiatry,2025-03-31 10:39:56.376706+00
+3ae1a900-79a0-40cf-b6cf-3093519f3ba0,Chloroprocaine 3%,00409-4755-01,Generic,Local anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+3b02b748-d726-4901-907d-33c88cd56244,Clobetasol 0.05% cream,00093-0405-30,Generic,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+3b7d4fe7-b86a-4b02-94f1-4aeedd93d953,Prometrium 100mg,19845-0298-19,Brand,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+3b98623b-2551-46ff-9181-c881f969ed51,Clindamycin 1% topical,00093-1116-30,Generic,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+3b9f357d-ec9b-40bf-b299-2e51af522946,Breo Ellipta 100/25,00173-0870-10,Brand,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+3c263e75-8c3e-4f09-8e7a-da1872ca9bc0,Adderall 20mg,00023-3046-30,Brand,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+3c5d12e7-03f3-496b-8e7b-fd1fca9b6309,Reglan 5mg/mL,00193-5065-65,Brand,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+3cb100b5-79a1-47ac-bb33-10f60a2bfbef,Chorionic Gonadotropin 10,000 units,00409-7246-01,Generic,Fertility treatments,2025-03-31 10:39:56.376706+00
+3cb8be43-5427-48fe-b338-a48633a14b7f,Diflucan 150mg,00049-3910-30,Brand,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+3ce05d8a-0237-4a19-8bc5-505bcd87b0cc,Erythromycin 2% solution,00093-1055-60,Generic,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+3d0b349a-934f-4201-96b8-9fb5c5e7274b,Claritin 10mg,50242-0040-15,Brand,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+3dc0d597-12cf-4c35-a46d-41f174b5b254,Zolmitriptan 5mg,00093-0954-25,Generic,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+4086ed65-9833-421c-b535-c1d3d6ef8919,Sufenta 50mcg/mL,00409-1786-10,Brand,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+410acf94-98f9-4330-bca9-af16dc7f7ea7,Amaryl 2mg,00039-0007-13,Brand,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+412d21e4-7559-4f13-964c-59e32b8928d9,Flexeril 10mg,00781-1545-01,Brand,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+41dcef1a-59a0-4615-90ab-f064026ec0ee,Sufentanil 50mcg/mL,00409-1786-10,Generic,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+41f03b8d-4fa3-4b05-8e7a-98aac212c21a,Marcaine 0.5%,00186-0663-01,Brand,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+422202c0-df73-4aee-a8d6-f13e6af5faf7,Metoprolol succinate ER 50mg,00093-7469-56,Generic,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+425bcdde-fbac-4701-abe7-c5de05dba078,Escitalopram 10mg,00093-7235-56,Generic,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+428fa00b-ad4c-4ef8-b888-e25cd11e9f42,Avodart 0.5mg,00173-0712-05,Brand,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+429ff5a9-7fd8-488d-90c4-784278d4b1c3,Montelukast chewable 5mg,00093-7384-86,Generic,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+42ad5029-2bb0-4938-9668-e6b8c2fdc2e1,Conjugated Estrogens 0.625mg,00093-8906-01,Generic,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+435cdbe1-7241-4fc2-8c86-8cea9ca16f6f,Alfuzosin 10mg,00093-1085-06,Generic,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+452290cc-3ac7-4b0e-b537-43d75c2fb020,Propofol 10mg/mL,00093-9892-31,Generic,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+454c3427-95fe-4e9a-bf0e-379fac84cabf,Decadron 4mg/mL,00409-1318-02,Brand,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+455cc9f1-6517-420c-abdf-e1b566efe742,Dipentum 250mg,68682-0330-50,Brand,IBD maintenance,Gastroenterology,2025-03-31 10:39:56.376706+00
+4574aae7-3f9d-4c89-b2aa-089ba6ec62af,Ketamine 50mg/mL,00093-3507-40,Generic,Procedural sedation,Radiology,2025-03-31 10:39:56.376706+00
+46004baa-5ab6-425d-a2c3-1c0aacf019fb,Prevacid 30mg,00300-3046-30,Brand,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+4632702d-7c0d-4d0e-8ce0-75f67c33cbf8,Diclofenac 75mg,00093-1037-01,Generic,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+46d9fdb3-30b5-4d0a-a222-c5dc4501cf25,Triamcinolone 0.1% cream,00093-0043-81,Generic,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+46f586d6-fb48-408f-846e-0ef07e51e4a9,Cholestyramine 4g,00093-0646-81,Generic,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+47397b1a-da0e-405c-a976-66d85cda425b,Succinylcholine 20mg/mL,00409-6629-02,Generic,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+4774fe4f-2b41-4623-972d-2148f4a14f03,Oxcarbazepine 300mg,00093-7429-56,Generic,Mood stabilizers,Psychiatry,2025-03-31 10:39:56.376706+00
+47d03615-f672-4b7b-b991-03d357646a5c,Taxol 100mg/16.7mL,00015-3475-30,Brand,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+48055f53-2325-4bda-a183-283e0a20011b,Gemcitabine 1g,00703-4981-01,Generic,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+480b1e9f-461b-403c-92f8-612221eceae3,Maxalt 10mg,00006-3756-45,Brand,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+4848e050-e28d-4d16-9563-cc37ac954ba4,Apixaban 5mg,00003-0894-21,Generic,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+48ab45ad-9bf5-4229-96e6-2056c3c134ae,Tretinoin 0.025% cream,00093-3658-15,Generic,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+48db6dee-9dbf-439f-b443-6594cd6f42e6,Lipitor 40mg,00071-0156-23,Brand,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+48e47da3-9268-4855-b136-e4022cc15323,Aspirin 81mg,00067-0106-28,Generic,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+4aab369c-d12f-4fd4-bfb0-33616eeba4aa,Cisplatin liposomal 50mg/20mL,43598-0275-01,Generic,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+4b0c4c74-a2f2-465b-b8ac-1b933bd6d8c6,Bridion 100mg/mL,00006-5064-10,Brand,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+4bc06d42-7a2b-451f-9544-73cc5c240cce,Phenazopyridine 200mg,00093-0905-01,Generic,Urinary analgesics/antibiotics,Urology,2025-03-31 10:39:56.376706+00
+4be70a65-546e-4c16-92f2-33b7da266f43,Ativan 1mg,00293-0016-01,Brand,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+4c343238-caf9-45dc-8a1f-8578d6e0075d,Doxycycline 100mg,00093-0844-01,Generic,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+4cb389c3-b7c9-4feb-ba58-76fd610f5815,Floseal 8mL,00163-0615-15,Brand,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+4cfca4c7-2ca5-4c08-8a6c-a45be16d0bc5,Eribulin 1mg/2mL,62856-0389-01,Generic,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+4d668f3f-fe89-4d5c-b878-3ab18dafd619,Oxaliplatin 100mg/20mL,00703-5744-01,Generic,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+4d6b21c9-ddd5-4eb0-97d5-28e0d7923c54,Aripiprazole 10mg,00093-7430-56,Generic,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+4dc97d9f-fd45-40cc-87ea-75efb6eabdc5,Duloxetine 60mg,00093-5179-01,Generic,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+4e2f1022-79d6-426a-87f7-4e3d504b8e47,Ceftriaxone 1g,00093-2206-01,Generic,Antibiotics,General Surgery,2025-03-31 10:39:56.376706+00
+4e43cc90-f40d-4fcf-88fe-c50cb1b50ca7,Glucophage 500mg (hold),00087-6060-05,Brand,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+4e65b6b1-fd9d-4a41-be03-9d609c031cf8,Hytrin 5mg,00074-3324-13,Brand,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+4e94cb9c-32fd-4a9b-92b3-889976082015,Montelukast 10mg,00093-7370-19,Generic,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+4ee22876-b6f8-42ae-89b0-8951376d90bf,Pantoprazole 40mg,00093-7267-56,Generic,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+4efd8115-4459-482d-9233-30de23f750e2,Donepezil 10mg,00093-7426-01,Generic,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+4f823331-ff70-4d4c-812c-c6beee89b84d,Carboplatin liposomal 10mg/mL,43598-0278-01,Brand,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+4fd976b9-a46b-481a-9677-d2a7ae2c313f,Zocor 20mg,00006-0740-54,Brand,Lipid-lowering agents,Internal Medicine,2025-03-31 10:39:56.376706+00
+4ff0bbb2-1641-4480-9712-2a7aa444a8f7,Reslizumab 100mg/10mL,00009-0225-01,Generic,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+4ff896e8-fef8-46c3-948f-4a648383e5df,Atrovent 0.02% neb,00597-0099-24,Brand,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+508b5fec-f3e2-4c5a-9065-25f240f38893,Fluticasone nasal 50mcg,00093-6733-50,Generic,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+50b06293-bdd2-43b3-b888-61938110f3ef,Vyvanse 30mg,59417-0103-10,Brand,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+50e46787-8d0e-4c3f-b717-7277547d9bad,Midazolam 2mg/2mL,00409-2308-02,Generic,Procedural sedation,Radiology,2025-03-31 10:39:56.376706+00
+5111ebcb-ac17-486a-aba4-acd8fbcb6906,Ultiva 1mg,60977-0335-01,Brand,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+51cc9faa-7f84-4960-b4e7-8f0681927d1e,Lansoprazole 30mg,00093-7169-56,Generic,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+51ced2d9-061f-4b10-a00e-9b42932f02c9,Balsalazide 750mg,00093-7433-98,Generic,IBD maintenance,Gastroenterology,2025-03-31 10:39:56.376706+00
+51e310e5-0073-43a7-b741-137b295aa902,Carboplatin 450mg/45mL,00703-3228-01,Generic,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+51f7a1e7-39b7-491c-8abc-8daabac165d2,Ziprasidone 40mg,00093-7380-56,Generic,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+522a489d-15cb-4fe3-8de0-31e321a6d826,Irbesartan 300mg,00093-7384-56,Generic,ACE inhibitors/ARBs,Cardiology,2025-03-31 10:39:56.376706+00
+522d5ff9-5398-4629-bd19-2345041c7b5b,Prednisone 10mg,00093-7052-01,Generic,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+5233f858-3160-4a44-b443-d92a5a3d694f,Metformin 500mg (hold),00093-7149-01,Generic,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+52b7dd41-993e-41a1-a3e8-5a427d1cee5e,Progesterone in Oil 50mg/mL,00517-0725-10,Generic,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+52bbcd83-3c10-4919-bca1-65a04988fd5c,Ketalar 50mg/mL,42023-0135-10,Brand,Procedural sedation,Radiology,2025-03-31 10:39:56.376706+00
+52f5cf30-ad3b-4165-b030-309c8fe03251,Ellence 200mg/100mL,00013-1061-91,Brand,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+531c8c16-1d50-4726-9c01-017f36800690,Obeticholic acid 10mg,65580-0202-31,Generic,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+533180bd-385d-43dd-afb5-0cfa6170e341,Silver sulfadiazine 1% cream,00093-9836-01,Generic,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+535fe6e3-039f-4645-b8a8-b7bc2cabe87f,Valsartan 160mg,00093-7452-56,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+538520f0-6500-4a72-80b3-900d4e44d627,Gadoxetate disodium 181.43mg/mL,50419-0320-01,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+541d7d1f-9d71-4223-9171-46fdfe00369d,Hydrochlorothiazide 25mg,00781-5393-01,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+5446d531-a148-4161-a6a3-83226c7d82eb,Mometasone furoate 220mcg,00085-1341-01,Generic,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+554008b9-0ca7-4c8d-97ed-93f454051c66,Heparin 5,000 units/mL,00409-2720-01,Generic,Anticoagulants,2025-03-31 10:39:56.376706+00
+5588fd38-3868-421d-af48-4a551291fdf4,Eliquis 5mg (hold),00003-0894-21,Brand,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+55ab3386-98d9-49dc-ae31-1c8b125e9b57,Activella 1mg/0.5mg,00169-4158-11,Brand,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+564c8ceb-d988-4858-a864-8df09872cf70,Solu-Medrol 125mg,00009-0758-01,Brand,Emergency medications,Radiology,2025-03-31 10:39:56.376706+00
+56a93808-8138-4596-961a-58220080368e,Tadalafil 5mg,00093-5553-09,Generic,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+56e33b1a-8401-4650-8746-da3ad97034a5,Estrace 1mg,51285-0430-02,Brand,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+5888b098-5d09-42f6-a2be-4d4674f392f7,Ondansetron 4mg ODT,00093-7195-19,Generic,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+590fd608-e776-4c95-a6a4-21771a4d197a,Ultane,00074-4456-10,Brand,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+59353148-abae-47d0-acda-ea5c86c3afba,Magnevist 469.01mg/mL,00270-5313-90,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+5966c273-8a61-4463-81f2-04730872234d,Dutasteride 0.5mg,00093-2255-56,Generic,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+59728707-75c9-41c9-a1ca-d4699798dd68,Keppra 500mg,00078-0430-05,Brand,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+59df583b-7ecd-47a5-a382-5b64951e62ea,Cetacaine 14% spray,00433-0955-10,Brand,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+5a14f233-de8b-4d28-b2d1-7c267a3ac581,Ciclesonide 160mcg,00597-0088-37,Generic,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+5a44b1f1-8e5c-409a-bffa-30df4854e748,Pyridium 200mg,00187-4851-30,Brand,Urinary analgesics/antibiotics,Urology,2025-03-31 10:39:56.376706+00
+5ab184e2-3819-418b-86d8-ba679eae8f51,Ethinyl Estradiol/Drospirenone 0.03/3mg,00093-6035-28,Generic,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+5c09f2b1-62e7-4e0c-bfa7-81558af5a1f5,Actigall 300mg,00028-0058-10,Brand,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+5c48d772-65da-480a-b9e4-4945b299ec8c,Scopolamine 1.5mg patch,00169-4508-01,Generic,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+5c64b29f-5800-42bb-9bce-d039db14511c,Norco 5/325mg,00023-6101-01,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+5c8b4932-a3a4-4019-8055-a7344318ade4,Hydrochlorothiazide 25mg,00093-0345-01,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+5c8d2071-0de0-4f6f-af70-e907cec6c6b4,Fluticasone furoate 100mcg,00173-0874-00,Generic,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+5cf98c4b-2329-487c-8c54-ebdccd143957,Questran 4g,00056-0346-80,Brand,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+5d633bcd-07df-4f2e-8621-f8d7662c1000,Benzoyl peroxide 5% gel,00093-0227-30,Generic,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+5da2a776-05ea-4938-b90d-1d3814032b08,Adriamycin 50mg/25mL,00013-1028-91,Brand,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+5dfec0bb-868f-4dfd-8837-8da98912a966,Estradiol 1mg,00093-5345-56,Generic,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+5e0bb6c8-c09c-4b56-8b1b-97f9f3baa3bd,Omalizumab 150mg,50242-0040-62,Generic,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+5e418f63-e7c9-4835-8e59-7918a9892da7,Tricor 145mg,00074-6122-90,Brand,Lipid-lowering agents,Internal Medicine,2025-03-31 10:39:56.376706+00
+5ea526da-4d70-468d-b4c9-18cf02caac5a,Estradiol Transdermal 0.05mg/24hr,00169-5173-01,Generic,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+5f74fbd8-64ce-492b-8597-c57a32bc50ad,Hydrocortisone 2.5% cream,00093-0034-31,Generic,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+60f05fef-a804-4fc3-9324-9fb0788843c5,Silodosin 8mg,00093-8785-56,Generic,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+616c0aef-cbc5-45a9-b364-6ed0bb66c533,Ursodiol 300mg,00093-7052-01,Generic,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+616f2221-8d8d-43b9-95af-7b09c3faad90,Metoprolol tartrate 50mg,00093-0733-01,Generic,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+619f8938-c1f8-4e24-b910-40a2a99cff35,Colace 100mg,00031-5600-90,Brand,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+61d8a488-6b1e-403d-8b4e-74d81b290776,Benzac AC 5% gel,00075-0231-45,Brand,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+61ee53a4-c7e2-45a6-b4a3-4b8a20bd1179,Uroxatral 10mg,00024-4201-30,Brand,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+635259dd-8a7e-4163-b488-16a3aec9925a,Dutasteride/Sildenafil 0.5/50mg,16571-0425-10,Brand,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+636ce80b-10f5-456b-a2a2-0e9e01c0164a,Actos 30mg,64764-0030-13,Brand,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+6458101f-e124-4c8d-a1f4-98a05fabd681,Pontocaine 1%,00187-3672-01,Brand,Local anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+647a200d-3a81-4fe0-9dc2-8ebcb18db00c,Scopolamine Transdermal 1.5mg,00169-4508-01,Generic,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+6480c463-bb42-43b7-afef-b4b759adaa31,Klonopin 0.5mg,00004-0068-01,Brand,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+65085b91-5a3e-4779-96d2-b1f0f20de872,Gentamicin 0.1% cream,00093-0137-31,Generic,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+652ad5da-4ac5-4275-9be4-a2b7b56f427f,Atropine 0.1mg/mL,00409-9630-01,Generic,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+655c5a69-bd33-4dc2-8157-7e31663e9b26,Adderall XR 20mg,54092-0387-01,Brand,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+658b95f1-0ff5-4ec2-a81c-b931650dbce8,Cyklokapron 1g/10mL,00013-1114-91,Brand,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+65e796ba-b548-43e0-8dcd-5d30d74dfb3a,Rivaroxaban 20mg,50458-0579-30,Generic,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+66aa8a22-4aa1-46e6-8eac-a8d617411ef7,Cozaar 50mg,00006-0952-54,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+66d022f6-8423-46bf-bcce-3ecca0e85bbe,Fenofibrate 145mg,00093-7426-56,Generic,Lipid-lowering agents,Internal Medicine,2025-03-31 10:39:56.376706+00
+670b8e30-f0b2-4154-8a2c-ede9f591f453,Metformin 1000mg,00093-7148-01,Generic,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+677914e9-e71e-4e21-9e18-35745a4a9eef,Retin-A 0.025% cream,00462-0220-30,Brand,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+67a465ed-1ea1-4b46-ae1d-fd8077d3eaa8,Ecotrin 81mg,41167-0301-30,Brand,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+67e4ba4b-6373-4717-a091-ac55175ba616,Naropin 0.5%,63323-0485-38,Brand,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+67f2f960-8274-4ef3-ae00-a6735c687c1b,Nivolumab 100mg/10mL,00003-3772-11,Generic,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+680ac35c-8297-4356-962b-743121612ade,Pradaxa 150mg,00597-0157-60,Brand,Anticoagulants,General Surgery,2025-03-31 10:39:56.376706+00
+6885cdbb-c86a-4ec6-88ed-d1960317798e,Amoxil 500mg,00029-6005-23,Brand,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+68bb7595-b837-4021-a1d9-1951862adfd6,Dexamethasone 4mg/mL,00409-1318-02,Generic,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+68f84e17-1f19-43dc-bd81-88b46688016f,Xarelto 20mg (hold),50458-0579-30,Brand,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+69670040-809a-4b54-9227-f6bb2a1b0e2d,Plavix 75mg,00024-5862-90,Brand,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+6974eca2-dc5f-431d-a16c-58b4cdcbfa44,Albuterol Sulfate HFA,00093-9087-17,Generic,Respiratory medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+6a009200-a7b7-4642-9d8f-8335d46a8d90,Humira 40mg/0.8mL,00074-0243-01,Brand,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+6a3b6a6f-7c7d-4ae6-a748-e3e2f750acb3,Singulair 10mg,00006-0117-31,Brand,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+6acdd3b8-9ed6-4716-99b3-640b555f5618,Tiotropium 18mcg,00597-0160-30,Generic,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+6b61df1e-f51d-4c5f-bcab-42d370906230,Roxicodone 5mg,00054-0911-13,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+6b8532a6-1867-4181-a065-63086436d81a,Ipratropium 0.02% neb,00004-6904-05,Generic,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+6be5d01b-5bde-4080-80be-49f04f91fa29,Montelukast/Loratadine 10/10mg,13668-0034-30,Generic,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+6c8df2f7-3a22-497d-bd8e-e332ae7fc37e,Cialis 5mg,00002-4462-30,Brand,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+6cdec887-8f36-4a96-9225-4ac2e1bd9888,Stendra 100mg,62541-0140-30,Brand,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+6d31c34d-67df-4317-9cc7-da459b210393,Doxazosin 4mg,00093-6401-01,Generic,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+6d7e8e77-f197-44e8-a0b0-646032ce27f4,Zestril 20mg,00310-0135-90,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+6d8e25a5-97a3-462e-8edf-e7c7c9f326d3,Finasteride 5mg,00093-5019-05,Generic,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+6dd5e4f0-213c-4553-8586-3a0a4de4a484,Diazepam 5mg,00093-0149-01,Generic,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+6e2b1eb0-848d-4a8d-b828-c20619822325,Dupixent 300mg/2mL,00024-5914-02,Brand,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+6f420bbd-76d1-4a5d-816a-e657bb2d99d6,Namenda 10mg,00456-1010-60,Brand,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+6f49006c-5d45-4c5b-a8c7-ab5171dc91f0,Ultram 50mg,50458-0660-60,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+6fafb06f-2339-4337-b4b5-c708991649e8,Brilinta 90mg,00310-0292-90,Brand,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+6fc9f0fd-7ff0-479d-b32c-307f7e31e895,Plecanatide 3mg,55566-7000-30,Generic,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+6fd01f5b-e59e-4cb7-9e85-931e568dd97a,Platinol 50mg/50mL,00015-3220-22,Brand,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+704964c5-43ff-42ee-ac76-842655b101f1,Glucophage 1000mg,00087-6070-10,Brand,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+708b3927-252f-4deb-ae3d-c2ffeca02626,Mobic 15mg,00597-0029-30,Brand,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+70e6b839-c4a1-4838-9c66-c79c61d985d7,Adrenalin 1mg/mL,42023-0159-25,Brand,Emergency medications,Radiology,2025-03-31 10:39:56.376706+00
+717d5a50-9ae6-422f-9838-9c8e8835602e,Ketorolac 10mg,00093-5284-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+71cb98af-f1d1-4d28-af01-88c741b1d47b,Protonix 40mg,00008-0841-81,Brand,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+71e7ebd5-89df-42c3-8a93-de29770b9095,Pramipexole 1mg,00093-7414-01,Generic,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+72284734-e292-44b1-b943-1f20f163989d,QVAR RediHaler 80mcg,00065-8400-01,Brand,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+726d9aa6-9068-4fa7-b1e6-4f9218189e15,Bupivacaine 0.5%,00409-1587-30,Generic,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+72bad1ac-ecbb-4ce3-80ec-481525309de2,Teriparatide 20mcg,00002-8400-01,Generic,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+736d2b9b-2fe2-4e0b-a3dc-70f58296a7af,Fentanyl Citrate 50mcg/mL,00409-9093-32,Generic,Anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+73e3bf71-99bd-448e-a7ff-00c407c9e19c,Promethazine 25mg/mL,00641-2470-35,Generic,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+7445a35c-24ea-4de3-a955-743c39f3acdf,Ropivacaine 0.5%,00409-1541-01,Generic,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+746f64a1-f8b4-45e8-a4e1-67a7701f0342,Rocephin 1g,00039-0019-01,Brand,Antibiotics,General Surgery,2025-03-31 10:39:56.376706+00
+747379ae-b8e7-4f11-8a6b-1ea6230debab,Diprivan 10mg/mL,00310-6629-58,Brand,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+752e1de3-4673-4c77-bd65-8a81dea0793e,Monistat 7 2%,00062-1532-03,Brand,Anti-infectives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+755fcdec-0681-45fe-9175-8692cabc5980,Actonel 35mg,00149-0472-01,Brand,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+76399281-692a-4617-bc5d-2a3c924f0836,Cymbalta 60mg,00002-3240-30,Brand,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+764249f5-013f-4ffb-b630-6e263bc215c9,Darifenacin 7.5mg,00078-0419-34,Generic,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+76928677-efd4-4ef0-9c44-e70c80d64370,Thrombin 20,000units,00009-0869-01,Generic,Hemostatic agents,2025-03-31 10:39:56.376706+00
+76d48f12-1eb6-4395-bc9a-a2c57da6fd43,Eloxatin 100mg/20mL,00024-0590-20,Brand,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+76ea5283-9b41-467f-8ff0-19ec71c54e5e,Razadyne 8mg,50458-0394-60,Brand,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+77c20cb3-68e8-4805-ba65-2e5b31ca4fc5,Thrombin-JMI 20,000units,00016-1317-10,Brand,Hemostatic agents,2025-03-31 10:39:56.376706+00
+781675c2-1344-4b1d-a5a4-28a4dc1eb10e,Amitiza 24mcg,00023-3975-10,Brand,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+7848361b-4928-49af-9475-6e0a5a7812d7,Celecoxib 200mg,00093-7165-01,Generic,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+78bbba06-b274-41c9-80c5-b70dc55628ad,Dinoprostone Cervical Gel 0.5mg,00009-3359-01,Generic,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+79246714-3df5-4b4e-98bc-41a66af26acd,Prolia 60mg/mL,55513-0710-01,Brand,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+79623a06-68f9-4a70-ac37-286ce7853ac6,Cipro 500mg,00026-8513-51,Brand,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+7a5e0957-5af6-4790-9bab-6a5b9fb5a977,Methylergonovine 0.2mg,00517-0901-25,Generic,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+7a942a5a-dae9-48b9-bcf4-b686577b43f0,Neurontin 300mg,00071-0774-24,Brand,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+7af389c8-7eae-4413-ac8e-953ce831e299,Fosamax 70mg,00006-0072-44,Brand,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+7b9852ac-cf5c-472e-9c2a-a9e923d9970f,Metformin 500mg,00093-7149-01,Generic,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+7c5597ae-d316-4059-a64a-7f356f8a3900,Benadryl 50mg/mL,63739-0590-10,Brand,Emergency medications,Radiology,2025-03-31 10:39:56.376706+00
+7d6c6271-0139-4c51-820d-9db6c12c5a7d,Alendronate 70mg,00093-5171-56,Generic,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+7d849cf1-7e53-496c-b353-b2fe2ab461eb,Phenergan 25mg,00603-3176-21,Brand,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+7dfab19e-f153-40fc-924b-cde6b6e54305,Septocaine 4%/1:100,000,00186-0005-01,Brand,Local anesthetics,2025-03-31 10:39:56.376706+00
+7e1d6ebc-3d02-433f-b9b5-647f0fdf9c9b,Vasotec 10mg,00006-0014-54,Brand,ACE inhibitors/ARBs,Cardiology,2025-03-31 10:39:56.376706+00
+7e644e52-b87c-4cbe-b051-3725dbc36383,Geodon 40mg,00049-3960-30,Brand,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+7ea49982-711f-4ba4-b498-4d4f880f48fd,Gastrografin 66%,00270-0479-01,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+7fba1c31-9708-4819-860b-3e95d4766b2d,Opdivo 100mg/10mL,00003-3772-11,Brand,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+813e1693-8329-457e-9cb2-3056450e1592,Lamisil 1% cream,00067-3998-42,Brand,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+8154521d-892d-4401-b867-3b3dfa318038,Epinephrine 1mg/mL,00409-7241-01,Generic,Emergency medications,Radiology,2025-03-31 10:39:56.376706+00
+816f8482-50db-4bee-8095-c3c7dbdb1fb3,Medroxyprogesterone Acetate Inj 150mg/mL,00517-0031-01,Generic,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+822138d4-c41e-4b3f-833d-5f0bb64e002c,Warfarin 5mg,00093-1685-01,Generic,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+82329064-5ae1-4740-b4bf-551502010cf0,Xylocaine 1%,00186-0676-01,Brand,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+83430aee-5c3b-4901-ae70-1f29dd284c47,Novantrone 20mg/10mL,00703-4602-01,Brand,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+83f515fa-4328-4be0-a7bf-1ff42f50b388,Tramadol 50mg,00093-0058-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+84083dc3-c764-41d1-8a31-8a67c72ca5d7,Hytone 2.5% cream,00168-0084-04,Brand,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+842a7910-1198-4315-a45b-7b821ebd2922,Docusate sodium 100mg,00093-0951-01,Generic,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+842d3ed2-ef25-4ca2-8b34-f2164cf30fe1,Paclitaxel 100mg/16.7mL,00703-4754-01,Generic,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+848e64be-0fa4-48db-a047-d946489d7297,Xopenex HFA 45mcg/inh,00281-0197-47,Brand,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+85120610-ea64-48c8-b763-813fa4b1e18c,Pacerone 200mg,00245-0070-11,Brand,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+85439d7a-56ed-4f48-bb23-64c6af272e10,Iopamidol 370mg I/mL,00270-1371-50,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+8599c30f-0192-45ed-8569-2b5b7a2f2080,Flomax 0.4mg,00024-4220-30,Brand,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+862522b0-962e-4e81-8494-f533a505f6fa,Elidel 1% cream,00078-0456-96,Brand,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+86eab9f3-79c6-44bc-b84a-92dfbe0b17c4,Memantine 10mg,00093-5506-01,Generic,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+8760ec83-9346-489a-9c0d-5750e1591002,Clindamycin Vaginal 2%,00093-9157-16,Generic,Anti-infectives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+877acc70-4e4d-4496-a6af-bca0a403475b,Zyprexa 10mg,00002-4117-30,Brand,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+87bd4c62-70bd-47ad-a145-aebc54d64fff,Mupirocin 2% ointment,00093-1034-15,Generic,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+87c924f6-308b-47c2-931b-80e8d7d79adb,Forane,10019-0360-60,Brand,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+87d47f0e-8f06-4b1b-afd6-634ae4ccbfab,Dotarem 376.9mg/mL,59535-0050-10,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+886533a6-bbb8-4a79-9392-48d007cd9011,Norcuron 10mg,00052-0441-01,Brand,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+887e3a59-1bc0-42f7-b75f-af39dfdf9ea5,Trulance 3mg,55566-7000-30,Brand,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+88fe85f1-8f25-44ad-a4a4-a559db184a11,Vecuronium 10mg,00409-6702-01,Generic,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+8a5b2ad2-7eed-4f9c-84b5-3bedaf3c458e,Olanzapine 10mg,00093-7231-56,Generic,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+8ae76c88-1ecf-4bf7-a754-0d4037e99942,Lialda 1.2g,00023-5850-18,Brand,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+8afb460c-76dc-42f8-bf82-38c5409f351d,Piperacillin/Tazobactam 4.5g,00409-7709-21,Generic,Antibiotics,General Surgery,2025-03-31 10:39:56.376706+00
+8b5ecf4c-4152-4528-ae8f-54215b3bfd21,Hemabate 250mcg/mL,00009-0856-04,Brand,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+8b9ca711-965e-4b08-8967-1f51f4747389,Olsalazine 250mg,68682-0330-50,Generic,IBD maintenance,Gastroenterology,2025-03-31 10:39:56.376706+00
+8bd6e7b6-277d-4b6b-a132-cff60d9ad620,Lorazepam 1mg,00093-0078-01,Generic,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+8bdc7c26-9ced-42e4-9c3f-5c0c273200f4,Empagliflozin 10mg,00597-0152-30,Generic,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+8bdf1208-2b5c-4ad5-b74b-1fe24a5ea843,Progesterone 100mg,00093-9150-01,Generic,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+8cdbfbe7-3300-4331-9d9a-b653b5a9ba34,Depo-Provera 150mg/mL,00009-0626-01,Brand,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+8d191eef-c3ac-45a6-acdf-8677cfa70d2d,Neurontin 300mg,00071-0774-20,Brand,Analgesics,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+8d47cba8-174e-42da-a904-149b4d9c186c,Benzocaine 20% spray,76138-0753-30,Generic,Local anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+8d571595-ac0b-40c9-a116-11a9e6113a2f,Synthroid 100mcg,00074-6594-90,Brand,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+8d9d29ea-c37e-4f66-bb1c-7809b831d277,Ampicillin/Sulbactam 3g,00409-0203-01,Generic,Antibiotics,General Surgery,2025-03-31 10:39:56.376706+00
+8dbfd9e2-a079-4d3f-866c-cfc9de85a5ac,Vinblastine 10mg,63323-0257-10,Generic,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+8e3fb817-456c-4138-b2ee-ee392ffcac43,Metronidazole 500mg,00093-2107-05,Generic,Anti-infectives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+8e6cae2f-72fc-494a-acc0-fccc336565b8,Simvastatin 40mg,00093-7460-56,Generic,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+8e985065-e90f-4a60-8c24-788b757ef0c3,Oxytocin Injection 10 units/mL,00409-2701-10,Generic,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+8fbe58a6-c7d9-465c-b5b5-5d935029f955,Gabapentin 300mg,00093-1043-01,Generic,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+90296db1-c3a0-456e-9c21-3facaef695f9,Rituxan 100mg/10mL,50242-0051-21,Brand,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+9189ff03-5e93-4efa-a2e3-ccc61599124f,Ethinyl Estradiol/Levonorgestrel 0.03/0.15,00555-9010-58,Generic,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+9205fb71-7cef-4739-a917-5c077b360c89,Avastin 100mg/4mL,50242-0060-01,Brand,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+930f92cc-5990-4539-a575-138ba988c617,Eryderm 2% solution,00456-0682-60,Brand,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+938d9945-944b-4fba-b3ac-0914c4a72272,Gemfibrozil 600mg,00093-7424-98,Generic,Lipid-lowering medications,Cardiology,2025-03-31 10:39:56.376706+00
+93cb4120-a55f-4d2d-9dbe-a0843e0fe195,Cetirizine 10mg,00093-7298-01,Generic,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+947fe13f-8b8d-4326-b7ae-38aa81ea146b,Topamax 25mg,50458-0639-30,Brand,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+9541e11a-2e84-427f-9ad6-d1f805504311,Duramorph 10mg/mL,76045-0001-10,Brand,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+95478cb7-cfab-4335-986f-142e366727b4,Bactrim DS 800/160mg,00004-0089-20,Brand,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+95982997-6461-4fc8-8833-8b932c205d5d,Loratadine 10mg,00093-7253-01,Generic,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+95b3f578-49f6-4ba5-8692-808433417f5e,Spiriva 18mcg,00597-0160-30,Brand,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+95d4cd17-58dd-4026-8112-4b8b1a69d7e6,Soma 350mg,00185-0262-01,Brand,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+96d1d549-2136-4013-9096-c5cf6fec7117,Tofacitinib 10mg,00069-1002-01,Generic,IBD medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+972ed7f3-0b50-43ae-93ee-ae1e0cdc771a,Xeloda 500mg,00004-1101-50,Brand,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+973f8cf7-1c99-4bb7-8886-22e650c69d0b,Metoclopramide 10mg,00093-2203-01,Generic,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+97b18c45-8d0b-41e2-ab82-7a0307865618,Linaclotide 145mcg,00023-6169-30,Generic,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+97b7c64a-9885-4364-9b99-de12fd400e72,Rosuvastatin 20mg,00093-7523-56,Generic,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+97e63f59-0665-48a8-8557-952df7af1457,Galantamine 8mg,00093-7170-56,Generic,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+98ac7804-1a87-4c6e-ba51-52f751ab189d,Tranexamic acid 1g/10mL,63323-0272-10,Generic,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+98bdeef7-262b-48dd-80b1-e90f67fae8ac,Surgicel,00183-0383-01,Brand,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+994fbfcb-aadd-4a75-8408-1e87e28286ce,Cistplatin lipusomal 50mg/20mL,43598-0275-01,Brand,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+99ea533f-6285-4436-a5cb-71925fb265c1,Effexor XR 75mg,00008-0837-20,Brand,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+9a7b4bd0-7ea5-4bc7-bb15-b0c5eab745cd,Accolate 20mg,00310-0401-30,Brand,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+9abb7d41-4fc7-4d82-9547-12d641b7aa89,Sevoflurane,00469-1190-60,Generic,Anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+9ae323b1-c2a3-4a7c-b75e-c0e8061f2150,Spiriva 1.25mcg,00597-0160-30,Brand,Respiratory medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+9b0fecb2-aa4f-48f4-b459-c4a627735d61,Betamethasone 6mg/mL,00409-1316-01,Generic,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+9b53bbfe-2ba5-48c5-927f-e0b313ea9f96,Norvasc 5mg,00069-1530-68,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+9b9c43fd-8bdb-41bb-8767-178edd4ffea3,Zofran 4mg,00173-0447-00,Brand,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+9bd2c65e-c167-4b84-8969-e385bc814b3b,Isotretinoin 40mg,00093-5845-56,Generic,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+9bf5b636-6182-4db4-ac53-b5913228c0ea,Lioresal 10mg,00078-0350-05,Brand,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+9c45f193-51da-4939-babd-9d7ce489d084,Trastuzumab 440mg,00004-0132-06,Generic,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+9c6aee1f-fa10-438b-8cb1-d95b7f40bc91,Flonase 50mcg,00173-0453-60,Brand,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+9cda3c06-c591-4ddc-bca1-8216bd22ce5c,Dovonex 0.005% ointment,00072-1303-30,Brand,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+9d693dc0-02cc-4368-b680-144bd30792cc,Bevacizumab 100mg/4mL,50242-0060-01,Generic,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+9d87069d-d95d-4697-a30e-425e970015b8,Macrobid 100mg,52427-0285-01,Brand,Urinary analgesics/antibiotics,Urology,2025-03-31 10:39:56.376706+00
+9e48f34a-dbaf-4b47-a340-f98bb69b5801,Glimepiride 4mg,00093-7270-01,Generic,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+9e50cdda-8802-41f6-9e6d-bcf162ccf7dc,Versed 2mg/2mL,00004-6967-02,Brand,Procedural sedation,Radiology,2025-03-31 10:39:56.376706+00
+9ece9e91-1174-4cdd-9561-d74629edb731,Tisseel 4mL,00944-0374-01,Brand,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+9ed1099c-08b7-4fa9-a790-6f2da540a28c,Omeprazole 20mg,00093-7260-56,Generic,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+9efd367c-8ddc-417b-80ec-0a33b3c7003e,Cleocin Vaginal 2%,00009-0758-07,Brand,Anti-infectives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+9f36ee4f-3acf-4cd4-90fb-6dd4ccda6d6e,Dexamethasone 4mg,00093-7054-01,Generic,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+a013a813-272f-4afe-b0e5-fdd96d3d52ca,Metoclopramide 5mg/mL,00409-3414-01,Generic,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+a020e569-baf3-4993-868d-e40bb20372d2,Lisinopril 10mg,00093-0130-01,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+a0309577-bcee-4415-a39f-010f0df36c7b,Imitrex 50mg,00173-0735-02,Brand,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+a0353855-fd0f-4d21-bc51-1653ef743646,Cinqair 100mg/10mL,00009-0225-01,Brand,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+a07df9ee-65fa-4114-b37d-ff2659dbcca4,Nesacaine 3%,63323-0214-02,Brand,Local anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+a088fa6e-7547-4ada-a89b-1d45701e5fbb,Robaxin 750mg,55694-8001-01,Brand,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+a174908b-7261-4645-a1ac-f3202821a822,Viagra 50mg,00069-4200-30,Brand,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+a18da831-9f4c-463a-b468-9a250143490b,Amiodarone 200mg,00093-0645-01,Generic,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+a1ffe22d-c9d1-40b3-8980-75e15ca88b8c,Oxycodone/Acetaminophen 10/325mg,00093-5767-01,Generic,Analgesics,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+a2405a38-1f92-4df1-a5eb-faa3b5d528ff,Fosfomycin 3g packet,00187-5852-01,Generic,Urinary analgesics/antibiotics,Urology,2025-03-31 10:39:56.376706+00
+a2e5a798-6ba4-4615-9778-78365f15ec67,Proventil HFA,00085-1132-01,Brand,Respiratory medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+a409c964-4478-40af-b48e-49b071f8b507,Methylprednisolone 4mg,00093-7043-01,Generic,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+a5383bb8-f5c2-4c76-8948-41c1e367963f,Amoxicillin 500mg,00093-0723-01,Generic,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+a5957881-ca33-48d2-8d64-8e475ab9a8c9,Dextroamphetamine/Amphetamine XR 20mg,00093-5857-01,Generic,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+a63869f2-e66e-45ea-a77d-18e9f7cf6a89,Flumazenil 0.1mg/mL,00409-1798-02,Generic,Reversal agents,Radiology,2025-03-31 10:39:56.376706+00
+a657b7a8-63cf-40df-9a16-957dd78bb842,Azithromycin 250mg,00093-7147-29,Generic,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+a6c795d9-a4af-4102-a03a-8423b60ddc98,Oxycodone 5mg,00093-5715-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+a6f1cd56-181a-4e90-aded-17f7b51564b3,Zoloft 50mg,00049-4960-30,Brand,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+a71055f2-90fe-4167-9ec2-4f16e59a87a1,Tambocor 50mg,00089-0215-22,Brand,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+a71814bc-59ea-45f2-afc6-9eb3fcf2ff36,Sildenafil 50mg,00093-5467-09,Generic,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+a73fcc36-4dce-4899-9b7d-e81985a77dc8,Emend 125mg,00006-0125-02,Brand,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+a74bdb9e-9070-4673-aba9-6710a1854ea9,Ancef 1g,00007-3259-01,Brand,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+a779c065-446d-4c8e-a5bf-d34dea835582,Mirapex 1mg,00006-0196-61,Brand,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+a86a43a3-df97-4caf-9693-5440cf6cbd4b,Nexium 40mg,00186-5020-31,Brand,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+a89a50a6-1d06-4915-b9f0-992a9c9ce0be,Tylenol 500mg,50580-0501-02,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+a8d025b1-656d-43dc-ace8-533c464a90d7,Entocort EC 9mg,00186-0672-03,Brand,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+a8ed9301-cbc6-438c-9156-b88df91d1a22,Rocuronium 10mg/mL,00409-9929-01,Generic,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+a951a46e-33d0-4f40-bef1-443f20768274,Zofran ODT 4mg,00173-0865-00,Brand,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+a979b2d6-bc38-49ef-9c7e-1834439663ad,Paraplatin 450mg/45mL,00015-3216-30,Brand,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+aa101b85-713d-47ad-a7e9-aed2e588f3a6,Nucala 100mg,00173-0892-01,Brand,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+aa345644-1d22-4b61-8ba3-1323cfc8d037,Prochlorperazine 10mg,00093-5338-01,Generic,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+aa408926-e995-427c-af81-fa93db19f6ba,Glucophage 500mg,00087-6060-05,Brand,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+aa7f1b49-c6e6-4fdb-9d3d-802a9c523d1f,Methotrexate LPF 25mg/mL,63323-0120-10,Brand,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+aaaf11e6-f576-43d0-844a-c6aefe1fd08b,Keytruda 100mg/4mL,00006-3025-02,Brand,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+aabdc7d7-7c6d-41d9-86cb-8e4e89acd8de,Topiramate 100mg,00093-7129-01,Generic,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+aace2902-44d4-4b15-9347-8e5d2214971b,Methotrexate 25mg/mL,00555-0572-01,Generic,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+aadc4b2d-36b1-4ba5-875b-2fd472f6cdf2,Entacapone 200mg,00093-5301-06,Generic,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+ab126cbb-2af7-49ab-b7ae-d7fc1309a0bf,Ketoconazole 2% cream,00093-1016-16,Generic,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+ab1781b4-ff77-4a3b-a202-af9369768201,Carbocaine 1%,63323-0267-17,Brand,Local anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+ab372fe8-910b-44c6-87e8-a004ce871d73,Infliximab 100mg,57894-0160-01,Generic,IBD medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+ab5db51c-c6e0-42c9-a265-322772682c46,Oxybutynin 5mg,00093-5116-01,Generic,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+ab619c85-c2a9-4b25-9f07-842edc9ffecb,Celebrex 200mg,00025-1525-31,Brand,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+ab734150-a98b-42f8-ab00-30b268580a37,Pravastatin 40mg,00093-7204-56,Generic,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+ab9968fd-a43e-4559-80fb-a7ff04cc8b49,Norco 10/325mg,00023-6102-01,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+abe9fbe1-02cc-4283-a0b1-eeeae30b83af,Femara 2.5mg,00078-0249-51,Brand,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+adade969-f82c-445f-86a3-d81ec413ca8d,Mometasone/Formoterol 100/5,00085-7206-01,Generic,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+adba005f-a582-4210-9f3e-80e53da569ab,Robinul 0.2mg/mL,00409-1292-01,Brand,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+ae002161-ea16-4ed1-9e0c-e3fab5a5c4f7,Morphine 10mg/mL,00409-2593-01,Generic,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+ae176e1f-0a65-47e3-a36d-162eb9682e53,Lidocaine HCl 1%,00409-4270-01,Generic,Anesthetics,General Surgery,2025-03-31 10:39:56.376706+00
+ae395ec7-9650-49ef-8add-83edaa323dd7,Halaven 1mg/2mL,62856-0389-01,Brand,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+ae3ccd88-738c-4988-8cbc-72f01e3d329b,Amaryl 4mg,00039-0009-13,Brand,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+ae3f0dfa-fd5e-495e-b743-e1a1e9c7da09,Avanafil 100mg,62541-0140-30,Generic,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+aec878bd-3108-45b4-a122-98595c152aa2,Cisatracurium 2mg/mL,00074-3385-05,Generic,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+aee0cfc8-22a4-4da7-8ed1-7f36c4808ac8,Fexofenadine 180mg,00093-7472-19,Generic,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+aeed32aa-06b7-4455-a2a0-5670f4f353c8,Flagyl 500mg,00025-1921-50,Brand,Anti-infectives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+aeefd28e-b172-4354-b25c-09b76eaa122e,Loprox 0.77% cream,10337-0354-29,Brand,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+afb62cca-8042-43ee-982a-f630ea73edce,Forteo 20mcg,00002-8400-01,Brand,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+b0190178-b7c4-40d6-a797-5530d24f5f26,Remicade 100mg,57894-0030-01,Brand,IBD medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+b0590c10-7cc2-4377-82cf-1cd668a3d126,Sublimaze 50mcg/mL,10019-0037-66,Brand,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+b089eac8-e3f1-4f8f-b614-57e4f96ed413,Fluticasone/Salmeterol 250/50,00173-0696-00,Generic,Respiratory medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+b0a7b750-6560-4eef-9773-48d21dd2f079,Omnipaque 300,00186-1736-01,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+b0a82479-1c49-4d4e-b2f9-5486889074b6,Carisoprodol 350mg,00093-0294-01,Generic,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+b0ef2c02-3832-4ecc-b275-1c6242f95018,Epirubicin 200mg/100mL,00703-4661-01,Generic,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+b1486569-6519-4dcd-b407-a6e7f1420613,Narcan 0.4mg/mL,67547-0351-55,Brand,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+b159b1be-e934-4110-8477-08adac4e7cd0,Hydrocodone/Acetaminophen 10/325mg,00093-5855-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+b177faff-2403-4e6f-a66a-e492dad56b52,Coumadin 5mg,00056-0172-90,Brand,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+b18f89c8-cc3e-434a-8b01-68ca1447fcc7,Depakote 250mg,00074-6211-30,Brand,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+b1bf6b24-cafb-4487-a579-f408e95e9097,Ustekinumab 130mg,57894-6023-01,Generic,IBD medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+b1d06bf3-6d07-427f-998c-f42d0a241ac0,Vincristine 1mg/mL,63323-0271-05,Generic,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+b2ed4b07-5751-4381-a2bb-ec76e3b0888a,Flovent HFA 110mcg,00173-0719-20,Brand,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+b33962ea-0cc6-4d07-b829-3dd2a21cf0ff,Zocor 40mg,00006-0749-54,Brand,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+b34977f4-5016-4b70-90bd-e69b7a66aed5,Stelara 130mg,57894-6023-01,Brand,IBD medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+b3663f1c-627d-496a-8eeb-dc4a9f226c4b,Quetiapine 100mg,00093-7295-56,Generic,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+b3aaa5fd-14f8-4fbf-9b79-789f135e4555,Ticagrelor 90mg,00310-0292-90,Generic,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+b3de5a24-515c-41bc-92eb-609234241370,Ritalin 10mg,00078-0510-05,Brand,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+b3e364d9-4efa-48ba-8c63-890f5bb84e3f,Incruse Ellipta 62.5mcg,00173-0873-10,Brand,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+b4227baa-0194-4565-a8a7-03ea22f3cf75,Senna 8.6mg,00904-5165-61,Generic,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+b48272d1-c662-46b6-9473-b251e6010ca4,Elocon 0.1% cream,00085-0494-01,Brand,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+b4c63480-d488-4033-b1fa-032c9b7981f4,Budesonide 9mg,00378-7342-01,Generic,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+b576e009-ad7b-4a6e-baac-04e2fd5d4af0,Bupropion XL 150mg,00093-0246-01,Generic,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+b59b5e8a-efb0-47e9-ace6-330e2cdb6335,Sugammadex 100mg/mL,00006-5064-10,Generic,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+b683bc38-9dfb-44d3-9c6e-3d47ce5fb5a5,Eletriptan 40mg,00049-2040-05,Generic,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+b693d7b8-856e-4dea-bef4-8efc8fca1733,Glimepiride 2mg,00781-5864-01,Generic,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+b6d2a9d8-cb98-49b6-a27a-e4200d54b14b,Fesoterodine 4mg,00069-0088-30,Generic,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+b751e9d4-cdcd-46c0-91a2-126bb140bed9,Prozac 20mg,00777-3105-30,Brand,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+b76112c3-c738-4604-b773-b317fde64533,Levothyroxine 100mcg,00074-6594-90,Generic,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+b795a1a4-3a1e-4c90-a58a-c9b00100cb08,Prepidil Gel 0.5mg,00009-3359-01,Brand,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+b7d3a3ab-eb84-4d1d-a08a-51a3ca4f9315,Dextroamphetamine/Amphetamine 20mg,00781-1165-01,Generic,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+b7f6aa9e-b3ca-4712-89c4-d30acc338c1d,Lubiprostone 24mcg,00023-3975-10,Generic,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+b813b8a7-cd4b-476a-a819-9b72b21f0063,Percocet 5/325mg,63481-0623-70,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+b8498a08-bd08-4357-aa09-28a0ea4e5d47,Naloxone 0.4mg/mL,00409-1218-01,Generic,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+b8f3b27c-ee0c-4857-9eea-87240c884ff2,Hydrocodone/Acetaminophen 5/325mg,00093-5854-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+b9164e69-82f6-42eb-b7b3-e3296a41d68e,Anectine 20mg/mL,55390-0019-18,Brand,Neuromuscular blockers,Anesthesiology,2025-03-31 10:39:56.376706+00
+b927915c-7a75-4be1-932d-fd27c7362398,Oxidized cellulose,00183-0383-01,Generic,Hemostatic agents,General Surgery,2025-03-31 10:39:56.376706+00
+b9d6908a-d43f-4d85-8e98-39163dfe508e,Mesalamine 1.2g,00023-5850-18,Generic,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+ba62b499-9655-458c-860f-846fad5023bc,Benralizumab 30mg/mL,00310-1730-30,Generic,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+ba97687d-65bf-46d7-9d3a-41b5adc38ba9,Xifaxan 550mg,65649-0303-02,Brand,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+bad77388-cc94-43aa-abb8-5f327f5fff84,Terazosin 5mg,00093-7032-01,Generic,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+bb74c456-1483-47b6-8997-dd2aea0dd4ed,Sinemet 25/100mg,00056-0048-70,Brand,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+bbccc7ce-ff1a-4ae5-83f2-240f118dd612,Betapace 80mg,00025-1840-31,Brand,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+bbe34b5c-19c5-4d9d-aa17-0bbb53666f0f,Follitropin Alfa 75 IU,44087-1075-01,Generic,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+bbf97fcd-7bc2-4192-bfb9-df88a1070496,Toradol 10mg,00023-9155-04,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+bc2a7a9e-9f22-4729-b67d-d5469be72ff7,MiraLAX,00041-0356-30,Brand,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+bc4e7284-6c86-4a5c-8caf-fe6fa68ea172,Tamsulosin 0.4mg,00093-1019-01,Generic,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+bc572e60-6b48-402e-9fbe-59cc94057072,Budesonide/Formoterol 160/4.5,00186-0370-02,Generic,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+bca0e5f1-c667-4723-8db3-dfad64222601,Differin 0.1% gel,00299-5911-30,Brand,Acne treatments,Dermatology,2025-03-31 10:39:56.376706+00
+bcd011ef-ef26-49f5-8be2-1a2b0c6a64e0,Allegra 180mg,00024-5920-02,Brand,Allergy medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+bd346add-6ed3-40e3-93eb-7c896d0a8265,Buspirone 15mg,00093-5130-01,Generic,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+bde55a9e-3663-4773-ae6e-51e9989b10f1,Propranolol 40mg,00093-0223-01,Generic,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+be6dce5b-53e0-495c-b462-c8d1b687a58e,Lyrica 75mg,00071-1014-68,Brand,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+be78e42f-f826-43cc-bba3-d8a889060173,Aricept 10mg,62856-0245-30,Brand,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+bee864e9-80f6-45b5-8abe-5c8e3b275847,Alvesco 160mcg,63402-0711-01,Brand,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+bf648d6f-f628-4d6f-8b3b-62552bd5c041,Umeclidinium 62.5mcg,00173-0873-10,Generic,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+bffda652-8d3f-48cf-9f82-c26f0fa6a131,Prilosec 20mg,00186-0740-31,Brand,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+c03c5a38-83fe-4567-a4da-6af7f647cdc6,Gemzar 1g,00002-7501-01,Brand,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+c082429c-3ec3-40b4-b16d-b1305f08d032,Methylphenidate 10mg,00093-5343-01,Generic,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+c14e0e98-7c6f-4f98-a682-ca2ea42e921f,Propecia 1mg,00006-0048-19,Brand,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+c1d4a4ab-185a-4402-ad65-3fb79469f1db,Bloxiverz 0.5mg/mL,76168-0072-10,Brand,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+c2760e01-fdbf-4760-b0ae-18a10303ba64,Linzess 145mcg,00023-6169-30,Brand,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+c327aa92-766c-415e-b474-bee4e899da1a,Symbicort 160/4.5,00186-0370-02,Brand,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+c34210e3-5d1c-47de-b232-058cb3e2cbc5,Seroquel 100mg,00310-0271-10,Brand,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+c39f195c-98f8-405d-8010-c687203a01ff,Motrin 800mg,00573-0188-70,Brand,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+c3f2787d-f586-42cf-a0b3-cd531d19001a,Herceptin 440mg,00004-0132-06,Brand,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+c414fdc6-e5f3-46fe-8d60-ec7833b52b1a,Vedolizumab 300mg,00069-6010-01,Generic,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+c426c60c-0dbb-4ea7-82cd-9596a5cb2229,Ondansetron 4mg,00093-7242-56,Generic,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+c4433efb-9923-40d8-9653-c3c41f116ae2,Arnuity Ellipta 100mcg,00173-0874-00,Brand,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+c46ea19b-2e24-41a1-bc71-645c033f1b85,Exelon 6mg,00078-0698-06,Brand,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+c48016ba-0b98-441e-9adf-39436dfa9f89,Prasugrel 10mg,00002-4759-30,Generic,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+c482b1f8-95ba-4cf0-ae66-349667b7e319,Reclast 5mg/100mL,00078-0633-12,Brand,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+c48cd42b-0d0c-44e6-951e-9aa676d459d1,Pitocin 10 units/mL,00002-7123-01,Brand,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+c4a3c952-30a2-4c05-bff5-8c5b6a064f56,Medrol 4mg,00009-0056-07,Brand,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+c4db775e-2e93-4d2d-b083-83e4e7c94659,Dilaudid 2mg/mL,42023-0172-05,Brand,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+c50d57bc-0481-4f68-a612-5ee0767f5f1f,Zomig 5mg,00310-0206-20,Brand,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+c5be594f-6745-444a-bc62-5cd709dc29fe,Ditropan 5mg,00062-1140-91,Brand,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+c5f56255-7695-4caf-8da3-ee3ba59142d2,Lidocaine/Epinephrine 1%/1:100,000,00186-0652-01,Generic,Local anesthetics,2025-03-31 10:39:56.376706+00
+c62fc9e4-6acd-45f5-b8b5-407eba7737a4,BuSpar 15mg,00015-3212-20,Brand,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+c65204f3-9d07-42b2-bd6a-d211b37c94fb,Methergine 0.2mg,00078-0053-02,Brand,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+c72215ae-2998-42e5-9bf3-a2b6da712ff9,Carbidopa/Levodopa 25/100mg,00093-0042-01,Generic,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+c736129b-367e-4678-9bc0-226800815879,Calcipotriene 0.005% ointment,00713-0452-31,Generic,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+c7f6c187-c407-4d7b-8d0f-f7dbdbb90f5f,Crestor 10mg,00310-0755-90,Brand,Lipid-lowering agents,Internal Medicine,2025-03-31 10:39:56.376706+00
+c809407e-2656-41fa-8b59-036de57bf986,Enoxaparin 40mg/0.4mL,00075-0624-40,Generic,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+c843bcb6-519e-49d4-ae5c-994d173bf92b,Nexplanon 68mg,00052-0272-01,Brand,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+c97ee671-41c2-4205-899c-491f2d4e23c5,Zofran 4mg/2mL,00173-0486-00,Brand,Anti-emetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+c98e7da9-2527-4c84-8b90-f65405787a5f,Zemuron 10mg/mL,00025-1461-30,Brand,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+c9a4c240-030f-4409-8ea7-9f70092dacf8,Eovist 181.43mg/mL,50419-0320-01,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+ca83602e-0d95-4d43-9e5c-d754f4c95efe,Misoprostol 200mcg,00054-0176-20,Generic,Labor/delivery medications,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+cb098070-dd28-49eb-b48c-47e6da493832,Carvedilol 25mg,00093-2272-01,Generic,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+cb575f27-5bd2-4eb3-8e17-ee357ce1e90d,Xarelto 10mg,50458-0580-30,Brand,Anticoagulants,General Surgery,2025-03-31 10:39:56.376706+00
+cb889598-b86d-44f2-87a6-7bd845fe810f,Daunorubicin 20mg,00703-5043-34,Generic,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+cba88f68-9b19-4576-850a-7438e3693351,Miconazole Nitrate Vaginal 2%,45802-0066-11,Generic,Anti-infectives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+cbb5dc23-8460-4a4b-ba71-472e5b6480c5,Tetracaine 1%,00409-1903-10,Generic,Local anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+cbe0850d-5d74-4ee4-8828-f69eb4816777,Kenalog 40mg/mL,00003-0293-05,Brand,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+cc5fa47e-eefe-4187-8adc-08514ed43e34,Desflurane,00469-1074-02,Generic,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+cc88c96f-5ed5-4514-8155-8e14295441ff,Valproic acid 250mg,00093-7286-01,Generic,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+cd9c60d0-cf08-45d4-9b37-f8de21231547,Rituximab 100mg/10mL,50242-0051-21,Generic,Biologics,Oncology,2025-03-31 10:39:56.376706+00
+cdf7500c-6682-4380-92ff-2d376fadc773,Crinone 8% Gel,52544-0285-54,Brand,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+ce49a514-385d-4145-a4b0-6f3244d25bc3,Bentyl 20mg,58063-0570-01,Brand,Gastrointestinal medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+cefae824-ed29-484d-9751-15962655a660,Topamax 100mg,50458-0641-28,Brand,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+cf0991fc-a530-44ee-8378-277bccaa0e27,Risperdal 2mg,50458-0582-05,Brand,Antipsychotics,Psychiatry,2025-03-31 10:39:56.376706+00
+d02db84f-b4eb-4caa-ae42-cd49be0b3c48,Nizoral 2% cream,00051-0451-02,Brand,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+d0aad3d1-a9bd-4f05-bb4e-70de2e046e55,Fluconazole 150mg,00093-7149-29,Generic,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+d14aea2d-421a-4ecb-b773-b30f9140be85,Levitra 10mg,00173-0834-13,Brand,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+d192df77-971f-4675-a931-2c944a566292,Methotrexate 2.5mg,00093-7287-01,Generic,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+d1c3419b-bfac-4c3f-b1b3-abc5b8d13aac,Lexapro 10mg,00456-2010-01,Brand,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+d2b9a7d7-df4d-419d-80e0-bfe1e6d94732,Depakote 500mg,00074-6214-13,Brand,Mood stabilizers,Psychiatry,2025-03-31 10:39:56.376706+00
+d38ccab2-cb0f-47e8-b8ab-253297c42cb7,Detrol 2mg,00009-4544-01,Brand,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+d3fc6ede-3060-4769-a632-0701bce953ff,Pimecrolimus 1% cream,00078-0456-96,Generic,Psoriasis treatments,Dermatology,2025-03-31 10:39:56.376706+00
+d4141584-f8a0-4a61-9051-dd381c1c3545,Methocarbamol 750mg,00093-5148-01,Generic,Muscle relaxants,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+d47b5aeb-a27f-41dc-91fd-b4423fca0645,Celestone 6mg/mL,00085-0566-05,Brand,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+d49c49f8-154c-4b63-80ac-cb5b6dba00f7,Gonal-F 75 IU,44087-1075-01,Brand,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+d4ec40a0-c06d-4ba2-9c8b-c623ffd99fca,Relpax 40mg,00049-2040-05,Brand,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+d51a2243-b024-41e6-99d0-aecabeb1df03,Warfarin 5mg (hold),00093-1685-01,Generic,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+d53144f9-8800-4aec-a5ef-bd7012fe96ea,Coumadin 5mg (hold),00056-0172-90,Brand,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+d546e00b-439b-40f0-ab6c-7f6c601e3a70,Readi-Cat 2,32909-0752-01,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+d5d72c17-bef3-4ec4-b75a-53424fc9da8c,Velban 10mg,00013-1116-91,Brand,Antimicrotubule agents,Oncology,2025-03-31 10:39:56.376706+00
+d6040767-e772-4743-8558-30cae62335f5,Clomid 50mg,00187-0747-10,Brand,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+d6557279-002e-4a93-9496-86d38f8f9c76,Toviaz 4mg,00069-0088-30,Brand,Antimuscarinics,Urology,2025-03-31 10:39:56.376706+00
+d65908de-b30b-4601-81e5-a193d9e5cd94,Xylocaine/Epinephrine 1%/1:100,000,00186-0652-01,Brand,Local anesthetics,2025-03-31 10:39:56.376706+00
+d67f947d-70f3-4afc-8b8a-8c479dfe7ec5,Kenalog 0.1% cream,00713-0316-31,Brand,Topical corticosteroids,Dermatology,2025-03-31 10:39:56.376706+00
+d75adb32-fcae-49e5-96c5-a3f4762f3187,Metoprolol succinate 50mg,00781-5024-01,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+d7778d53-4b14-40ea-8c96-f8ad7bc9ca4e,Lisdexamfetamine 30mg,59417-0103-10,Generic,ADHD medications,Psychiatry,2025-03-31 10:39:56.376706+00
+d7b9f396-dc36-4bd6-a923-35f53bc3304c,Rizatriptan 10mg,00093-3752-58,Generic,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+d7bcb188-de0e-45d6-a869-0856f4172ace,Promethazine 25mg,00093-0535-01,Generic,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+d7f44f4b-2e7c-42d5-8186-b9d0082ce935,Lopid 600mg,00071-0241-24,Brand,Lipid-lowering medications,Cardiology,2025-03-31 10:39:56.376706+00
+d7f60dce-6b4e-4af5-abc4-72d77efeb98b,Apixaban 5mg (hold),00003-0894-21,Generic,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+d834d338-1ea9-4e80-8047-54fc4a3c9205,Denosumab 60mg/mL,55513-0710-01,Generic,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+d83979d4-8875-491f-94a8-dfa496a42cd6,Sumatriptan 50mg,00093-7244-19,Generic,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+d8afaae5-723c-46c6-9bf4-cc5fe45024c7,Zyflo CR 600mg,00072-0373-03,Brand,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+d9fd12ad-c430-4466-a111-cad7370cf42d,Econazole 1% cream,00168-0033-15,Generic,Antifungals,Dermatology,2025-03-31 10:39:56.376706+00
+da2cbe64-4ab4-4c12-a414-a736a0a51ad4,Gadavist 604.7mg/mL,50419-0325-01,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+da6274cb-4584-4f2c-bc0b-8470ac038ec8,Articaine/Epinephrine 4%/1:100,000,00186-0005-01,Generic,Local anesthetics,2025-03-31 10:39:56.376706+00
+dabed18f-7217-44eb-9215-8541c60a5720,Montelukast granules 4mg,00093-7439-41,Generic,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+daed8dfe-d6cc-4694-8988-c50f48a392f0,Idarubicin 5mg,55390-0264-10,Generic,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+db23204b-c2d8-4333-b8e1-4697cce135cc,Aprepitant 125mg,00006-0125-02,Generic,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+db9684c1-f2c9-4a86-9ace-3fef738bcb87,Zosyn 4.5g,00206-8504-21,Brand,Antibiotics,General Surgery,2025-03-31 10:39:56.376706+00
+db9af3ef-7583-4031-b391-1fb8761b2161,Trileptal 300mg,00078-0357-05,Brand,Mood stabilizers,Psychiatry,2025-03-31 10:39:56.376706+00
+dbdb4fb2-bf95-41f4-bb46-ee65c773f06b,Albuterol HFA 90mcg/inh,00093-9087-17,Generic,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+dc70a755-6c50-4937-a141-4cc0199f2cd6,Rapaflo 8mg,59212-0002-30,Brand,Alpha blockers,Urology,2025-03-31 10:39:56.376706+00
+dce321bf-1d5f-4dd5-bb97-cb36a929a964,Dabigatran 150mg,00597-0157-60,Generic,Anticoagulants,General Surgery,2025-03-31 10:39:56.376706+00
+dd6e1b74-457c-4420-9fab-62f917e7d5fb,Elavil 25mg,00143-1393-01,Brand,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+dd7c72d3-b11b-4cae-ac5f-085f22d15639,Yaz,50419-0405-03,Brand,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+dd92a898-e210-4dd1-9e4e-6133b2c3f580,Levalbuterol HFA 45mcg/inh,00054-3227-23,Generic,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+de09a89e-9a91-4854-88bd-090f03c9f0fd,Sevoflurane,10019-0606-46,Generic,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+df3a8b43-3887-4f7d-adc6-7a3716f01011,Avapro 300mg,00024-5850-30,Brand,ACE inhibitors/ARBs,Cardiology,2025-03-31 10:39:56.376706+00
+e0593864-f4a8-47fc-a3f5-0f370f2536a0,Fasenra 30mg/mL,00310-1730-30,Brand,Biologics,Pulmonology,2025-03-31 10:39:56.376706+00
+e05c7b21-4284-4084-8d51-66729d22f4d6,Compazine 10mg,00007-5061-01,Brand,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+e09d90ed-c6fc-42c0-bed4-76ff5a69cc36,Estradiol/Norethindrone 1mg/0.5mg,00555-9043-58,Generic,Hormone therapies,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+e1363616-a9c8-47b1-9d0a-de0caf6d90a5,Hydromorphone 2mg/mL,00409-2634-01,Generic,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+e145a3aa-9b65-4e36-9a1f-75582ec94a88,Doxorubicin 50mg/25mL,00703-5257-01,Generic,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+e17f00b9-31f1-4fee-aa45-2de81a3ab129,Zithromax 250mg,00069-3050-30,Brand,Antibiotics,Internal Medicine,2025-03-31 10:39:56.376706+00
+e1e38a4b-704d-4a10-93f1-7bef780ed672,Simvastatin 20mg,00781-1976-01,Generic,Lipid-lowering agents,Internal Medicine,2025-03-31 10:39:56.376706+00
+e330d400-2b09-4973-83cd-55247c060108,Asmanex 220mcg,00085-1341-01,Brand,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+e358ba34-afad-4506-aea1-740be5ad724f,ProAir HFA 90mcg/inh,00172-4390-21,Brand,Bronchodilators,Pulmonology,2025-03-31 10:39:56.376706+00
+e36bdeeb-1621-4686-85f4-93bb803a96e7,Beclomethasone 80mcg,00065-8400-01,Generic,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+e37bec62-e7a4-4c7d-9165-f4ba303bf3fd,Bactrim DS 800/160mg,00054-0089-25,Brand,Urinary analgesics/antibiotics,Urology,2025-03-31 10:39:56.376706+00
+e37db0ff-6f2e-4b90-9b7a-a51f4468f168,Acetaminophen 500mg,00093-0109-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+e3a26f1b-1d2d-46a0-a00d-105cf2885a7a,Glycopyrrolate 0.2mg/mL,00143-9682-25,Generic,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+e3f2e21a-840b-4371-9578-41b0edac103d,Sotalol 80mg,00093-8135-01,Generic,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+e4049784-3288-4b0f-99e9-776b33de3b36,Rosuvastatin 10mg,00093-7522-56,Generic,Lipid-lowering agents,Internal Medicine,2025-03-31 10:39:56.376706+00
+e4760a61-c2b9-43e9-a0c6-056e4786f471,Effient 10mg,00002-4759-30,Brand,Antiplatelet/Anticoagulants,Cardiology,2025-03-31 10:39:56.376706+00
+e4dc42ed-3f7e-4e4b-8d79-e4aa7e0b7627,Atenolol 50mg,00093-0089-01,Generic,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+e530a777-4e5e-4707-8a0f-63ebcf8aa7d4,Unasyn 3g,00049-0014-83,Brand,Antibiotics,General Surgery,2025-03-31 10:39:56.376706+00
+e55331a9-694d-4adb-b896-1b3c212a91c8,Decadron 4mg,00054-8179-25,Brand,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+e5fe5eef-f719-463a-be0f-ed38e8c168ec,Dulera 100/5,00085-7206-01,Brand,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+e624a832-d3b1-4c86-9000-32a6047c35f1,Clopidogrel 75mg (hold),00093-7463-56,Generic,Medication management,Radiology,2025-03-31 10:39:56.376706+00
+e66bf013-a9dd-4ca0-878f-f89f54a04faf,Pulmicort 0.5mg/2mL,00186-0914-95,Brand,Inhaled corticosteroids,Pulmonology,2025-03-31 10:39:56.376706+00
+e67e8930-87c7-44f7-bd7a-2f73bbded08a,Naproxen 500mg,00093-0541-01,Generic,NSAIDs,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+e6b474c4-00bc-4f86-b189-d4983cce0d15,Lithium Carbonate 300mg,00093-7466-01,Generic,Mood stabilizers,Psychiatry,2025-03-31 10:39:56.376706+00
+e730a2ff-900f-4633-b377-c53d57b2b41c,Amitriptyline 25mg,00093-0054-01,Generic,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+e7381fa5-9f5c-4a47-9df9-cad82428de67,Losartan 50mg,00093-7192-56,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+e7e511b3-cdda-42cb-bd61-0cc4ba381eb0,Venlafaxine XR 75mg,00093-7439-98,Generic,Antidepressants,Psychiatry,2025-03-31 10:39:56.376706+00
+e7e5fb71-fa24-4e32-b1ce-2f2442e48df6,Advair Diskus 250/50,00173-0696-00,Brand,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+e8147004-a0b3-4e84-b95c-48d5421c3260,Carboplatin/Paclitaxel combo,00703-4234-01,Generic,Platinum compounds,Oncology,2025-03-31 10:39:56.376706+00
+e81f63f4-5737-4aa3-9be9-e56fc6111d87,Dicyclomine 20mg,00093-7297-01,Generic,Gastrointestinal medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+e8542e69-79c6-49b7-9397-5b39382ca32d,Heparin-Lock,00409-2720-01,Brand,Anticoagulants,General Surgery,2025-03-31 10:39:56.376706+00
+e8b638ca-f5c9-4f1f-8161-c01f9bcace96,Vancomycin 1g,00409-4332-01,Generic,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+e9027723-09d0-41b0-bc48-b8ef2f7f2002,Losartan 100mg,00093-7193-56,Generic,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+e9061163-062d-479d-b867-bddcff6b3e90,Jalyn 0.5/0.4mg,00173-0755-66,Brand,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+e96a784a-3217-47ba-a023-970f62929c3f,Xanax 0.5mg,00009-0029-01,Brand,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+e98ed233-912d-477a-b693-dfe1a13a593e,Namzaric 28/10mg,00456-1240-14,Brand,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+ea732334-8d3b-43ed-90e8-aa5fd498aab8,Rivastigmine 6mg,00078-0698-06,Generic,Neurocognitive medications,General Medicine,2025-03-31 10:39:56.376706+00
+ead45851-d77c-4286-8ace-6c182eaa6e04,Visipaque 320,00407-1417-70,Brand,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+eaf61a32-c372-46b2-a0cf-d7d44aa6bdf7,Venlafaxine ER 75mg,00093-7439-98,Generic,Neuropathic pain medications,Neurology,2025-03-31 10:39:56.376706+00
+eb15b0e3-aea2-453b-badd-de3e8cace0fc,Clomiphene Citrate 50mg,00555-0754-02,Generic,Fertility treatments,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+eb77887a-3dd0-4b96-86a4-8e5d2e9ec283,Proscar 5mg,00006-0071-19,Brand,5-alpha reductase inhibitors,Urology,2025-03-31 10:39:56.376706+00
+ec2680a2-8921-4fe5-b535-f1a98e7e9fe9,Monurol 3g packet,00187-5852-01,Brand,Urinary analgesics/antibiotics,Urology,2025-03-31 10:39:56.376706+00
+ecd5a8ac-d13f-4d54-a4db-7e01d377973b,Triamcinolone acetonide 40mg/mL,00409-3509-32,Generic,Corticosteroids,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+ed051af0-ee7a-4e1e-8894-307b46d4bdf3,Sulfasalazine 500mg,00093-0153-01,Generic,Inflammatory bowel disease,General Medicine,2025-03-31 10:39:56.376706+00
+ee0eff41-db9c-4731-ab73-8e3ab2e04b39,Atropine Sulfate,00409-9630-01,Brand,Reversal agents,Anesthesiology,2025-03-31 10:39:56.376706+00
+ee1f8be9-b3fb-4c29-9bc0-1e0f99fc497d,Rasagiline 1mg,00093-2807-31,Generic,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+ee8c0287-be92-4615-b066-531935598b7f,Cozaar 100mg,00006-0960-54,Brand,Antihypertensives,Internal Medicine,2025-03-31 10:39:56.376706+00
+ef2d7df9-f55b-4bf9-8a48-af0cbba866b2,Mepivacaine 1%,00409-1565-10,Generic,Local anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+ef589253-7b5a-4a31-ab26-94b57269cb8f,Prinivil 20mg,00006-0207-54,Brand,ACE inhibitors/ARBs,Cardiology,2025-03-31 10:39:56.376706+00
+ef9b9fda-96de-49a2-beba-6cbcecf47370,Requip 2mg,00173-0719-01,Brand,Parkinson's medications,Neurology,2025-03-31 10:39:56.376706+00
+efb52ba3-7a81-4d9e-9ab1-b6a5985781dc,Kristalose 10g/packet,66220-0737-10,Brand,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+efda8615-021d-4dbc-9553-688cee723989,Ibuprofen 800mg,00093-1318-01,Generic,Pain medications,General Surgery,2025-03-31 10:39:56.376706+00
+eff4e335-ab1b-4cda-b085-647f8dfbbc83,Fluticasone/Vilanterol 100/25,00173-0870-10,Generic,Inhaled corticosteroids/LABA,Pulmonology,2025-03-31 10:39:56.376706+00
+f0844ac0-12b5-42ed-8b79-e467513fa704,Vancocin 1g,00205-3822-42,Brand,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+f1389e18-dedf-43c1-bfeb-3b4c242543a0,Amidate 2mg/mL,00074-6457-02,Brand,General anesthetics,Anesthesiology,2025-03-31 10:39:56.376706+00
+f211d16d-67b5-46a5-a655-a4870a7847e4,Transderm-Scop 1.5mg,00067-4346-01,Brand,Anti-nauseants,General Surgery,2025-03-31 10:39:56.376706+00
+f24c4eab-f239-49a1-9411-8887ab5b6564,Sertraline 50mg,00093-7206-56,Generic,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+f41d7fb9-aa64-46b9-b395-6d14eb041003,Rifaximin 550mg,65649-0303-02,Generic,Hepatobiliary medications,Gastroenterology,2025-03-31 10:39:56.376706+00
+f4d25114-e241-4fc9-943d-41df9673e40c,Coreg 25mg,00007-4174-20,Brand,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+f739bc09-8101-45a2-8382-dfe8b1042de0,Topiramate 25mg,00093-7126-56,Generic,Migraine medications,Neurology,2025-03-31 10:39:56.376706+00
+f74c0e7c-10ba-4f24-99a2-a79a94dc5a1e,MetroGel 0.75% gel,00089-0810-30,Brand,Antibiotics,Dermatology,2025-03-31 10:39:56.376706+00
+f76d2621-e0db-44fe-bb7e-9cfdf75e0c46,Tegretol 200mg,00078-0102-05,Brand,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+f796a99f-e4e5-4407-b4ca-4f8adbc637b5,Pravachol 40mg,00003-5178-28,Brand,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+f79c060d-b065-4cb6-8827-5644469c7f76,Cefazolin 1g,00409-0805-01,Generic,Intraoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+f7a77553-70b6-4dac-9f98-12e8297f99f9,Rivaroxaban 10mg,50458-0580-30,Generic,Anticoagulants,General Surgery,2025-03-31 10:39:56.376706+00
+f8792d91-fe43-43a7-a879-e26f26330a9e,Adrucil 500mg/10mL,00703-3019-12,Brand,Antimetabolites,Oncology,2025-03-31 10:39:56.376706+00
+f88eadfd-b6a7-4ef8-a869-c6f617ac67a1,Glipizide 5mg,00093-7271-01,Generic,Antidiabetics,Internal Medicine,2025-03-31 10:39:56.376706+00
+f89f3f30-4d6e-4e65-8a86-2763bc63f74c,Lactulose 10g/15mL,00093-0686-73,Generic,Motility agents,Gastroenterology,2025-03-31 10:39:56.376706+00
+f8fde668-f575-48fc-8beb-f7f0a27b6b66,Propafenone 150mg,00093-8019-01,Generic,Antiarrhythmics,Cardiology,2025-03-31 10:39:56.376706+00
+f952467a-fb47-421f-9442-015993ea34fd,Enalapril 10mg,00093-7180-01,Generic,ACE inhibitors/ARBs,Cardiology,2025-03-31 10:39:56.376706+00
+f9b9203e-a752-4599-8407-e2f6798b6447,Clonazepam 0.5mg,00093-0832-01,Generic,Anxiolytics,Psychiatry,2025-03-31 10:39:56.376706+00
+fa0a81cb-d12f-4c08-a385-352ad8e57bda,Risedronate 35mg,00093-5154-25,Generic,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+fa12d293-253e-405a-880e-c05fcd0f7d1b,Lantus 100units/mL,00024-5869-00,Brand,Endocrine medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+fa4582d8-341d-4340-a57a-f1e4735d0c15,Esomeprazole 40mg,00093-7201-56,Generic,Acid suppressants,Gastroenterology,2025-03-31 10:39:56.376706+00
+fbdd4651-0f75-4b8e-bf15-197b6abe711b,Etonogestrel Implant 68mg,00052-0272-01,Generic,Contraceptives,Obstetrics & Gynecology,2025-03-31 10:39:56.376706+00
+fbf0b50d-e8e9-4040-a9f2-063b2a2be5e5,Diatrizoate meglumine 66%,00270-0479-01,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00
+fd4e6315-fb79-463b-bc3f-4d29f63ee9be,Lamictal 100mg,00173-0735-00,Brand,Anticonvulsants,Neurology,2025-03-31 10:39:56.376706+00
+fda26959-50ce-4a8f-aa00-0163837963da,Cialis 10mg,00002-4463-30,Brand,PDE5 inhibitors,Urology,2025-03-31 10:39:56.376706+00
+fdc023de-58d4-4242-a508-cf8eb0bf511b,Senokot 8.6mg,00030-5535-50,Brand,Postoperative medications,General Surgery,2025-03-31 10:39:56.376706+00
+fea599c1-05b7-49f4-8ecc-daebdec91282,Zetia 10mg,00006-0768-31,Brand,Lipid-lowering medications,Internal Medicine,2025-03-31 10:39:56.376706+00
+fead0faf-ee7c-4ef3-8c4d-7199c5078be9,Idamycin PFS 5mg,00703-4155-11,Brand,Anthracyclines,Oncology,2025-03-31 10:39:56.376706+00
+fecdb711-4275-4b0f-86f6-e0962158b6d9,Zileuton ER 600mg,00071-2045-20,Generic,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+ff41dfe4-060b-43be-88dd-f4aa3c757f40,Zafirlukast 20mg,16571-0341-60,Generic,Leukotriene modifiers,Pulmonology,2025-03-31 10:39:56.376706+00
+ff45ca1e-bcad-4b8b-be64-64d2f06fabf0,Inderal 40mg,00046-0421-81,Brand,Beta blockers,Cardiology,2025-03-31 10:39:56.376706+00
+ff5e00aa-b88a-4a4e-9322-b459bd137fe9,Zoledronic acid 5mg/100mL,00078-0633-12,Generic,Bone metabolism medications,Orthopedic Surgery,2025-03-31 10:39:56.376706+00
+ff9e8876-1bfb-4985-bd01-c73b29e10847,Colazal 750mg,65649-0101-51,Brand,IBD maintenance,Gastroenterology,2025-03-31 10:39:56.376706+00
+ffb5b880-bc98-4d80-8f22-ee1cedb9bd5d,Remifentanil 1mg,60977-0335-01,Generic,Opioid analgesics,Anesthesiology,2025-03-31 10:39:56.376706+00
+fff51589-3d30-4425-a8cb-07e1a8daccc8,Alprazolam 0.5mg,00093-0056-01,Generic,Mental health,General Medicine,2025-03-31 10:39:56.376706+00
+ffff9787-50fc-4e8a-b836-ce17e7684671,Barium sulfate suspension 2.1%,32909-0752-01,Generic,Contrast agents,Radiology,2025-03-31 10:39:56.376706+00

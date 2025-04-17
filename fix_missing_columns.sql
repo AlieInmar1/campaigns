@@ -118,29 +118,51 @@ BEGIN
   END IF;
 END $$;
 
--- Create script_lift_data table if it doesn't exist
-CREATE TABLE IF NOT EXISTS script_lift_data (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  campaign_id UUID REFERENCES campaigns(id) ON DELETE CASCADE,
-  baseline INTEGER NOT NULL,
-  projected INTEGER NOT NULL,
-  lift_percentage NUMERIC(5,2) NOT NULL,
-  confidence_score INTEGER NOT NULL,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- Check if script_lift_data table exists and handle it appropriately
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT FROM information_schema.tables
+    WHERE table_schema = 'public'
+    AND table_name = 'script_lift_data'
+  ) THEN
+    -- Create script_lift_data table if it doesn't exist
+    CREATE TABLE script_lift_data (
+      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+      campaign_id UUID REFERENCES campaigns(id) ON DELETE CASCADE,
+      medication_id TEXT NOT NULL, -- Include medication_id as required in original schema
+      baseline INTEGER NOT NULL,
+      projected INTEGER NOT NULL,
+      lift_percentage NUMERIC(5,2) NOT NULL,
+      confidence_score INTEGER NOT NULL,
+      time_period TEXT, -- Optional in our implementation
+      comparison_data JSONB, -- Optional in our implementation
+      created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+      updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    );
 
--- Add sample data to script_lift_data if the table is empty
-INSERT INTO script_lift_data (campaign_id, baseline, projected, lift_percentage, confidence_score)
-SELECT 
-  id as campaign_id,
-  FLOOR(RANDOM() * 5000 + 1000)::INTEGER as baseline,
-  FLOOR(RANDOM() * 8000 + 5000)::INTEGER as projected,
-  (RANDOM() * 20 + 5)::NUMERIC(5,2) as lift_percentage,
-  (RANDOM() * 30 + 65)::INTEGER as confidence_score
-FROM campaigns
-WHERE NOT EXISTS (SELECT 1 FROM script_lift_data LIMIT 1)
-LIMIT 10;
+    -- Add sample data to script_lift_data with medication_id
+    INSERT INTO script_lift_data (campaign_id, medication_id, baseline, projected, lift_percentage, confidence_score, time_period)
+    SELECT
+      c.id as campaign_id,
+      -- Get a random medication_id from medications table, or use a default if none exists
+      COALESCE(
+        (SELECT id FROM medications ORDER BY RANDOM() LIMIT 1),
+        'med-default-' || c.id -- Fallback medication ID if no medications exist
+      ) as medication_id,
+      FLOOR(RANDOM() * 5000 + 1000)::INTEGER as baseline,
+      FLOOR(RANDOM() * 8000 + 5000)::INTEGER as projected,
+      (RANDOM() * 20 + 5)::NUMERIC(5,2) as lift_percentage,
+      (RANDOM() * 30 + 65)::INTEGER as confidence_score,
+      'annual' as time_period -- Default time period
+    FROM campaigns c
+    LIMIT 10;
+    
+    RAISE NOTICE 'Created script_lift_data table and added sample data';
+  ELSE
+    RAISE NOTICE 'script_lift_data table already exists, skipping creation';
+  END IF;
+END $$;
 
 -- Ensure campaign_results table has the necessary structure
 CREATE TABLE IF NOT EXISTS campaign_results (
@@ -170,7 +192,68 @@ SELECT
   jsonb_build_object(
     'impressions', FLOOR(RANDOM() * 100000 + 50000),
     'clicks', FLOOR(RANDOM() * 5000 + 2500),
-    'conversions', FLOOR(RANDOM() * 1000 + 500)
+    'conversions', FLOOR(RANDOM() * 1000 + 500),
+    'ad_performance', jsonb_build_object(
+      'ctr', (RANDOM() * 5 + 1)::NUMERIC(5,2),
+      'view_through_rate', (RANDOM() * 15 + 5)::NUMERIC(5,2),
+      'completion_rate', (RANDOM() * 25 + 65)::NUMERIC(5,2),
+      'ad_recall_lift', (RANDOM() * 15 + 5)::NUMERIC(5,2),
+      'brand_awareness_lift', (RANDOM() * 20 + 10)::NUMERIC(5,2),
+      'top_performing_creatives', jsonb_build_array(
+        jsonb_build_object(
+          'creative_id', 'cr-' || FLOOR(RANDOM() * 1000)::TEXT,
+          'name', 'Video Ad - Patient Testimonial',
+          'format', 'video',
+          'impressions', FLOOR(RANDOM() * 30000 + 10000),
+          'clicks', FLOOR(RANDOM() * 1500 + 500),
+          'ctr', (RANDOM() * 8 + 2)::NUMERIC(5,2)
+        ),
+        jsonb_build_object(
+          'creative_id', 'cr-' || FLOOR(RANDOM() * 1000)::TEXT,
+          'name', 'Banner Ad - Medication Benefits',
+          'format', 'banner',
+          'impressions', FLOOR(RANDOM() * 40000 + 20000),
+          'clicks', FLOOR(RANDOM() * 1200 + 300),
+          'ctr', (RANDOM() * 5 + 1)::NUMERIC(5,2)
+        ),
+        jsonb_build_object(
+          'creative_id', 'cr-' || FLOOR(RANDOM() * 1000)::TEXT,
+          'name', 'Native Ad - Clinical Results',
+          'format', 'native',
+          'impressions', FLOOR(RANDOM() * 25000 + 15000),
+          'clicks', FLOOR(RANDOM() * 1000 + 400),
+          'ctr', (RANDOM() * 6 + 1.5)::NUMERIC(5,2)
+        )
+      ),
+      'channel_performance', jsonb_build_object(
+        'social_media', jsonb_build_object(
+          'impressions', FLOOR(RANDOM() * 50000 + 20000),
+          'clicks', FLOOR(RANDOM() * 2500 + 1000),
+          'ctr', (RANDOM() * 6 + 2)::NUMERIC(5,2),
+          'cost', FLOOR(RANDOM() * 5000 + 2000)
+        ),
+        'display', jsonb_build_object(
+          'impressions', FLOOR(RANDOM() * 40000 + 15000),
+          'clicks', FLOOR(RANDOM() * 1500 + 500),
+          'ctr', (RANDOM() * 4 + 1)::NUMERIC(5,2),
+          'cost', FLOOR(RANDOM() * 4000 + 1500)
+        ),
+        'search', jsonb_build_object(
+          'impressions', FLOOR(RANDOM() * 20000 + 5000),
+          'clicks', FLOOR(RANDOM() * 1000 + 300),
+          'ctr', (RANDOM() * 8 + 3)::NUMERIC(5,2),
+          'cost', FLOOR(RANDOM() * 3000 + 1000)
+        ),
+        'email', jsonb_build_object(
+          'sent', FLOOR(RANDOM() * 10000 + 5000),
+          'opened', FLOOR(RANDOM() * 3000 + 1000),
+          'clicked', FLOOR(RANDOM() * 1000 + 300),
+          'open_rate', (RANDOM() * 30 + 20)::NUMERIC(5,2),
+          'click_rate', (RANDOM() * 15 + 5)::NUMERIC(5,2),
+          'cost', FLOOR(RANDOM() * 2000 + 500)
+        )
+      )
+    )
   ) as metrics,
   jsonb_build_object(
     'avg_time_on_page', FLOOR(RANDOM() * 60 + 30),
@@ -219,6 +302,56 @@ SELECT
       'Neurology', FLOOR(RANDOM() * 20 + 10),
       'Endocrinology', FLOOR(RANDOM() * 25 + 15),
       'Other', FLOOR(RANDOM() * 15 + 5)
+    ),
+    'prescription_impact', jsonb_build_object(
+      'baseline_monthly_scripts', FLOOR(RANDOM() * 1000 + 500),
+      'current_monthly_scripts', FLOOR(RANDOM() * 1500 + 800),
+      'script_lift_percentage', (RANDOM() * 30 + 10)::NUMERIC(5,2),
+      'projected_annual_scripts', FLOOR(RANDOM() * 20000 + 10000),
+      'confidence_interval', jsonb_build_object(
+        'lower', (RANDOM() * 10 + 5)::NUMERIC(5,2),
+        'upper', (RANDOM() * 20 + 15)::NUMERIC(5,2)
+      ),
+      'medication_performance', jsonb_build_array(
+        jsonb_build_object(
+          'medication_id', 'med-' || FLOOR(RANDOM() * 1000)::TEXT,
+          'medication_name', 'Cardiofix',
+          'baseline_scripts', FLOOR(RANDOM() * 500 + 200),
+          'current_scripts', FLOOR(RANDOM() * 700 + 300),
+          'script_lift', (RANDOM() * 40 + 20)::NUMERIC(5,2),
+          'market_share', (RANDOM() * 15 + 5)::NUMERIC(5,2)
+        ),
+        jsonb_build_object(
+          'medication_id', 'med-' || FLOOR(RANDOM() * 1000)::TEXT,
+          'medication_name', 'Neurobalance',
+          'baseline_scripts', FLOOR(RANDOM() * 300 + 100),
+          'current_scripts', FLOOR(RANDOM() * 450 + 150),
+          'script_lift', (RANDOM() * 35 + 15)::NUMERIC(5,2),
+          'market_share', (RANDOM() * 10 + 3)::NUMERIC(5,2)
+        ),
+        jsonb_build_object(
+          'medication_id', 'med-' || FLOOR(RANDOM() * 1000)::TEXT,
+          'medication_name', 'Glucoregulate',
+          'baseline_scripts', FLOOR(RANDOM() * 400 + 150),
+          'current_scripts', FLOOR(RANDOM() * 550 + 200),
+          'script_lift', (RANDOM() * 30 + 10)::NUMERIC(5,2),
+          'market_share', (RANDOM() * 12 + 4)::NUMERIC(5,2)
+        )
+      ),
+      'provider_impact', jsonb_build_object(
+        'total_providers_reached', FLOOR(RANDOM() * 500 + 200),
+        'high_prescribers_reached', FLOOR(RANDOM() * 100 + 50),
+        'new_prescribers', FLOOR(RANDOM() * 50 + 20),
+        'prescriber_retention_rate', (RANDOM() * 20 + 70)::NUMERIC(5,2),
+        'avg_scripts_per_provider', (RANDOM() * 10 + 5)::NUMERIC(5,2)
+      ),
+      'patient_impact', jsonb_build_object(
+        'new_patients', FLOOR(RANDOM() * 200 + 100),
+        'continuing_patients', FLOOR(RANDOM() * 500 + 300),
+        'adherence_improvement', (RANDOM() * 15 + 5)::NUMERIC(5,2),
+        'avg_treatment_duration', (RANDOM() * 6 + 6)::NUMERIC(5,2),
+        'patient_satisfaction', (RANDOM() * 20 + 70)::NUMERIC(5,2)
+      )
     )
   ) as prescription_metrics
 FROM campaigns

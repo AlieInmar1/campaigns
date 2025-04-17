@@ -188,7 +188,7 @@ export function CampaignResults() {
         </div>
 
         {result ? (
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 cursor-pointer"
                  onClick={() => openMetricDetails('campaign')}>
               <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center justify-between">
@@ -231,6 +231,55 @@ export function CampaignResults() {
                       </defs>
                       <Area type="monotone" dataKey="metrics.impressions" stroke="#4F46E5" fillOpacity={1} fill="url(#colorImpressions)" />
                     </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </dl>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+                 onClick={() => openMetricDetails('adPerformance')}>
+              <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center justify-between">
+                <div className="flex items-center">
+                  <Activity className="h-5 w-5 text-indigo-500 mr-2" />
+                  Ad Performance
+                </div>
+                <ChevronDown className="h-5 w-5 text-gray-400" />
+              </h3>
+              <dl className="space-y-4">
+                {result && result.metrics && result.metrics.ad_performance ? (
+                  <>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">CTR</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.metrics.ad_performance.ctr}%
+                        <span className="text-sm text-green-600 ml-2">+1.8%</span>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">Completion Rate</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.metrics.ad_performance.completion_rate}%
+                        <span className="text-sm text-green-600 ml-2">+3.2%</span>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">Brand Awareness Lift</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.metrics.ad_performance.brand_awareness_lift}%
+                        <span className="text-sm text-green-600 ml-2">+5.4%</span>
+                      </dd>
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center py-4">
+                    <p className="text-gray-500">No ad performance data available</p>
+                  </div>
+                )}
+                <div className="pt-4">
+                  <ResponsiveContainer width="100%" height={100}>
+                    <LineChart data={historicalData}>
+                      <Line type="monotone" dataKey="metrics.ad_performance.ctr" stroke="#F59E0B" strokeWidth={2} dot={false} />
+                    </LineChart>
                   </ResponsiveContainer>
                 </div>
               </dl>
@@ -287,27 +336,53 @@ export function CampaignResults() {
                 <ChevronDown className="h-5 w-5 text-gray-400" />
               </h3>
               <dl className="space-y-4">
-                <div>
-                  <dt className="text-sm font-medium text-gray-500">New Prescriptions</dt>
-                  <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                    {result.prescription_metrics.new_prescriptions.toLocaleString()}
-                    <span className="text-sm text-green-600 ml-2">+21.3%</span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-medium text-gray-500">Market Share Change</dt>
-                  <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                    {result.prescription_metrics.market_share_change}%
-                    <span className="text-sm text-green-600 ml-2">+1.2%</span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-medium text-gray-500">Patient Adherence Rate</dt>
-                  <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                    {result.prescription_metrics.patient_adherence_rate}%
-                    <span className="text-sm text-green-600 ml-2">+4.5%</span>
-                  </dd>
-                </div>
+                {result.prescription_metrics.prescription_impact ? (
+                  <>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">Script Lift</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.prescription_metrics.prescription_impact.script_lift_percentage}%
+                        <span className="text-sm text-green-600 ml-2">+5.7%</span>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">Baseline vs Current</dt>
+                      <dd className="mt-1 text-2xl font-semibold text-gray-900">
+                        {result.prescription_metrics.prescription_impact.baseline_monthly_scripts.toLocaleString()} → {result.prescription_metrics.prescription_impact.current_monthly_scripts.toLocaleString()}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">Projected Annual</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.prescription_metrics.prescription_impact.projected_annual_scripts.toLocaleString()}
+                      </dd>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">New Prescriptions</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.prescription_metrics.new_prescriptions.toLocaleString()}
+                        <span className="text-sm text-green-600 ml-2">+21.3%</span>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">Market Share Change</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.prescription_metrics.market_share_change}%
+                        <span className="text-sm text-green-600 ml-2">+1.2%</span>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-sm font-medium text-gray-500">Patient Adherence Rate</dt>
+                      <dd className="mt-1 text-3xl font-semibold text-gray-900">
+                        {result.prescription_metrics.patient_adherence_rate}%
+                        <span className="text-sm text-green-600 ml-2">+4.5%</span>
+                      </dd>
+                    </div>
+                  </>
+                )}
                 <div className="pt-4">
                   <ResponsiveContainer width="100%" height={100}>
                     <AreaChart data={historicalData}>
@@ -347,7 +422,7 @@ export function CampaignResults() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+              <div className="fixed inset-0 bg-black opacity-30" />
             </Transition.Child>
 
             <span

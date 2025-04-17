@@ -5,14 +5,21 @@ import { handleCampaignSave } from './campaignPrescriptionManager';
 
 /**
  * Updates a campaign's status based on its date range (SYNCHRONOUS version for Redux)
- * - If current date is within start_date and end_date -> "active"
+ * - If start_date is in the future -> "pending"
+ * - If current date is within start_date and end_date -> "in progress" (was "active")
  * - If current date is after end_date -> "completed"
  * - Preserves "draft" status (doesn't auto-activate drafts)
+ * - Preserves "sample" status for sample campaigns
  * - Returns the updated campaign object
  */
 export const updateCampaignStatus = (campaign: Campaign): Campaign => {
   // Skip status update if campaign is in draft mode
   if (!campaign || campaign.status === 'draft') {
+    return campaign;
+  }
+  
+  // Skip status update for sample campaigns to preserve their status
+  if (campaign.is_sample) {
     return campaign;
   }
   
@@ -25,22 +32,26 @@ export const updateCampaignStatus = (campaign: Campaign): Campaign => {
   
   // Campaign has both start and end date
   if (startDate && endDate) {
-    if (now >= startDate && now <= endDate) {
-      updatedCampaign.status = 'active';
+    if (startDate > now) {
+      updatedCampaign.status = 'pending';
+    } else if (now >= startDate && now <= endDate) {
+      updatedCampaign.status = 'in_progress';
     } else if (now > endDate) {
       updatedCampaign.status = 'completed';
     }
   }
   // Campaign has only start date (indefinite end)
   else if (startDate && !endDate) {
-    if (now >= startDate) {
-      updatedCampaign.status = 'active';
+    if (startDate > now) {
+      updatedCampaign.status = 'pending';
+    } else if (now >= startDate) {
+      updatedCampaign.status = 'in_progress';
     }
   }
   // Campaign has only end date (already running)
   else if (!startDate && endDate) {
     if (now <= endDate) {
-      updatedCampaign.status = 'active';
+      updatedCampaign.status = 'in_progress';
     } else {
       updatedCampaign.status = 'completed';
     }

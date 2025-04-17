@@ -1,0 +1,179 @@
+code,name,category,subcategory,specialty,generic_name,is_brand_name,is_target_medication,is_sample_data
+med-lenalidomide-gen,Lenalidomide (Generic),Oncology,Immunomodulator,Oncology,,false,false,true
+med-revlimid-brand,Revlimid (Brand),Oncology,Immunomodulator,Oncology,Lenalidomide,true,false,true
+med-pomalidomide-gen,Pomalidomide (Generic),Oncology,Immunomodulator,Oncology,,false,false,true
+med-pomalyst-brand,Pomalyst (Brand),Oncology,Immunomodulator,Oncology,Pomalidomide,true,false,true
+med-ibrutinib-gen,Ibrutinib (Generic),Oncology,Kinase Inhibitor,Oncology,,false,false,true
+med-imbruvica-brand,Imbruvica (Brand),Oncology,Kinase Inhibitor,Oncology,Ibrutinib,true,false,true
+med-acalabrutinib-gen,Acalabrutinib (Generic),Oncology,Kinase Inhibitor,Oncology,,false,false,true
+med-calquence-brand,Calquence (Brand),Oncology,Kinase Inhibitor,Oncology,Acalabrutinib,true,false,true
+med-imatinib-gen,Imatinib (Generic),Oncology,Tyrosine Kinase Inhibitor,Oncology,,false,false,true
+med-gleevec-brand,Gleevec (Brand),Oncology,Tyrosine Kinase Inhibitor,Oncology,Imatinib,true,false,true
+med-dasatinib-gen,Dasatinib (Generic),Oncology,Tyrosine Kinase Inhibitor,Oncology,,false,false,true
+med-sprycel-brand,Sprycel (Brand),Oncology,Tyrosine Kinase Inhibitor,Oncology,Dasatinib,true,false,true
+med-nilotinib-gen,Nilotinib (Generic),Oncology,Tyrosine Kinase Inhibitor,Oncology,,false,false,true
+med-tasigna-brand,Tasigna (Brand),Oncology,Tyrosine Kinase Inhibitor,Oncology,Nilotinib,true,false,true
+med-erlotinib-gen,Erlotinib (Generic),Oncology,EGFR Inhibitor,Oncology,,false,false,true
+med-tarceva-brand,Tarceva (Brand),Oncology,EGFR Inhibitor,Oncology,Erlotinib,true,false,true
+med-osimertinib-gen,Osimertinib (Generic),Oncology,EGFR Inhibitor,Oncology,,false,false,true
+med-tagrisso-brand,Tagrisso (Brand),Oncology,EGFR Inhibitor,Oncology,Osimertinib,true,false,true
+med-tamoxifen-gen,Tamoxifen (Generic),Oncology,Estrogen Receptor Modulator,Oncology,,false,false,true
+med-nolvadex-brand,Nolvadex (Brand),Oncology,Estrogen Receptor Modulator,Oncology,Tamoxifen,true,false,true
+med-letrozole-gen,Letrozole (Generic),Oncology,Aromatase Inhibitor,Oncology,,false,false,true
+med-femara-brand,Femara (Brand),Oncology,Aromatase Inhibitor,Oncology,Letrozole,true,false,true
+med-anastrozole-gen,Anastrozole (Generic),Oncology,Aromatase Inhibitor,Oncology,,false,false,true
+med-arimidex-brand,Arimidex (Brand),Oncology,Aromatase Inhibitor,Oncology,Anastrozole,true,false,true
+med-exemestane-gen,Exemestane (Generic),Oncology,Aromatase Inhibitor,Oncology,,false,false,true
+med-aromasin-brand,Aromasin (Brand),Oncology,Aromatase Inhibitor,Oncology,Exemestane,true,false,true
+med-fulvestrant-gen,Fulvestrant (Generic),Oncology,Estrogen Receptor Antagonist,Oncology,,false,false,true
+med-faslodex-brand,Faslodex (Brand),Oncology,Estrogen Receptor Antagonist,Oncology,Fulvestrant,true,false,true
+med-bicalutamide-gen,Bicalutamide (Generic),Oncology,Androgen Receptor Antagonist,Oncology,,false,false,true
+med-casodex-brand,Casodex (Brand),Oncology,Androgen Receptor Antagonist,Oncology,Bicalutamide,true,false,true
+med-enzalutamide-gen,Enzalutamide (Generic),Oncology,Androgen Receptor Antagonist,Oncology,,false,false,true
+med-xtandi-brand,Xtandi (Brand),Oncology,Androgen Receptor Antagonist,Oncology,Enzalutamide,true,false,true
+med-abiraterone-gen,Abiraterone (Generic),Oncology,Androgen Synthesis Inhibitor,Oncology,,false,false,true
+med-zytiga-brand,Zytiga (Brand),Oncology,Androgen Synthesis Inhibitor,Oncology,Abiraterone,true,false,true
+med-venetoclax-gen,Venetoclax (Generic),Oncology,BCL-2 Inhibitor,Oncology,,false,false,true
+med-venclexta-brand,Venclexta (Brand),Oncology,BCL-2 Inhibitor,Oncology,Venetoclax,true,false,true
+med-olaparib-gen,Olaparib (Generic),Oncology,PARP Inhibitor,Oncology,,false,false,true
+med-lynparza-brand,Lynparza (Brand),Oncology,PARP Inhibitor,Oncology,Olaparib,true,false,true
+med-palbociclib-gen,Palbociclib (Generic),Oncology,CDK4/6 Inhibitor,Oncology,,false,false,true
+med-ibrance-brand,Ibrance (Brand),Oncology,CDK4/6 Inhibitor,Oncology,Palbociclib,true,false,true
+med-ribociclib-gen,Ribociclib (Generic),Oncology,CDK4/6 Inhibitor,Oncology,,false,false,true
+med-kisqali-brand,Kisqali (Brand),Oncology,CDK4/6 Inhibitor,Oncology,Ribociclib,true,false,true
+med-abemaciclib-gen,Abemaciclib (Generic),Oncology,CDK4/6 Inhibitor,Oncology,,false,false,true
+med-verzenio-brand,Verzenio (Brand),Oncology,CDK4/6 Inhibitor,Oncology,Abemaciclib,true,false,true
+med-methotrexate-onc-gen,Methotrexate (Generic),Oncology,Antimetabolite,Oncology,,false,false,true
+med-trexall-onc-brand,Trexall (Brand),Oncology,Antimetabolite,Oncology,Methotrexate,true,false,true
+med-hydroxychloroquine-gen,Hydroxychloroquine (Generic),Rheumatology,DMARD,Rheumatology,,false,false,true
+med-plaquenil-brand,Plaquenil (Brand),Rheumatology,DMARD,Rheumatology,Hydroxychloroquine,true,false,true
+med-sulfasalazine-rheum-gen,Sulfasalazine (Generic),Rheumatology,DMARD,Rheumatology,,false,false,true
+med-azulfidine-rheum-brand,Azulfidine (Brand),Rheumatology,DMARD,Rheumatology,Sulfasalazine,true,false,true
+med-leflunomide-gen,Leflunomide (Generic),Rheumatology,DMARD,Rheumatology,,false,false,true
+med-arava-brand,Arava (Brand),Rheumatology,DMARD,Rheumatology,Leflunomide,true,false,true
+med-methotrexate-rheum-gen,Methotrexate (Generic),Rheumatology,DMARD,Rheumatology,,false,false,true
+med-rheumatrex-brand,Rheumatrex (Brand),Rheumatology,DMARD,Rheumatology,Methotrexate,true,false,true
+med-azathioprine-gen,Azathioprine (Generic),Rheumatology,DMARD,Rheumatology,,false,false,true
+med-imuran-brand,Imuran (Brand),Rheumatology,DMARD,Rheumatology,Azathioprine,true,false,true
+med-cyclosporine-gen,Cyclosporine (Generic),Rheumatology,DMARD,Rheumatology,,false,false,true
+med-neoral-brand,Neoral (Brand),Rheumatology,DMARD,Rheumatology,Cyclosporine,true,false,true
+med-etanercept-gen,Etanercept (Generic),Rheumatology,TNF Inhibitor,Rheumatology,,false,false,true
+med-enbrel-brand,Enbrel (Brand),Rheumatology,TNF Inhibitor,Rheumatology,Etanercept,true,false,true
+med-adalimumab-rheum-gen,Adalimumab (Generic),Rheumatology,TNF Inhibitor,Rheumatology,,false,false,true
+med-humira-rheum-brand,Humira (Brand),Rheumatology,TNF Inhibitor,Rheumatology,Adalimumab,true,false,true
+med-infliximab-rheum-gen,Infliximab (Generic),Rheumatology,TNF Inhibitor,Rheumatology,,false,false,true
+med-remicade-rheum-brand,Remicade (Brand),Rheumatology,TNF Inhibitor,Rheumatology,Infliximab,true,false,true
+med-certolizumab-gen,Certolizumab (Generic),Rheumatology,TNF Inhibitor,Rheumatology,,false,false,true
+med-cimzia-brand,Cimzia (Brand),Rheumatology,TNF Inhibitor,Rheumatology,Certolizumab,true,false,true
+med-golimumab-gen,Golimumab (Generic),Rheumatology,TNF Inhibitor,Rheumatology,,false,false,true
+med-simponi-brand,Simponi (Brand),Rheumatology,TNF Inhibitor,Rheumatology,Golimumab,true,false,true
+med-abatacept-gen,Abatacept (Generic),Rheumatology,T-Cell Costimulation Modulator,Rheumatology,,false,false,true
+med-orencia-brand,Orencia (Brand),Rheumatology,T-Cell Costimulation Modulator,Rheumatology,Abatacept,true,false,true
+med-rituximab-gen,Rituximab (Generic),Rheumatology,CD20 Inhibitor,Rheumatology,,false,false,true
+med-rituxan-brand,Rituxan (Brand),Rheumatology,CD20 Inhibitor,Rheumatology,Rituximab,true,false,true
+med-tocilizumab-gen,Tocilizumab (Generic),Rheumatology,IL-6 Inhibitor,Rheumatology,,false,false,true
+med-actemra-brand,Actemra (Brand),Rheumatology,IL-6 Inhibitor,Rheumatology,Tocilizumab,true,false,true
+med-sarilumab-gen,Sarilumab (Generic),Rheumatology,IL-6 Inhibitor,Rheumatology,,false,false,true
+med-kevzara-brand,Kevzara (Brand),Rheumatology,IL-6 Inhibitor,Rheumatology,Sarilumab,true,false,true
+med-anakinra-gen,Anakinra (Generic),Rheumatology,IL-1 Inhibitor,Rheumatology,,false,false,true
+med-kineret-brand,Kineret (Brand),Rheumatology,IL-1 Inhibitor,Rheumatology,Anakinra,true,false,true
+med-secukinumab-rheum-gen,Secukinumab (Generic),Rheumatology,IL-17 Inhibitor,Rheumatology,,false,false,true
+med-cosentyx-rheum-brand,Cosentyx (Brand),Rheumatology,IL-17 Inhibitor,Rheumatology,Secukinumab,true,false,true
+med-ixekizumab-gen,Ixekizumab (Generic),Rheumatology,IL-17 Inhibitor,Rheumatology,,false,false,true
+med-taltz-brand,Taltz (Brand),Rheumatology,IL-17 Inhibitor,Rheumatology,Ixekizumab,true,false,true
+med-ustekinumab-rheum-gen,Ustekinumab (Generic),Rheumatology,IL-12/IL-23 Inhibitor,Rheumatology,,false,false,true
+med-stelara-rheum-brand,Stelara (Brand),Rheumatology,IL-12/IL-23 Inhibitor,Rheumatology,Ustekinumab,true,false,true
+med-tofacitinib-gen,Tofacitinib (Generic),Rheumatology,JAK Inhibitor,Rheumatology,,false,false,true
+med-xeljanz-brand,Xeljanz (Brand),Rheumatology,JAK Inhibitor,Rheumatology,Tofacitinib,true,false,true
+med-baricitinib-gen,Baricitinib (Generic),Rheumatology,JAK Inhibitor,Rheumatology,,false,false,true
+med-olumiant-brand,Olumiant (Brand),Rheumatology,JAK Inhibitor,Rheumatology,Baricitinib,true,false,true
+med-upadacitinib-gen,Upadacitinib (Generic),Rheumatology,JAK Inhibitor,Rheumatology,,false,false,true
+med-rinvoq-brand,Rinvoq (Brand),Rheumatology,JAK Inhibitor,Rheumatology,Upadacitinib,true,false,true
+med-allopurinol-gen,Allopurinol (Generic),Rheumatology,Xanthine Oxidase Inhibitor,Rheumatology,,false,false,true
+med-zyloprim-brand,Zyloprim (Brand),Rheumatology,Xanthine Oxidase Inhibitor,Rheumatology,Allopurinol,true,false,true
+med-febuxostat-gen,Febuxostat (Generic),Rheumatology,Xanthine Oxidase Inhibitor,Rheumatology,,false,false,true
+med-uloric-brand,Uloric (Brand),Rheumatology,Xanthine Oxidase Inhibitor,Rheumatology,Febuxostat,true,false,true
+med-colchicine-gen,Colchicine (Generic),Rheumatology,Anti-Inflammatory,Rheumatology,,false,false,true
+med-colcrys-brand,Colcrys (Brand),Rheumatology,Anti-Inflammatory,Rheumatology,Colchicine,true,false,true
+med-tamsulosin-gen,Tamsulosin (Generic),Urology,Alpha Blocker,Urology,,false,false,true
+med-flomax-brand,Flomax (Brand),Urology,Alpha Blocker,Urology,Tamsulosin,true,false,true
+med-alfuzosin-gen,Alfuzosin (Generic),Urology,Alpha Blocker,Urology,,false,false,true
+med-uroxatral-brand,Uroxatral (Brand),Urology,Alpha Blocker,Urology,Alfuzosin,true,false,true
+med-silodosin-gen,Silodosin (Generic),Urology,Alpha Blocker,Urology,,false,false,true
+med-rapaflo-brand,Rapaflo (Brand),Urology,Alpha Blocker,Urology,Silodosin,true,false,true
+med-doxazosin-gen,Doxazosin (Generic),Urology,Alpha Blocker,Urology,,false,false,true
+med-cardura-brand,Cardura (Brand),Urology,Alpha Blocker,Urology,Doxazosin,true,false,true
+med-terazosin-gen,Terazosin (Generic),Urology,Alpha Blocker,Urology,,false,false,true
+med-hytrin-brand,Hytrin (Brand),Urology,Alpha Blocker,Urology,Terazosin,true,false,true
+med-finasteride-gen,Finasteride (Generic),Urology,5-Alpha-Reductase Inhibitor,Urology,,false,false,true
+med-proscar-brand,Proscar (Brand),Urology,5-Alpha-Reductase Inhibitor,Urology,Finasteride,true,false,true
+med-dutasteride-gen,Dutasteride (Generic),Urology,5-Alpha-Reductase Inhibitor,Urology,,false,false,true
+med-avodart-brand,Avodart (Brand),Urology,5-Alpha-Reductase Inhibitor,Urology,Dutasteride,true,false,true
+med-tadalafil-gen,Tadalafil (Generic),Urology,PDE5 Inhibitor,Urology,,false,false,true
+med-cialis-brand,Cialis (Brand),Urology,PDE5 Inhibitor,Urology,Tadalafil,true,false,true
+med-sildenafil-gen,Sildenafil (Generic),Urology,PDE5 Inhibitor,Urology,,false,false,true
+med-viagra-brand,Viagra (Brand),Urology,PDE5 Inhibitor,Urology,Sildenafil,true,false,true
+med-vardenafil-gen,Vardenafil (Generic),Urology,PDE5 Inhibitor,Urology,,false,false,true
+med-levitra-brand,Levitra (Brand),Urology,PDE5 Inhibitor,Urology,Vardenafil,true,false,true
+med-avanafil-gen,Avanafil (Generic),Urology,PDE5 Inhibitor,Urology,,false,false,true
+med-stendra-brand,Stendra (Brand),Urology,PDE5 Inhibitor,Urology,Avanafil,true,false,true
+med-oxybutynin-gen,Oxybutynin (Generic),Urology,Anticholinergic,Urology,,false,false,true
+med-ditropan-brand,Ditropan (Brand),Urology,Anticholinergic,Urology,Oxybutynin,true,false,true
+med-tolterodine-gen,Tolterodine (Generic),Urology,Anticholinergic,Urology,,false,false,true
+med-detrol-brand,Detrol (Brand),Urology,Anticholinergic,Urology,Tolterodine,true,false,true
+med-solifenacin-gen,Solifenacin (Generic),Urology,Anticholinergic,Urology,,false,false,true
+med-vesicare-brand,Vesicare (Brand),Urology,Anticholinergic,Urology,Solifenacin,true,false,true
+med-darifenacin-gen,Darifenacin (Generic),Urology,Anticholinergic,Urology,,false,false,true
+med-enablex-brand,Enablex (Brand),Urology,Anticholinergic,Urology,Darifenacin,true,false,true
+med-fesoterodine-gen,Fesoterodine (Generic),Urology,Anticholinergic,Urology,,false,false,true
+med-toviaz-brand,Toviaz (Brand),Urology,Anticholinergic,Urology,Fesoterodine,true,false,true
+med-trospium-gen,Trospium (Generic),Urology,Anticholinergic,Urology,,false,false,true
+med-sanctura-brand,Sanctura (Brand),Urology,Anticholinergic,Urology,Trospium,true,false,true
+med-mirabegron-gen,Mirabegron (Generic),Urology,Beta-3 Adrenergic Agonist,Urology,,false,false,true
+med-myrbetriq-brand,Myrbetriq (Brand),Urology,Beta-3 Adrenergic Agonist,Urology,Mirabegron,true,false,true
+med-phenazopyridine-gen,Phenazopyridine (Generic),Urology,Urinary Analgesic,Urology,,false,false,true
+med-pyridium-brand,Pyridium (Brand),Urology,Urinary Analgesic,Urology,Phenazopyridine,true,false,true
+med-fosfomycin-gen,Fosfomycin (Generic),Urology,Antibiotic,Urology,,false,false,true
+med-monurol-brand,Monurol (Brand),Urology,Antibiotic,Urology,Fosfomycin,true,false,true
+med-ethinylestradiolnorethindrone-gen,Ethinyl Estradiol/Norethindrone (Generic),OB/GYN,Oral Contraceptive,OB/GYN,,false,false,true
+med-junel-brand,Junel (Brand),OB/GYN,Oral Contraceptive,OB/GYN,Ethinyl Estradiol/Norethindrone,true,false,true
+med-ethinylestradiollevonorgestrel-gen,Ethinyl Estradiol/Levonorgestrel (Generic),OB/GYN,Oral Contraceptive,OB/GYN,,false,false,true
+med-seasonique-brand,Seasonique (Brand),OB/GYN,Oral Contraceptive,OB/GYN,Ethinyl Estradiol/Levonorgestrel,true,false,true
+med-ethinylestradioldrospirenone-gen,Ethinyl Estradiol/Drospirenone (Generic),OB/GYN,Oral Contraceptive,OB/GYN,,false,false,true
+med-yaz-brand,Yaz (Brand),OB/GYN,Oral Contraceptive,OB/GYN,Ethinyl Estradiol/Drospirenone,true,false,true
+med-ethinylestradioldesogestrel-gen,Ethinyl Estradiol/Desogestrel (Generic),OB/GYN,Oral Contraceptive,OB/GYN,,false,false,true
+med-kariva-brand,Kariva (Brand),OB/GYN,Oral Contraceptive,OB/GYN,Ethinyl Estradiol/Desogestrel,true,false,true
+med-etonogestrel-gen,Etonogestrel (Generic),OB/GYN,Implantable Contraceptive,OB/GYN,,false,false,true
+med-nexplanon-brand,Nexplanon (Brand),OB/GYN,Implantable Contraceptive,OB/GYN,Etonogestrel,true,false,true
+med-levonorgestreliud-gen,Levonorgestrel IUD (Generic),OB/GYN,Intrauterine Device,OB/GYN,,false,false,true
+med-mirena-brand,Mirena (Brand),OB/GYN,Intrauterine Device,OB/GYN,Levonorgestrel IUD,true,false,true
+med-medroxyprogesteroneacetate-gen,Medroxyprogesterone Acetate (Generic),OB/GYN,Injectable Contraceptive,OB/GYN,,false,false,true
+med-depo-provera-brand,Depo-Provera (Brand),OB/GYN,Injectable Contraceptive,OB/GYN,Medroxyprogesterone Acetate,true,false,true
+med-conjugatedestrogens-gen,Conjugated Estrogens (Generic),OB/GYN,Hormone Replacement,OB/GYN,,false,false,true
+med-premarin-brand,Premarin (Brand),OB/GYN,Hormone Replacement,OB/GYN,Conjugated Estrogens,true,false,true
+med-estradiol-gen,Estradiol (Generic),OB/GYN,Hormone Replacement,OB/GYN,,false,false,true
+med-estrace-brand,Estrace (Brand),OB/GYN,Hormone Replacement,OB/GYN,Estradiol,true,false,true
+med-estradialnorethindrone-gen,Estradiol/Norethindrone (Generic),OB/GYN,Hormone Replacement,OB/GYN,,false,false,true
+med-activella-brand,Activella (Brand),OB/GYN,Hormone Replacement,OB/GYN,Estradiol/Norethindrone,true,false,true
+med-conjestmedro-gen,Conjugated Estrogens/Medroxyprogesterone (Generic),OB/GYN,Hormone Replacement,OB/GYN,,false,false,true
+med-prempro-brand,Prempro (Brand),OB/GYN,Hormone Replacement,OB/GYN,Conjugated Estrogens/Medroxyprogesterone,true,false,true
+med-clomiphene-gen,Clomiphene (Generic),OB/GYN,Fertility Treatment,OB/GYN,,false,false,true
+med-clomid-brand,Clomid (Brand),OB/GYN,Fertility Treatment,OB/GYN,Clomiphene,true,false,true
+med-letrozolefertility-gen,Letrozole for Fertility (Generic),OB/GYN,Fertility Treatment,OB/GYN,,false,false,true
+med-femarafertility-brand,Femara (Brand),OB/GYN,Fertility Treatment,OB/GYN,Letrozole for Fertility,true,false,true
+med-dienogest-gen,Dienogest (Generic),OB/GYN,Endometriosis Treatment,OB/GYN,,false,false,true
+med-visanne-brand,Visanne (Brand),OB/GYN,Endometriosis Treatment,OB/GYN,Dienogest,true,false,true
+med-elagolix-gen,Elagolix (Generic),OB/GYN,Endometriosis Treatment,OB/GYN,,false,false,true
+med-orilissa-brand,Orilissa (Brand),OB/GYN,Endometriosis Treatment,OB/GYN,Elagolix,true,false,true
+med-ospemifene-gen,Ospemifene (Generic),OB/GYN,Dyspareunia Treatment,OB/GYN,,false,false,true
+med-osphena-brand,Osphena (Brand),OB/GYN,Dyspareunia Treatment,OB/GYN,Ospemifene,true,false,true
+med-prasterone-gen,Prasterone (Generic),OB/GYN,Dyspareunia Treatment,OB/GYN,,false,false,true
+med-intrarosa-brand,Intrarosa (Brand),OB/GYN,Dyspareunia Treatment,OB/GYN,Prasterone,true,false,true
+med-prenatalvitamins-gen,Prenatal Vitamins (Generic),OB/GYN,Prenatal Supplement,OB/GYN,,false,false,true
+med-prenatal19-brand,PreNatal 19 (Brand),OB/GYN,Prenatal Supplement,OB/GYN,Prenatal Vitamins,true,false,true
+med-hydroxyprogesteronecaproate-gen,Hydroxyprogesterone Caproate (Generic),OB/GYN,Preterm Birth Prevention,OB/GYN,,false,false,true
+med-makena-brand,Makena (Brand),OB/GYN,Preterm Birth Prevention,OB/GYN,Hydroxyprogesterone Caproate,true,false,true
+med-terbutaline-gen,Terbutaline (Generic),OB/GYN,Tocolytic,OB/GYN,,false,false,true
+med-brethine-brand,Brethine (Brand),OB/GYN,Tocolytic,OB/GYN,Terbutaline,true,false,true
+med-diclofenac-gen,Diclofenac (Generic),Orthopedics,NSAID,Orthopedics,,false,false,true
+med-voltaren-brand,

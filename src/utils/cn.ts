@@ -1,10 +1,9 @@
-import { type ClassValue, clsx } from 'clsx';
+import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 /**
- * Combines multiple class values into a single className string.
- * Uses clsx for conditional class joining and tailwind-merge to handle
- * Tailwind CSS class conflicts.
+ * Merge class names with Tailwind CSS classes
+ * This utility combines clsx for conditional classes with tailwind-merge to handle Tailwind-specific conflicts
  */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

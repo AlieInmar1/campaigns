@@ -1,45 +1,31 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { Sidebar } from './Sidebar';
+import React, { ReactNode, useState } from 'react';
 import { Header } from './Header';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { toggleSidebar } from '../../store/slices/uiSlice';
-import { Toaster } from 'sonner';
-import { cn } from '../../utils/cn';
+import { Sidebar } from './Sidebar';
 
 interface MainLayoutProps {
-  className?: string;
+  children: ReactNode;
 }
 
-export const MainLayout: React.FC<MainLayoutProps> = ({ className }) => {
-  const dispatch = useAppDispatch();
-  const sidebarOpen = useAppSelector((state) => {
-    // Type assertion for state.ui until we fix our type structure
-    const ui = state.ui as { sidebarOpen: boolean };
-    return ui.sidebarOpen;
-  });
-  
-  const handleToggleSidebar = () => {
-    dispatch(toggleSidebar());
+export function MainLayout({ children }: MainLayoutProps) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <Sidebar />
+    <div className="min-h-screen bg-gray-50">
+      <Header toggleSidebar={toggleSidebar} />
       
-      <div className={cn(
-        'flex-1 transition-all duration-300',
-        sidebarOpen ? 'ml-64' : 'ml-16',
-        className
-      )}>
-        <Header toggleSidebar={handleToggleSidebar} />
+      <div className="flex">
+        {isSidebarOpen && <Sidebar />}
         
-        <main className="p-6">
-          <Outlet />
+        <main className={`flex-1 p-6 ${isSidebarOpen ? '' : 'ml-0'}`}>
+          <div className="max-w-7xl mx-auto">
+            {children}
+          </div>
         </main>
       </div>
-      
-      <Toaster position="top-right" richColors closeButton />
     </div>
   );
-};
+}

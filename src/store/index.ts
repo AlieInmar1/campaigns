@@ -5,6 +5,7 @@ import campaignResultsReducer from './slices/campaignResultsSlice';
 import uiReducer from './slices/uiSlice';
 import providerReducer from './slices/providerSlice';
 import referenceDataReducer from './slices/referenceDataSlice';
+import usersReducer from './slices/usersSlice';
 
 // Import specific actions and selectors from each slice
 import { addNotification, removeNotification, clearNotifications, toggleSidebar } from './slices/uiSlice';
@@ -27,6 +28,11 @@ import {
   fetchAllReferenceData, selectConditions, selectMedications,
   selectSpecialties, selectGeographicRegions, clearError as clearReferenceDataError
 } from './slices/referenceDataSlice';
+import {
+  fetchUsers, fetchUserById, updateUserRole, deleteUser,
+  clearSelectedUser, clearError as clearUsersError,
+  selectUsers, selectSelectedUser, selectUsersLoading, selectUsersError
+} from './slices/usersSlice';
 
 export const store = configureStore({
   reducer: {
@@ -36,6 +42,7 @@ export const store = configureStore({
     ui: uiReducer,
     providers: providerReducer,
     referenceData: referenceDataReducer,
+    users: usersReducer,
   },
 });
 
@@ -85,5 +92,17 @@ export {
   selectMedications,
   selectSpecialties,
   selectGeographicRegions,
-  clearReferenceDataError
+  clearReferenceDataError,
+  
+  // Users Management Actions and Selectors
+  fetchUsers,
+  fetchUserById,
+  updateUserRole,
+  deleteUser,
+  clearSelectedUser,
+  clearUsersError,
+  selectUsers,
+  selectSelectedUser,
+  selectUsersLoading,
+  selectUsersError
 };

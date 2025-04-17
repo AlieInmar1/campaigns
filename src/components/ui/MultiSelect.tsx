@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { cn } from '../../utils/cn';
-import { X, Search } from 'lucide-react';
+import { X, ChevronDown, Search } from 'lucide-react';
 
-export interface MultiSelectOption {
+interface MultiSelectOption {
   value: string;
   label: string;
-  disabled?: boolean;
+  category?: string; // Optional category for grouping/filtering
 }
 
-export interface MultiSelectProps {
+interface MultiSelectProps {
   options: MultiSelectOption[];
   value: string[];
   onChange: (value: string[]) => void;
@@ -21,119 +21,137 @@ export function MultiSelect({
   options,
   value,
   onChange,
-  placeholder = 'Select options',
+  placeholder = 'Select options...',
   className,
   isDisabled = false
 }: MultiSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  
-  // Reset search query when dropdown closes
+  const [searchTerm, setSearchTerm] = useState('');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Close dropdown when clicking outside
   useEffect(() => {
-    if (!isOpen) {
-      setSearchQuery('');
+    function handleClickOutside(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+        setSearchTerm(''); // Clear search when closing
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Focus search input when dropdown opens
+  useEffect(() => {
+    if (isOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
     }
   }, [isOpen]);
-  
+
   const selectedOptions = options.filter(option => value.includes(option.value));
   
-  // Filter options based on search query
+  // Filter options based on search term
   const filteredOptions = options.filter(option => 
-    option.label.toLowerCase().includes(searchQuery.toLowerCase())
+    option.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (option.category && option.category.toLowerCase().includes(searchTerm.toLowerCase()))
   );
-  
-  const toggleOption = (optionValue: string) => {
+
+  const handleToggleOption = (optionValue: string) => {
     if (value.includes(optionValue)) {
       onChange(value.filter(v => v !== optionValue));
     } else {
       onChange([...value, optionValue]);
-      // Keep dropdown open after selection
     }
   };
-  
-  const removeOption = (e: React.MouseEvent, optionValue: string) => {
+
+  const handleRemoveOption = (optionValue: string, e: React.MouseEvent) => {
     e.stopPropagation();
     onChange(value.filter(v => v !== optionValue));
   };
-  
-  // Handle search input click to prevent dropdown from closing
-  const handleSearchClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-  
+
   return (
-    <div className="relative">
+    <div className="relative" ref={containerRef}>
       <div
         className={cn(
-          'min-h-10 px-3 py-2 border rounded-md w-full text-sm relative flex flex-wrap items-center gap-1',
-          isOpen ? 'border-primary-500 ring-1 ring-primary-500' : 'border-gray-300',
-          isDisabled ? 'bg-gray-100 cursor-not-allowed' : 'cursor-pointer',
+          'min-h-[38px] w-full rounded-md border border-gray-300 bg-white',
+          'px-3 py-2 text-sm',
+          'focus:border-primary-500 focus:ring-primary-500',
+          isDisabled && 'bg-gray-100 cursor-not-allowed',
           className
         )}
         onClick={() => !isDisabled && setIsOpen(!isOpen)}
       >
-        {selectedOptions.length > 0 ? (
-          selectedOptions.map(option => (
-            <span 
-              key={option.value}
-              className="bg-primary-100 text-primary-800 rounded px-2 py-1 text-xs flex items-center"
-            >
-              {option.label}
-              <button 
-                type="button"
-                onClick={(e) => !isDisabled && removeOption(e, option.value)}
-                className="ml-1 text-primary-600 hover:text-primary-800"
-                disabled={isDisabled}
+        <div className="flex flex-wrap gap-1">
+          {selectedOptions.length > 0 ? (
+            selectedOptions.map(option => (
+              <span
+                key={option.value}
+                className="inline-flex items-center rounded-md bg-primary-50 px-2 py-1 text-sm font-medium text-primary-700"
               >
-                <X size={14} />
-              </button>
-            </span>
-          ))
-        ) : (
-          <span className="text-gray-500">{placeholder}</span>
-        )}
+                {option.label}
+                <button
+                  onClick={(e) => handleRemoveOption(option.value, e)}
+                  className="ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full hover:bg-primary-200"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </span>
+            ))
+          ) : (
+            <span className="text-gray-500">{placeholder}</span>
+          )}
+        </div>
+        <div className="absolute right-2 top-2">
+          <ChevronDown className={cn(
+            "h-5 w-5 text-gray-400 transition-transform",
+            isOpen && "transform rotate-180"
+          )} />
+        </div>
       </div>
-      
+
       {isOpen && !isDisabled && (
-        <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
-          {/* Search box */}
-          <div className="sticky top-0 bg-white border-b border-gray-200 p-2">
+        <div className="absolute z-10 mt-1 w-full rounded-md bg-white shadow-lg">
+          {/* Search input */}
+          <div className="sticky top-0 p-2 bg-white border-b border-gray-200">
             <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-4 w-4 text-gray-400" />
+              </div>
               <input
+                ref={searchInputRef}
                 type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onClick={handleSearchClick}
-                placeholder="Search..."
-                className="w-full py-1.5 pl-8 pr-3 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                placeholder="Search options..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onClick={(e) => e.stopPropagation()}
               />
-              <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             </div>
           </div>
           
-          {/* Options list */}
-          <div className="p-2 space-y-1">
-            {filteredOptions.length > 0 ? (
-              filteredOptions.map(option => (
-                <div
-                  key={option.value}
-                  className={cn(
-                    'px-3 py-2 text-sm rounded-md cursor-pointer',
-                    value.includes(option.value) 
-                      ? 'bg-primary-100 text-primary-800' 
-                      : 'hover:bg-gray-100',
-                    option.disabled && 'opacity-50 cursor-not-allowed'
-                  )}
-                  onClick={() => !option.disabled && toggleOption(option.value)}
-                >
-                  {option.label}
-                </div>
-              ))
+          <div className="max-h-60 overflow-auto">
+            {filteredOptions.length === 0 ? (
+              <div className="px-4 py-2 text-sm text-gray-500">No options found</div>
             ) : (
-              <div className="px-3 py-2 text-sm text-gray-500 italic">
-                No options found
+              filteredOptions.map(option => (
+              <div
+                key={option.value}
+                className={cn(
+                  'px-4 py-2 text-sm cursor-pointer',
+                  value.includes(option.value)
+                    ? 'bg-primary-50 text-primary-700'
+                    : 'text-gray-900 hover:bg-gray-100'
+                )}
+                onClick={() => handleToggleOption(option.value)}
+              >
+                {option.label}
+                {option.category && (
+                  <span className="ml-2 text-xs text-gray-500">({option.category})</span>
+                )}
               </div>
-            )}
+            )))}
           </div>
         </div>
       )}

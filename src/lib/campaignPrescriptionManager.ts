@@ -3,48 +3,90 @@ import { Campaign, Provider, Medication } from '../types';
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
+import { getProvidersByFilter, enablePatientPrescriptionsFeature, ProviderFilter } from './providerDataService';
 
 /**
  * Find targeted providers for a campaign based on its targeting criteria.
  * Returns the list of provider IDs that match the campaign targeting.
+ * Uses the providerDataService to leverage actual patient prescription data.
  */
 export const findTargetedProviders = async (campaign: Campaign): Promise<string[]> => {
   try {
-    // Build the query based on campaign targeting
-    let query = supabase.from('providers').select('id');
-
-    // Apply specialty filter if specified
-    if (campaign.target_specialty) {
-      query = query.eq('specialty', campaign.target_specialty);
-    }
-
-    // Apply geographic area filter if specified
-    if (campaign.target_geographic_area) {
-      query = query.eq('geographic_area', campaign.target_geographic_area);
-    }
-
-    // Apply additional targeting criteria if specified
-    if (campaign.targeting_metadata) {
-      // Apply prescribing volume filter if specified
-      if (campaign.targeting_metadata.prescribing_volume && 
-          campaign.targeting_metadata.prescribing_volume !== 'all') {
-        query = query.eq('prescribing_volume', campaign.targeting_metadata.prescribing_volume);
-      }
-    }
-
-    // Execute the query
-    const { data, error } = await query;
+    // Enable the patient prescriptions feature to use actual data
+    await enablePatientPrescriptionsFeature();
     
-    if (error) {
-      console.error('Error finding targeted providers:', error);
-      return [];
-    }
+    // Convert campaign targeting criteria to ProviderFilter format
+    const filter: ProviderFilter = {
+      // If there's a target medication ID, include it
+      medicationIds: campaign.target_medication_id ? [campaign.target_medication_id] : [],
+      
+      // If targeting_metadata includes medication info, add it
+      excludedMedicationIds: campaign.targeting_metadata?.excluded_medications || [],
+      
+      // Include specialty
+      specialties: campaign.target_specialty ? [campaign.target_specialty] : [],
+      
+      // Include geographic area
+      regions: campaign.target_geographic_area ? [campaign.target_geographic_area] : [],
+      
+      // Include prescribing volume from metadata
+      prescribingVolume: campaign.targeting_metadata?.prescribing_volume || 'all',
+      
+      // Default to OR logic for broader reach
+      useAndLogic: false
+    };
     
-    // Extract just the provider IDs
-    return data.map((provider: {id: string}) => provider.id);
+    console.log('Finding targeted providers with filter:', JSON.stringify(filter, null, 2));
+    
+    // Get providers using the provider data service
+    const providerIds = await getProvidersByFilter(filter);
+    
+    console.log(`Found ${providerIds.length} providers matching campaign criteria`);
+    
+    return providerIds;
   } catch (error) {
     console.error('Exception finding targeted providers:', error);
-    return [];
+    
+    // Fallback to direct query if the provider data service fails
+    try {
+      console.log('Falling back to direct query for providers');
+      
+      // Build the query based on campaign targeting
+      let query = supabase.from('providers').select('id');
+  
+      // Apply specialty filter if specified
+      if (campaign.target_specialty) {
+        query = query.eq('specialty', campaign.target_specialty);
+      }
+  
+      // Apply geographic area filter if specified
+      if (campaign.target_geographic_area) {
+        query = query.eq('geographic_area', campaign.target_geographic_area);
+      }
+  
+      // Apply additional targeting criteria if specified
+      if (campaign.targeting_metadata) {
+        // Apply prescribing volume filter if specified
+        if (campaign.targeting_metadata.prescribing_volume && 
+            campaign.targeting_metadata.prescribing_volume !== 'all') {
+          query = query.eq('prescribing_volume', campaign.targeting_metadata.prescribing_volume);
+        }
+      }
+  
+      // Execute the query
+      const { data, error } = await query;
+      
+      if (error) {
+        console.error('Error in fallback query for targeted providers:', error);
+        return [];
+      }
+      
+      // Extract just the provider IDs
+      return data.map((provider: {id: string}) => provider.id);
+    } catch (fallbackError) {
+      console.error('Exception in fallback query for targeted providers:', fallbackError);
+      return [];
+    }
   }
 };
 
@@ -348,6 +390,34 @@ export const handleCampaignSave = async (campaign: Campaign): Promise<boolean> =
     
     // Save targeted providers to file for reference
     await writeProvidersToFile(campaign, providerIds);
+    
+    // Insert provider IDs into campaign_provider_targets table
+    console.log(`Inserting ${providerIds.length} providers into campaign_provider_targets for campaign ${campaign.id}`);
+    
+    // Process providers in batches to avoid potential query size limits
+    const batchSize = 100;
+    for (let i = 0; i < providerIds.length; i += batchSize) {
+      const batch = providerIds.slice(i, i + batchSize);
+      
+      // Create array of records to insert
+      const records = batch.map(providerId => ({
+        campaign_id: campaign.id,
+        provider_id: providerId,
+        targeting_reason: 'Matched targeting criteria',
+        potential_lift_score: Math.random() * 5 + 1, // Random score between 1-6
+        created_by: campaign.created_by,
+        created_at: new Date().toISOString()
+      }));
+      
+      // Insert records into campaign_provider_targets table
+      const { error } = await supabase
+        .from('campaign_provider_targets')
+        .insert(records);
+      
+      if (error) {
+        console.error('Error inserting campaign provider targets:', error);
+      }
+    }
     
     // Generate and save prescription data for these providers
     await generatePrescriptionData(campaign, providerIds);

@@ -1,0 +1,784 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { createCampaign } from '../../store/slices/campaignSlice';
+import { fetchAllReferenceData } from '../../store/slices/referenceDataSlice';
+import { generateAndStoreResults } from '../../store/slices/campaignResultsSlice';
+import { Button } from '../ui/Button';
+import { Select } from '../ui/Select';
+import { MultiSelect } from '../ui/MultiSelect';
+import { Input } from '../ui/Input';
+import { addNotification } from '../../store/slices/uiSlice';
+import { 
+  Users, 
+  Pill,
+  MapPin,
+  Filter,
+  Search,
+  ChevronRight,
+  ChevronLeft,
+  Zap,
+  Check,
+  Target,
+  Settings,
+  Cog
+} from 'lucide-react';
+import { cn } from '../../utils/cn';
+
+// Define the types for our targeting options - similar to ExploreDatabase
+interface TargetingState {
+  name: string; // Campaign name
+  medicationCategory: string;
+  medications: string[];
+  excludedMedications: string[]; // Medications to explicitly exclude
+  specialties: string[];
+  regions: string[];
+  prescribingVolume: 'all' | 'high' | 'medium' | 'low';
+  timeframe: 'last_month' | 'last_quarter' | 'last_year';
+}
+
+// Create an IdentityMatch type for our progress tracking
+interface IdentityMatchProgress {
+  stage: 'not_started' | 'parsing' | 'matching' | 'analyzing' | 'complete';
+  progress: number; // 0-100
+  currentOperation?: string;
+  results?: {
+    matchedProviders: number;
+    totalProviders: number;
+    matchPercentage: number;
+  };
+  error?: string;
+}
+
+// Define initial targeting state
+const initialTargetingState: TargetingState = {
+  name: '',
+  medicationCategory: '',
+  medications: [],
+  excludedMedications: [],
+  specialties: [],
+  regions: [],
+  prescribingVolume: 'all',
+  timeframe: 'last_quarter'
+};
+
+export function CampaignCreator(): JSX.Element {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector(state => state.auth); // Get user from auth state
+  
+  // UI State
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [targeting, setTargeting] = useState<TargetingState>(initialTargetingState);
+  
+  // Provider Count State - Added for tracking
+  const [providerCount, setProviderCount] = useState<number | null>(null);
+  const [potentialReach, setPotentialReach] = useState<number | null>(null);
+  const [identityMatch, setIdentityMatch] = useState<IdentityMatchProgress>({
+    stage: 'not_started',
+    progress: 0
+  });
+  
+  // Popup State
+  const [showMatchingPopup, setShowMatchingPopup] = useState<boolean>(false);
+  
+  // Data State
+  const [availableMedicationCategories, setAvailableMedicationCategories] = useState<string[]>([]);
+  const [availableMedications, setAvailableMedications] = useState<{id: string, name: string, category: string}[]>([]);
+  const [availableSpecialties, setAvailableSpecialties] = useState<{id: string, name: string}[]>([]);
+  const [availableRegions, setAvailableRegions] = useState<{id: string, name: string, type: string}[]>([]);
+  
+  // Get reference data from store
+  const medications = useAppSelector(state => {
+    const refData = state.referenceData as { medications: any[] };
+    return refData.medications || [];
+  });
+  
+  const specialties = useAppSelector(state => {
+    const refData = state.referenceData as { specialties: any[] };
+    return refData.specialties || [];
+  });
+  
+  const regions = useAppSelector(state => {
+    const refData = state.referenceData as { geographicRegions: any[] };
+    return refData.geographicRegions || [];
+  });
+  
+  // Load reference data and targeting filters when component mounts
+  useEffect(() => {
+    const loadReferenceData = async () => {
+      setIsLoading(true);
+      
+      try {
+        // Load reference data from Redux
+        await dispatch(fetchAllReferenceData());
+        
+        // Load medication categories
+        const categories = [...new Set(medications.map(med => med.category))];
+        setAvailableMedicationCategories(categories);
+        
+        // Load medications
+        setAvailableMedications(medications);
+        
+        // Load specialties
+        setAvailableSpecialties(specialties);
+        
+        // Load regions
+        setAvailableRegions(regions);
+        
+        // Check if there's targeting data from ExploreDatabase
+        const savedTargeting = localStorage.getItem('explorer_filters');
+        if (savedTargeting) {
+          try {
+            const parsedTargeting = JSON.parse(savedTargeting);
+            console.log('Loading targeting from ExploreDatabase:', parsedTargeting);
+            
+            // Update targeting state with saved data
+            setTargeting(prev => ({
+              ...prev,
+              medicationCategory: parsedTargeting.medicationCategory || '',
+              medications: parsedTargeting.medications || [],
+              excludedMedications: parsedTargeting.excludedMedications || [],
+              specialties: parsedTargeting.specialties || [],
+              regions: parsedTargeting.regions || [],
+              prescribingVolume: parsedTargeting.prescribingVolume || 'all',
+              timeframe: parsedTargeting.timeframe || 'last_quarter'
+            }));
+            
+            // Remove saved targeting from localStorage
+            localStorage.removeItem('explorer_filters');
+          } catch (e) {
+            console.error('Error parsing saved targeting:', e);
+          }
+        }
+        
+      } catch (err) {
+        console.error('Error loading reference data:', err);
+        setError('Unable to load necessary data. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadReferenceData();
+  }, [dispatch, medications, specialties, regions]);
+
+  // Filter medications based on selected category
+  const filteredMedications = availableMedications.filter(med => 
+    !targeting.medicationCategory || med.category === targeting.medicationCategory
+  );
+
+  // Handle targeting changes
+  const updateTargeting = (key: keyof TargetingState, value: any) => {
+    setTargeting(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  // Calculate targeting provider counts whenever targeting changes
+  useEffect(() => {
+    // Skip if missing essential targeting data
+    if (currentStep < 2 || (!targeting.medicationCategory && targeting.medications.length === 0)) {
+      return;
+    }
+    
+    // For simplicity, use a simple algorithm similar to ExploreDatabase
+    calculateProviderCounts();
+  }, [
+    targeting.medicationCategory, 
+    targeting.medications, 
+    targeting.excludedMedications, 
+    targeting.specialties, 
+    targeting.regions, 
+    targeting.prescribingVolume
+  ]);
+
+  // Calculate provider counts based on targeting criteria
+  const calculateProviderCounts = () => {
+    console.log("Calculating provider counts with current targeting:", targeting);
+    
+    // Similar logic to ExploreDatabase for consistent counts
+    let baseCount = 4500; // Start with the same base as ExploreDatabase
+    
+    // Apply medication filters
+    if (targeting.medications.length > 0) {
+      baseCount = Math.floor(baseCount * 0.7);
+    } else if (targeting.medicationCategory) {
+      baseCount = Math.floor(baseCount * 0.85);
+    }
+    
+    // Apply specialty filters
+    if (targeting.specialties.length > 0) {
+      baseCount = Math.floor(baseCount * (0.4 + 0.1 * targeting.specialties.length));
+    }
+    
+    // Apply geographic filters
+    if (targeting.regions.length > 0) {
+      baseCount = Math.floor(baseCount * (0.3 + 0.15 * targeting.regions.length));
+    }
+    
+    // Apply prescribing volume filter
+    if (targeting.prescribingVolume !== 'all') {
+      const volumeMultipliers: Record<string, number> = {
+        high: 0.3,
+        medium: 0.5,
+        low: 0.7
+      };
+      baseCount = Math.floor(baseCount * volumeMultipliers[targeting.prescribingVolume]);
+    }
+    
+    // Apply excluded medications logic
+    if (targeting.excludedMedications.length > 0) {
+      const excludedMedsAdjustment = 0.7 - (0.05 * targeting.excludedMedications.length);
+      baseCount = Math.floor(baseCount * excludedMedsAdjustment);
+    }
+    
+    // Set final counts
+    setProviderCount(baseCount);
+    setPotentialReach(baseCount * 250); // Each provider reaches ~250 patients
+    
+    console.log(`Updated provider count: ${baseCount}, potential reach: ${baseCount * 250}`);
+  };
+
+  // Move to next step in the wizard
+  const nextStep = () => {
+    if (currentStep < 4) {
+      setCurrentStep(currentStep + 1);
+    } else if (currentStep === 4) {
+      // Run identity matching before creating campaign
+      runIdentityMatching();
+    } else {
+      createNewCampaign();
+    }
+  };
+  
+  // Identity matching process
+  const runIdentityMatching = () => {
+    console.log("Starting identity matching process");
+    
+    if (!providerCount) {
+      calculateProviderCounts();
+    }
+    
+    // Show the popup immediately
+    setShowMatchingPopup(true);
+    
+    // Start with parsing stage
+    setIdentityMatch({
+      stage: 'parsing',
+      progress: 10,
+      currentOperation: 'Preparing provider data'
+    });
+    
+    // Fast simulation of the stages to fit within 8 seconds
+    setTimeout(() => {
+      setIdentityMatch({
+        stage: 'matching',
+        progress: 30,
+        currentOperation: 'Matching provider identities'
+      });
+      
+      setTimeout(() => {
+        setIdentityMatch({
+          stage: 'analyzing',
+          progress: 70,
+          currentOperation: 'Analyzing provider data'
+        });
+        
+        setTimeout(() => {
+          // Complete the process with 98% match rate
+          setIdentityMatch({
+            stage: 'complete',
+            progress: 100,
+            currentOperation: 'Providers successfully matched',
+            results: {
+              matchedProviders: Math.floor((providerCount || 1000) * 0.98),
+              totalProviders: providerCount || 1000,
+              matchPercentage: 98
+            }
+          });
+          
+          // After 8 seconds total, close popup and advance to results
+          setTimeout(() => {
+            setShowMatchingPopup(false);
+            setCurrentStep(5);
+          }, 1000); // Short delay to show 100% complete
+          
+        }, 2500); // 2.5s for analyzing
+      }, 2500); // 2.5s for matching
+    }, 2000); // 2s for parsing
+  };
+
+  // Move to previous step in the wizard
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  // Reset targeting
+  const resetTargeting = () => {
+    setTargeting(initialTargetingState);
+    setCurrentStep(1);
+  };
+
+  // Create the campaign after targeting is complete
+  const createNewCampaign = async () => {
+    console.log("createNewCampaign called");
+    
+    if (!targeting.name) {
+      setError('Please provide a campaign name.');
+      return;
+    }
+
+    if ((!targeting.medicationCategory && targeting.medications.length === 0) || 
+        targeting.specialties.length === 0) {
+      setError('Please select at least a medication category or specific medications, and at least one specialty.');
+      return;
+    }
+    
+    if (!user?.id) {
+      setError('User authentication required. Please log in again.');
+      return;
+    }
+    
+    if (identityMatch.stage !== 'complete') {
+      console.error("Identity matching was not completed");
+      setError('Identity matching must be completed before creating a campaign.');
+      return;
+    }
+    
+    try {
+      setIsLoading(true);
+      setError(null);
+      
+      // Find a medication in the selected category to use as target
+      const targetMedication = targeting.medications.length > 0 
+        ? availableMedications.find(med => med.id === targeting.medications[0])
+        : availableMedications.find(med => med.category === targeting.medicationCategory);
+      
+      // Find specialty to use as target
+      const targetSpecialty = targeting.specialties.length > 0
+        ? availableSpecialties.find(spec => spec.id === targeting.specialties[0])?.name
+        : undefined;
+        
+      // Find region to use as target area
+      const targetRegion = targeting.regions.length > 0
+        ? availableRegions.find(reg => reg.id === targeting.regions[0])?.name
+        : undefined;
+      
+      // Create the campaign object with all required targeting
+      const campaignData: any = {
+        name: targeting.name,
+        status: 'draft',
+        created_at: new Date().toISOString(),
+        created_by: user.id,
+        targeting_logic: 'and'
+      };
+      
+      // Add targeting fields if available
+      if (targetMedication?.id) {
+        campaignData.target_medication_id = targetMedication.id;
+      }
+      
+      if (targetSpecialty) {
+        campaignData.target_specialty = targetSpecialty;
+      }
+      
+      if (targetRegion) {
+        campaignData.target_geographic_area = targetRegion;
+      }
+      
+      // Store targeting information in metadata
+      campaignData.targeting_metadata = {
+        medicationCategory: targeting.medicationCategory,
+        excluded_medications: targeting.excludedMedications,
+        prescribing_volume: targeting.prescribingVolume,
+        timeframe: targeting.timeframe
+      };
+      
+      // Log the campaign object for debugging
+      console.log('Campaign object to be created:', JSON.stringify(campaignData, null, 2));
+      
+      // Create the campaign in the database
+      console.log('Dispatching createCampaign action');
+      const result = await dispatch(createCampaign(campaignData));
+      
+      console.log('Campaign creation result:', result);
+      
+      // Check if the action was rejected
+      if (result.type.endsWith('/rejected')) {
+        console.error('Campaign creation failed:', result.payload);
+        setError(`Campaign creation failed: ${result.payload || 'Unknown error'}`);
+        setIsLoading(false);
+        return;
+      }
+      
+      // Show success notification
+      dispatch(addNotification({
+        type: 'success',
+        message: 'Campaign created successfully!'
+      }));
+      
+      // Store the campaign ID for highlighting in the list
+      if (result.payload && typeof result.payload === 'object' && 'id' in result.payload) {
+        const campaignId = String(result.payload.id);
+        localStorage.setItem('newCampaignId', campaignId);
+        
+        // Once the campaign is created successfully, generate results data
+        try {
+          console.log('Generating results for new campaign:', campaignId);
+          // Cast the result payload to Campaign type
+          const createdCampaign = result.payload as any;
+          await dispatch(generateAndStoreResults({
+            campaign: createdCampaign,
+            medications: medications
+          }));
+          
+          console.log('Campaign results generated successfully');
+        } catch (resultsError) {
+          // Log error but don't block campaign creation flow
+          console.error('Error generating campaign results:', resultsError);
+        }
+      }
+      
+      // Navigate to campaigns list
+      navigate('/campaigns');
+    } catch (error: any) {
+      console.error('Error creating campaign:', error);
+      
+      // Provide more specific error message if possible
+      const errorMessage = error.message || 'Failed to create campaign';
+      
+      // Check for specific error types and provide more helpful messages
+      if (error.message?.includes('400')) {
+        setError('Bad request: The campaign data format is incorrect. Please check required fields.');
+      } else if (error.message?.includes('401')) {
+        setError('Authentication error: Please log in again.');
+      } else if (error.message?.includes('403')) {
+        setError('Permission denied: You do not have permission to create campaigns.');
+      } else if (error.message?.includes('409')) {
+        setError('Conflict: A campaign with this name may already exist.');
+      } else if (error.message?.includes('500')) {
+        setError('Server error: There was a problem on the server. Please try again later.');
+      } else {
+        setError(`Failed to create campaign: ${errorMessage}`);
+      }
+      
+      setIsLoading(false);
+    }
+  };
+
+  // Render the provider count summary - show on every step
+  const renderProviderCounts = () => {
+    if (!providerCount && currentStep > 1) {
+      return (
+        <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <p className="text-sm text-gray-500">
+            Provider count will be calculated as you select targeting criteria
+          </p>
+        </div>
+      );
+    }
+    
+    if (!providerCount) return null;
+    
+    return (
+      <div className="mb-4 p-3 bg-primary-50 rounded-lg border border-primary-100">
+        <div className="flex justify-between">
+          <div>
+            <span className="text-sm font-medium text-gray-500">Matching Providers:</span>
+            <span className="ml-2 text-lg font-semibold text-primary-700">{providerCount.toLocaleString()}</span>
+          </div>
+          <div>
+            <span className="text-sm font-medium text-gray-500">Potential Patient Reach:</span>
+            <span className="ml-2 text-lg font-semibold text-primary-700">{potentialReach?.toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Render identity matching progress
+  const renderIdentityMatching = () => {
+    if (currentStep !== 5) return null;
+    
+    return (
+      <div className="animate-fadeIn">
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+          <Users className="inline-block mr-2 text-primary-500" size={20} />
+          Provider Identity Matching
+        </h3>
+        
+        <div className="space-y-4 mb-6">
+          {identityMatch.stage === 'complete' && identityMatch.results && (
+            <div className="bg-green-50 rounded-lg p-4 border border-green-100">
+              <div className="flex justify-between items-center mb-2">
+                <h4 className="text-sm font-semibold text-green-800">Match Results</h4>
+                <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                  {identityMatch.results.matchPercentage}% Match Rate
+                </span>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6 mt-2">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-700">
+                    {identityMatch.results.matchedProviders.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-green-600">Matched Providers</div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-700">
+                    {identityMatch.results.totalProviders.toLocaleString()}
+                  </div>
+                  <div className="text-sm text-green-600">Total Providers</div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  // Render steps based on current step
+  const renderCurrentStep = () => {
+    switch(currentStep) {
+      case 1:
+        return (
+          <div className="animate-fadeIn">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              Campaign Details
+            </h3>
+            
+            <div className="space-y-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Campaign Name
+                </label>
+                <Input
+                  type="text"
+                  id="name"
+                  placeholder="Enter campaign name"
+                  value={targeting.name}
+                  onChange={(e) => updateTargeting('name', e.target.value)}
+                  fullWidth
+                />
+              </div>
+            </div>
+            
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <Pill className="inline-block mr-2 text-primary-500" size={20} />
+              Select Medications
+            </h3>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Medication Category
+                </label>
+                <Select
+                  options={[
+                    { value: '', label: 'Select a Category' },
+                    ...availableMedicationCategories.map(cat => ({ value: cat, label: cat }))
+                  ]}
+                  value={targeting.medicationCategory}
+                  onChange={(val) => updateTargeting('medicationCategory', val)}
+                />
+                <div className="mt-1 text-xs text-gray-500">
+                  Selected: {targeting.medicationCategory || 'None'}
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Specific Medications to Include (Optional)
+                </label>
+                <MultiSelect
+                  options={filteredMedications.map(med => ({ value: med.id, label: med.name }))}
+                  value={targeting.medications}
+                  onChange={(val) => updateTargeting('medications', val)}
+                  isDisabled={filteredMedications.length === 0}
+                  placeholder="Select medications to include"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Specific Medications to Exclude (Optional)
+                </label>
+                <MultiSelect
+                  options={filteredMedications.map(med => ({ value: med.id, label: med.name }))}
+                  value={targeting.excludedMedications}
+                  onChange={(val) => updateTargeting('excludedMedications', val)}
+                  isDisabled={filteredMedications.length === 0}
+                  placeholder="Select medications to exclude"
+                  className="border-error-300 focus:border-error-500 bg-error-50"
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  These medications will be specifically excluded (useful for finding providers who prescribe competitors but not your product)
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      
+      case 2:
+        return (
+          <div className="animate-fadeIn">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <Users className="inline-block mr-2 text-primary-500" size={20} />
+              Define Provider Criteria
+            </h3>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Provider Specialties
+                </label>
+                <MultiSelect
+                  options={availableSpecialties.map(specialty => ({ value: specialty.id, label: specialty.name }))}
+                  value={targeting.specialties}
+                  onChange={(val) => updateTargeting('specialties', val)}
+                  placeholder="Select target specialties"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Prescribing Volume
+                </label>
+                <div className="flex space-x-2">
+                  {['all', 'high', 'medium', 'low'].map(volume => (
+                    <button
+                      key={volume}
+                      type="button"
+                      onClick={() => updateTargeting('prescribingVolume', volume as any)}
+                      className={cn(
+                        "flex-1 py-2 px-3 text-sm font-medium rounded-md border",
+                        targeting.prescribingVolume === volume
+                          ? "bg-primary-50 border-primary-300 text-primary-700"
+                          : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                      )}
+                    >
+                      {volume === 'all' ? 'All Volumes' : `${volume.charAt(0).toUpperCase() + volume.slice(1)} Volume`}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      
+      case 3:
+        return (
+          <div className="animate-fadeIn">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <MapPin className="inline-block mr-2 text-primary-500" size={20} />
+              Geographic Targeting
+            </h3>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Target Regions
+                </label>
+                <MultiSelect
+                  options={availableRegions.map(region => ({ 
+                    value: region.id, 
+                    label: `${region.name} (${region.type})` 
+                  }))}
+                  value={targeting.regions}
+                  onChange={(val) => updateTargeting('regions', val)}
+                  placeholder="Select target regions"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Analysis Timeframe
+                </label>
+                <div className="flex space-x-2">
+                  {[
+                    { value: 'last_month', label: 'Last Month' },
+                    { value: 'last_quarter', label: 'Last Quarter' },
+                    { value: 'last_year', label: 'Last Year' }
+                  ].map(option => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => updateTargeting('timeframe', option.value as any)}
+                      className={cn(
+                        "flex-1 py-2 px-3 text-sm font-medium rounded-md border",
+                        targeting.timeframe === option.value
+                          ? "bg-primary-50 border-primary-300 text-primary-700"
+                          : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                      )}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      
+      case 4:
+        return (
+          <div className="animate-fadeIn">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <Filter className="inline-block mr-2 text-primary-500" size={20} />
+              Review Campaign Settings
+            </h3>
+            
+            <div className="space-y-4">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <h4 className="text-sm font-semibold text-gray-700 mb-2">Campaign Details</h4>
+                <div className="flex justify-between text-sm mb-3">
+                  <span className="text-gray-600">Campaign Name:</span>
+                  <span className="font-medium text-gray-900">
+                    {targeting.name}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <h4 className="text-sm font-semibold text-gray-700 mb-2">Targeting Criteria</h4>
+                
+                <div className="space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Medication Category:</span>
+                    <span className="font-medium text-gray-900" data-testid="selected-category">
+                      {targeting.medicationCategory || 'Any'}
+                    </span>
+                  </div>
+                  
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Included Medications:</span>
+                    <span className="font-medium text-gray-900">
+                      {targeting.medications.length > 0
+                        ? targeting.medications.map(id => 
+                            availableMedications.find(m => m.id === id)?.name).join(', ')
+                        : targeting.medicationCategory 
+                            ? `All ${targeting.medicationCategory}` 
+                            : 'All medications'}
+                    </span>
+                  </div>
+                  
+                  {targeting.excludedMedications.length > 0 && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">Excluded Medications:</span>
+                      <span className="font-medium text-error-700">
+                        {targeting.excludedMedications.map(id => 
+                          availableMedications.find(m => m.id === id)?.name).join(', ')}
+                      </span>
+                    </div>
+                  )}
+                  
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Provider Specialties:</span>

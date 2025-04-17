@@ -47,7 +47,11 @@ export function CampaignResults() {
   
   // Get campaign and results with memoized selectors
   const dbCampaign = useAppSelector(selectCurrentCampaign);
-  const results = useAppSelector(selectCampaignResults);
+  const resultsArray = useAppSelector(selectCampaignResults);
+  // Get the first result if available
+  const results = resultsArray && resultsArray.length > 0 ? resultsArray[0] : null;
+  // State for sample campaign results
+  const [sampleResults, setSampleResults] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,9 +76,16 @@ export function CampaignResults() {
             created_at: sampleCampaign.created_at,
             created_by: 'sample-user'
           });
+          
+          // Set sample results data if available
+          if (sampleCampaign.results) {
+            setSampleResults(sampleCampaign.results);
+          }
+          
           setLoading(false);
         } else {
           setCampaignData(null);
+          setSampleResults(null);
           setLoading(false);
         }
       } else {
@@ -204,48 +215,281 @@ export function CampaignResults() {
 
         {/* Tab Content */}
         <div className="p-6">
-          <div className="space-y-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Campaign Details</h3>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <dl className="space-y-3">
-                <div className="flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Campaign Name</dt>
-                  <dd className="text-sm font-semibold text-gray-900">{campaign.name}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Status</dt>
-                  <dd className="text-sm font-semibold text-gray-900">{campaign.status}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Target Specialty</dt>
-                  <dd className="text-sm font-semibold text-gray-900">{campaign.target_specialty || 'All Specialties'}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Geographic Area</dt>
-                  <dd className="text-sm font-semibold text-gray-900">{campaign.target_geographic_area || 'All Regions'}</dd>
-                </div>
-                {campaign.start_date && (
+          {selectedTab === 'overview' && (
+            <div className="space-y-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Campaign Details</h3>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <dl className="space-y-3">
                   <div className="flex justify-between">
-                    <dt className="text-sm font-medium text-gray-500">Start Date</dt>
-                    <dd className="text-sm font-semibold text-gray-900">{new Date(campaign.start_date).toLocaleDateString()}</dd>
+                    <dt className="text-sm font-medium text-gray-500">Campaign Name</dt>
+                    <dd className="text-sm font-semibold text-gray-900">{campaign.name}</dd>
                   </div>
-                )}
-                {campaign.end_date && (
                   <div className="flex justify-between">
-                    <dt className="text-sm font-medium text-gray-500">End Date</dt>
-                    <dd className="text-sm font-semibold text-gray-900">{new Date(campaign.end_date).toLocaleDateString()}</dd>
+                    <dt className="text-sm font-medium text-gray-500">Status</dt>
+                    <dd className="text-sm font-semibold text-gray-900">{campaign.status}</dd>
                   </div>
-                )}
-              </dl>
-            </div>
-            
-            {campaignData && campaignData.description && (
+                  <div className="flex justify-between">
+                    <dt className="text-sm font-medium text-gray-500">Target Specialty</dt>
+                    <dd className="text-sm font-semibold text-gray-900">{campaign.target_specialty || 'All Specialties'}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-sm font-medium text-gray-500">Geographic Area</dt>
+                    <dd className="text-sm font-semibold text-gray-900">{campaign.target_geographic_area || 'All Regions'}</dd>
+                  </div>
+                  {campaign.start_date && (
+                    <div className="flex justify-between">
+                      <dt className="text-sm font-medium text-gray-500">Start Date</dt>
+                      <dd className="text-sm font-semibold text-gray-900">{new Date(campaign.start_date).toLocaleDateString()}</dd>
+                    </div>
+                  )}
+                  {campaign.end_date && (
+                    <div className="flex justify-between">
+                      <dt className="text-sm font-medium text-gray-500">End Date</dt>
+                      <dd className="text-sm font-semibold text-gray-900">{new Date(campaign.end_date).toLocaleDateString()}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+              
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Description</h3>
-                <p className="text-gray-700">{campaignData.description}</p>
+                <p className="text-gray-700">
+                  {campaign.description || 
+                   "This campaign targets healthcare providers to increase awareness and prescription rates for our medications. " +
+                   "It focuses on reaching providers in specific specialties and geographic areas with tailored messaging."}
+                </p>
               </div>
-            )}
-          </div>
+            </div>
+          )}
+
+          {selectedTab === 'prescriptions' && (
+            <div className="space-y-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Prescription Impact</h3>
+              
+              {/* Use either database results or sample results */}
+              {(results && results.prescription_metrics && results.prescription_metrics.prescription_impact) || 
+               (sampleResults && sampleResults.prescription_metrics && sampleResults.prescription_metrics.prescription_impact) ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 className="text-md font-medium text-gray-900 mb-4">Script Lift Overview</h4>
+                    <dl className="space-y-4">
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">Script Lift Percentage</dt>
+                        <dd className="mt-1 text-3xl font-semibold text-primary-600">
+                          {(results?.prescription_metrics?.prescription_impact?.script_lift_percentage || 
+                            sampleResults?.prescription_metrics?.prescription_impact?.script_lift_percentage)}%
+                          <span className="text-sm text-green-600 ml-2">+5.7% from baseline</span>
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">Baseline vs Current Monthly Scripts</dt>
+                        <dd className="mt-1 text-xl font-semibold text-gray-900">
+                          {(results?.prescription_metrics?.prescription_impact?.baseline_monthly_scripts || 
+                            sampleResults?.prescription_metrics?.prescription_impact?.baseline_monthly_scripts).toLocaleString()} → 
+                          {(results?.prescription_metrics?.prescription_impact?.current_monthly_scripts || 
+                            sampleResults?.prescription_metrics?.prescription_impact?.current_monthly_scripts).toLocaleString()}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">Projected Annual Scripts</dt>
+                        <dd className="mt-1 text-xl font-semibold text-gray-900">
+                          {(results?.prescription_metrics?.prescription_impact?.projected_annual_scripts || 
+                            sampleResults?.prescription_metrics?.prescription_impact?.projected_annual_scripts).toLocaleString()}
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 className="text-md font-medium text-gray-900 mb-4">Provider Impact</h4>
+                    {results.prescription_metrics.prescription_impact.provider_impact && (
+                      <dl className="space-y-4">
+                        <div>
+                          <dt className="text-sm font-medium text-gray-500">Total Providers Reached</dt>
+                          <dd className="mt-1 text-xl font-semibold text-gray-900">
+                            {results.prescription_metrics.prescription_impact.provider_impact.total_providers_reached.toLocaleString()}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt className="text-sm font-medium text-gray-500">High Prescribers Reached</dt>
+                          <dd className="mt-1 text-xl font-semibold text-gray-900">
+                            {results.prescription_metrics.prescription_impact.provider_impact.high_prescribers_reached.toLocaleString()}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt className="text-sm font-medium text-gray-500">New Prescribers</dt>
+                          <dd className="mt-1 text-xl font-semibold text-gray-900">
+                            {results.prescription_metrics.prescription_impact.provider_impact.new_prescribers.toLocaleString()}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt className="text-sm font-medium text-gray-500">Prescriber Retention Rate</dt>
+                          <dd className="mt-1 text-xl font-semibold text-gray-900">
+                            {results.prescription_metrics.prescription_impact.provider_impact.prescriber_retention_rate}%
+                          </dd>
+                        </div>
+                      </dl>
+                    )}
+                  </div>
+
+                  {results.prescription_metrics.prescription_impact.medication_performance && (
+                    <div className="bg-white p-6 rounded-lg shadow-sm md:col-span-2">
+                      <h4 className="text-md font-medium text-gray-900 mb-4">Medication Performance</h4>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full divide-y divide-gray-200">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medication</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Baseline Scripts</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Current Scripts</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Script Lift</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Market Share</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            {Array.isArray(results.prescription_metrics.prescription_impact.medication_performance) && 
+                              results.prescription_metrics.prescription_impact.medication_performance.map((med: any, index: number) => (
+                                <tr key={index}>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{med.medication_name}</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{med.baseline_scripts.toLocaleString()}</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{med.current_scripts.toLocaleString()}</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">{med.script_lift}%</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{med.market_share}%</td>
+                                </tr>
+                              ))
+                            }
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+                  <p className="text-gray-500">No prescription impact data available for this campaign.</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {selectedTab === 'adperformance' && (
+            <div className="space-y-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Ad Performance</h3>
+              
+              {results && results.metrics && results.metrics.ad_performance ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 className="text-md font-medium text-gray-900 mb-4">Performance Metrics</h4>
+                    <dl className="space-y-4">
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">Click-Through Rate (CTR)</dt>
+                        <dd className="mt-1 text-3xl font-semibold text-primary-600">
+                          {results.metrics.ad_performance.ctr}%
+                          <span className="text-sm text-green-600 ml-2">+1.8% from average</span>
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">View-Through Rate</dt>
+                        <dd className="mt-1 text-xl font-semibold text-gray-900">
+                          {results.metrics.ad_performance.view_through_rate}%
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">Completion Rate</dt>
+                        <dd className="mt-1 text-xl font-semibold text-gray-900">
+                          {results.metrics.ad_performance.completion_rate}%
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 className="text-md font-medium text-gray-900 mb-4">Brand Impact</h4>
+                    <dl className="space-y-4">
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">Ad Recall Lift</dt>
+                        <dd className="mt-1 text-xl font-semibold text-gray-900">
+                          {results.metrics.ad_performance.ad_recall_lift}%
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-sm font-medium text-gray-500">Brand Awareness Lift</dt>
+                        <dd className="mt-1 text-xl font-semibold text-gray-900">
+                          {results.metrics.ad_performance.brand_awareness_lift}%
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  {results.metrics.ad_performance.channel_performance && (
+                    <div className="bg-white p-6 rounded-lg shadow-sm md:col-span-2">
+                      <h4 className="text-md font-medium text-gray-900 mb-4">Channel Performance</h4>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full divide-y divide-gray-200">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Channel</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Impressions</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Clicks</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CTR</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cost</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            {Object.entries(results.metrics.ad_performance.channel_performance).map(([channel, data]: [string, any], index: number) => (
+                              <tr key={index}>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{channel.charAt(0).toUpperCase() + channel.slice(1)}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{data.impressions?.toLocaleString() || 'N/A'}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{data.clicks?.toLocaleString() || 'N/A'}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{data.ctr ? `${data.ctr}%` : 'N/A'}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${data.cost?.toLocaleString() || 'N/A'}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+
+                  {results.metrics.ad_performance.top_performing_creatives && (
+                    <div className="bg-white p-6 rounded-lg shadow-sm md:col-span-2">
+                      <h4 className="text-md font-medium text-gray-900 mb-4">Top Performing Creatives</h4>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full divide-y divide-gray-200">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Creative</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Format</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Impressions</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Clicks</th>
+                              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CTR</th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            {Array.isArray(results.metrics.ad_performance.top_performing_creatives) && 
+                              results.metrics.ad_performance.top_performing_creatives.map((creative: any, index: number) => (
+                                <tr key={index}>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{creative.name}</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{creative.format}</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{creative.impressions.toLocaleString()}</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{creative.clicks.toLocaleString()}</td>
+                                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">{creative.ctr}%</td>
+                                </tr>
+                              ))
+                            }
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+                  <p className="text-gray-500">No ad performance data available for this campaign.</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

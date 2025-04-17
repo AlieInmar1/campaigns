@@ -32,8 +32,9 @@ export interface ExpandableCampaignCardProps {
     clicks?: number;
     conversions?: number;
     scriptLift?: string | number;
-    roi?: string | number;
+    marketShareChange?: string | number;
     providerReach?: number;
+    providerCount?: number;
   };
   status: 'active' | 'draft' | 'in_progress' | 'ended' | 'paused' | 'completed' | 'pending';
   startDate?: string;
@@ -313,10 +314,10 @@ export function ExpandableCampaignCard({
               <div>
                 <span className="text-xs text-gray-500 flex items-center">
                   <TrendingUp className="h-3 w-3 mr-1" />
-                  ROI
+                  Market Share
                 </span>
                 <span className="text-base font-semibold text-success-600">
-                  {metrics.roi ? `${metrics.roi}x` : 'N/A'}
+                  {metrics.marketShareChange ? formatPercentage(metrics.marketShareChange) : 'N/A'}
                 </span>
               </div>
               <div>

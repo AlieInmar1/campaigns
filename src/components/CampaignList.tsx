@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { ListFilter, ChevronRight, Target } from 'lucide-react';
+import { ListFilter, ChevronRight, Target, TrendingUp, Users, ArrowUpRight, ChartBar } from 'lucide-react';
+import { getSampleCampaigns } from '../lib/sampleCampaignData';
 
 interface Campaign {
   id: string;
   name: string;
+  description?: string;
   status: string;
   target_geographic_area: string;
   target_specialty: string;
   created_at: string;
+  // Result metrics
+  script_lift?: number;
+  market_share_change?: number;
+  provider_count?: number;
+  provider_reach?: number;
+  start_date?: string;
+  end_date?: string;
 }
 
 export function CampaignList() {
@@ -17,24 +26,39 @@ export function CampaignList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchCampaigns();
+    // Use sample data instead of fetching from Supabase
+    const loadSampleCampaigns = async () => {
+      try {
+        // Get sample campaigns with results
+        const sampleCampaigns = getSampleCampaigns();
+        
+        // Map sample campaigns to our Campaign interface
+        const mappedCampaigns: Campaign[] = sampleCampaigns.map(sample => ({
+          id: sample.id,
+          name: sample.name,
+          description: sample.description,
+          status: sample.status,
+          target_geographic_area: sample.target.geographic,
+          target_specialty: sample.target.specialty,
+          created_at: sample.created_at,
+          script_lift: sample.metrics.scriptLift,
+          market_share_change: sample.metrics.marketShareChange,
+          provider_count: sample.metrics.providerCount,
+          provider_reach: sample.metrics.providerReach * 25, // More realistic patient reach
+          start_date: sample.startDate,
+          end_date: sample.endDate
+        }));
+        
+        setCampaigns(mappedCampaigns);
+      } catch (error) {
+        console.error('Error loading sample campaigns:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadSampleCampaigns();
   }, []);
-
-  async function fetchCampaigns() {
-    try {
-      const { data, error } = await supabase
-        .from('campaigns')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-      if (data) setCampaigns(data);
-    } catch (error) {
-      console.error('Error fetching campaigns:', error);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   if (loading) {
     return (
@@ -82,6 +106,7 @@ export function CampaignList() {
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize ${
                         campaign.status === 'active' ? 'bg-green-100 text-green-800' :
                         campaign.status === 'draft' ? 'bg-gray-100 text-gray-800' :
+                        campaign.status === 'completed' ? 'bg-blue-100 text-blue-800' :
                         'bg-yellow-100 text-yellow-800'
                       }`}>
                         {campaign.status}
@@ -89,6 +114,34 @@ export function CampaignList() {
                       <ChevronRight className="h-5 w-5 text-gray-400 ml-4" />
                     </div>
                   </div>
+                  
+                  {/* Campaign description */}
+                  {campaign.description && (
+                    <div className="mt-2 text-sm text-gray-600 line-clamp-2">
+                      {campaign.description}
+                    </div>
+                  )}
+                  
+                  {/* Campaign results metrics */}
+                  {(campaign.status === 'active' || campaign.status === 'completed') && campaign.script_lift !== undefined && (
+                    <div className="mt-3 grid grid-cols-3 gap-4 border-t border-gray-100 pt-3">
+                      <div className="flex items-center">
+                        <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
+                        <span className="text-sm font-medium text-gray-900">{campaign.script_lift.toFixed(1)}%</span>
+                        <span className="ml-1 text-xs text-gray-500">Script Lift</span>
+                      </div>
+                      <div className="flex items-center">
+                        <ChartBar className="h-4 w-4 text-indigo-500 mr-1" />
+                        <span className="text-sm font-medium text-gray-900">{campaign.market_share_change?.toFixed(1)}%</span>
+                        <span className="ml-1 text-xs text-gray-500">Market Share</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Users className="h-4 w-4 text-blue-500 mr-1" />
+                        <span className="text-sm font-medium text-gray-900">{campaign.provider_count?.toLocaleString()}</span>
+                        <span className="ml-1 text-xs text-gray-500">Providers</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </Link>
             </li>

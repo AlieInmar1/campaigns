@@ -1,0 +1,452 @@
+import { supabase } from './supabase';
+
+/**
+ * Enhanced Provider Filter interface
+ * At least one primary filter is required
+ */
+export interface EnhancedProviderFilter {
+  // Primary filters (at least one required)
+  specialties?: string[];
+  medicationCategory?: string;
+  includedMedications?: string[];
+  
+  // Secondary filters
+  excludedMedications?: string[];
+  brandPreference?: 'brand' | 'generic' | 'both';
+  regions?: string[];
+  timeframe?: 'month' | 'quarter' | 'year';
+  gender?: 'male' | 'female' | 'all';
+}
+
+/**
+ * Response containing filtered providers with prescription counts
+ */
+export interface FilteredProviderResponse {
+  provider_id: string;
+  prescription_count: number;
+}
+
+/**
+ * Get available medication categories
+ */
+export async function getMedicationCategories(): Promise<string[]> {
+  try {
+    console.log('Fetching medication categories from database...');
+    
+    // First, check if the medications table has a category column
+    const { data: tableInfo, error: tableError } = await supabase
+      .from('information_schema.columns')
+      .select('column_name')
+      .eq('table_name', 'medications')
+      .eq('column_name', 'category');
+      
+    if (tableError) {
+      console.error('Error checking medications table schema for category column:', tableError);
+    } else {
+      console.log('Category column exists:', tableInfo);
+    }
+    
+    // Query the medications table for categories
+    const { data, error } = await supabase
+      .from('medications')
+      .select('category')
+      .not('category', 'is', null)
+      .order('category');
+      
+    if (error) {
+      console.error('Error fetching medication categories:', error);
+      return [];
+    }
+    
+    // Extract unique categories
+    const categories = [...new Set(data.map((item: any) => item.category))] as string[];
+    console.log(`Found ${categories.length} unique medication categories:`, categories);
+    
+    return categories;
+  } catch (error) {
+    console.error('Error fetching medication categories:', error);
+    return [];
+  }
+}
+
+/**
+ * Get medications by category
+ */
+export async function getMedicationsByCategory(category?: string): Promise<any[]> {
+  try {
+    console.log('Fetching medications from database...');
+    
+    // First, check if the medications table exists and has the expected columns
+    const { data: tableInfo, error: tableError } = await supabase
+      .from('information_schema.columns')
+      .select('column_name')
+      .eq('table_name', 'medications');
+      
+    if (tableError) {
+      console.error('Error checking medications table schema:', tableError);
+    } else {
+      console.log('Medications table columns:', tableInfo);
+    }
+    
+    // Query the medications table
+    let query = supabase
+      .from('medications')
+      .select('*')
+      .order('medication_name');
+      
+    // Apply category filter if provided
+    if (category) {
+      query = query.eq('category', category);
+    }
+      
+    const { data, error } = await query;
+      
+    if (error) {
+      console.error('Error fetching medications:', error);
+      return [];
+    }
+    
+    console.log('Raw medication data:', data?.slice(0, 3)); // Log first few items for debugging
+    
+    // Transform the data to match what the component expects
+    const transformedData = (data || []).map(med => ({
+      id: med.id,
+      name: med.medication_name || med.name, // Try both field names
+      category: med.category,
+      subcategory: med.subcategory || 'General', // Provide a default subcategory
+      is_brand_name: med.is_brand_name || med.brand_generic === 'brand',
+      is_target_medication: med.is_target_medication || false
+    }));
+    
+    console.log(`Transformed ${transformedData.length} medications`);
+    return transformedData;
+  } catch (error) {
+    console.error('Error fetching medications:', error);
+    return [];
+  }
+}
+
+/**
+ * Get available specialties
+ */
+export async function getAvailableSpecialties(): Promise<string[]> {
+  try {
+    console.log('Fetching specialties from database...');
+    
+    // First, check if the providers table exists and has the expected columns
+    const { data: tableInfo, error: tableError } = await supabase
+      .from('information_schema.columns')
+      .select('column_name')
+      .eq('table_name', 'providers');
+      
+    if (tableError) {
+      console.error('Error checking providers table schema:', tableError);
+    } else {
+      console.log('Providers table columns:', tableInfo);
+    }
+    
+    // Query the providers table for specialties
+    const { data, error } = await supabase
+      .from('providers')
+      .select('specialty')
+      .not('specialty', 'is', null)
+      .order('specialty');
+      
+    if (error) {
+      console.error('Error fetching specialties:', error);
+      return [];
+    }
+    
+    // Extract unique specialties
+    const specialties = [...new Set(data.map((item: any) => item.specialty))] as string[];
+    console.log(`Found ${specialties.length} unique specialties`);
+    
+    return specialties;
+  } catch (error) {
+    console.error('Error fetching specialties:', error);
+    return [];
+  }
+}
+
+/**
+ * Get available regions
+ */
+export async function getAvailableRegions(): Promise<string[]> {
+  try {
+    console.log('Fetching regions from database...');
+    
+    // First, check if the providers table has a region column
+    const { data: tableInfo, error: tableError } = await supabase
+      .from('information_schema.columns')
+      .select('column_name')
+      .eq('table_name', 'providers')
+      .eq('column_name', 'region');
+      
+    if (tableError) {
+      console.error('Error checking providers table schema for region column:', tableError);
+    } else {
+      console.log('Region column exists:', tableInfo);
+    }
+    
+    // Try to get regions from the region column
+    const { data, error } = await supabase
+      .from('providers')
+      .select('region')
+      .not('region', 'is', null)
+      .order('region');
+      
+    if (error) {
+      console.error('Error fetching regions:', error);
+      return [];
+    }
+    
+    // Extract unique regions
+    const regions = [...new Set(data.map((item: any) => item.region))] as string[];
+    console.log(`Found ${regions.length} unique regions`);
+    
+    return regions;
+  } catch (error) {
+    console.error('Error fetching regions:', error);
+    return [];
+  }
+}
+
+/**
+ * Validate that the filter has at least one primary filter selected
+ */
+export function validatePrimaryFilter(filter: EnhancedProviderFilter): boolean {
+  return !!(
+    (filter.specialties && filter.specialties.length > 0) ||
+    filter.medicationCategory ||
+    (filter.includedMedications && filter.includedMedications.length > 0)
+  );
+}
+
+/**
+ * Get estimated provider count based on filter criteria
+ */
+export async function estimateFilteredProviderCount(filter: EnhancedProviderFilter): Promise<number> {
+  try {
+    // Validate primary filter requirement
+    if (!validatePrimaryFilter(filter)) {
+      return 0;
+    }
+    
+    console.log('Estimating count with filter:', JSON.stringify(filter, null, 2));
+    
+    // Call the RPC function
+    const { data, error } = await supabase.rpc('estimate_filtered_provider_count', {
+      specialties: filter.specialties || null,
+      medication_category: filter.medicationCategory || null,
+      included_medication_ids: filter.includedMedications || null,
+      excluded_medication_ids: filter.excludedMedications || null,
+      brand_preference: filter.brandPreference || 'both',
+      regions: filter.regions || null,
+      timeframe: filter.timeframe || 'year',
+      gender: filter.gender || 'all'
+    });
+    
+    if (error) {
+      console.error('Error estimating provider count:', error);
+      return 0;
+    }
+    
+    console.log('Estimated count result:', data);
+    return data || 0;
+  } catch (error) {
+    console.error('Error estimating provider count:', error);
+    return 0;
+  }
+}
+
+/**
+ * Get providers filtered by the enhanced filter criteria
+ */
+export async function getProvidersByEnhancedFilter(
+  filter: EnhancedProviderFilter
+): Promise<FilteredProviderResponse[]> {
+  try {
+    // Validate primary filter requirement
+    if (!validatePrimaryFilter(filter)) {
+      throw new Error('At least one primary filter must be selected (specialty, category, or medications)');
+    }
+    
+    console.log('Getting providers with filter:', JSON.stringify(filter, null, 2));
+    
+    const { data, error } = await supabase.rpc('get_filtered_providers', {
+      specialties: filter.specialties || null,
+      medication_category: filter.medicationCategory || null,
+      included_medication_ids: filter.includedMedications || null,
+      excluded_medication_ids: filter.excludedMedications || null,
+      brand_preference: filter.brandPreference || 'both',
+      regions: filter.regions || null,
+      timeframe: filter.timeframe || 'year',
+      gender: filter.gender || 'all'
+    });
+    
+    if (error) {
+      console.error('Error fetching filtered providers:', error);
+      return [];
+    }
+    
+    console.log(`Got ${data?.length || 0} filtered providers`);
+    return data || [];
+  } catch (error) {
+    console.error('Error fetching filtered providers:', error);
+    return [];
+  }
+}
+
+/**
+ * Get provider details by IDs
+ */
+export async function getProviderDetailsByIds(providerIds: string[]): Promise<any[]> {
+  if (!providerIds.length) {
+    return [];
+  }
+  
+  try {
+    console.log(`Getting details for ${providerIds.length} providers`);
+    const CHUNK_SIZE = 1000; // Process in chunks to handle large datasets
+    let allProviders: any[] = [];
+    
+    for (let i = 0; i < providerIds.length; i += CHUNK_SIZE) {
+      const chunk = providerIds.slice(i, i + CHUNK_SIZE);
+      
+      // Try with provider_id first
+      let { data, error } = await supabase
+        .from('providers')
+        .select('*')
+        .in('provider_id', chunk)
+        .order('npi');
+      
+      // If that fails, try with id
+      if (error) {
+        console.log('Error with provider_id, trying with id field instead');
+        const response = await supabase
+          .from('providers')
+          .select('*')
+          .in('id', chunk)
+          .order('npi');
+          
+        data = response.data;
+        error = response.error;
+      }
+        
+      if (error) {
+        console.error('Error fetching provider details:', error);
+        continue;
+      }
+      
+      if (data) {
+        // Transform the data to ensure it has the expected fields
+        const transformedData = data.map(provider => ({
+          ...provider,
+          // Ensure provider has a provider_id field (use id if provider_id is missing)
+          provider_id: provider.provider_id || provider.id,
+          // Ensure provider has a name field (use npi if name is missing)
+          name: provider.name || `Provider ${provider.npi}`,
+          // Ensure provider has a geographic_area field (use region if geographic_area is missing)
+          geographic_area: provider.geographic_area || provider.region
+        }));
+        
+        allProviders = [...allProviders, ...transformedData];
+      }
+    }
+    
+    console.log(`Retrieved ${allProviders.length} provider details`);
+    return allProviders;
+  } catch (error) {
+    console.error('Error getting provider details:', error);
+    return [];
+  }
+}
+
+/**
+ * Combine filtering and detail fetching in one operation
+ */
+export async function getFilteredProviderDetails(
+  filter: EnhancedProviderFilter,
+  limit: number = 500
+): Promise<any[]> {
+  try {
+    // Get filtered provider IDs
+    const filteredProviders = await getProvidersByEnhancedFilter(filter);
+    
+    if (!filteredProviders.length) {
+      return [];
+    }
+    
+    // Limit the number of providers to fetch details for
+    const limitedProviderIds = filteredProviders
+      .slice(0, limit)
+      .map((p: FilteredProviderResponse) => p.provider_id);
+    
+    // Fetch provider details
+    const providerDetails = await getProviderDetailsByIds(limitedProviderIds);
+    
+    // Add prescription count to provider details
+    return providerDetails.map(provider => {
+      const matchingProvider = filteredProviders.find((p: FilteredProviderResponse) => p.provider_id === provider.provider_id);
+      return {
+        ...provider,
+        prescription_count: matchingProvider ? matchingProvider.prescription_count : 0
+      };
+    });
+  } catch (error) {
+    console.error('Error getting filtered provider details:', error);
+    return [];
+  }
+}
+
+/**
+ * Get recommended specialties based on selected medications
+ * This helps with smart suggestions when a medication is selected
+ */
+export async function getRecommendedSpecialties(medicationIds: string[]): Promise<string[]> {
+  if (!medicationIds.length) {
+    return [];
+  }
+  
+  try {
+    // Find specialties that commonly prescribe these medications
+    const { data, error } = await supabase
+      .from('medication_provider_time_index')
+      .select('provider_id')
+      .in('medication_id', medicationIds)
+      .order('total_count', { ascending: false })
+      .limit(100); // Get top prescribers
+      
+    if (error || !data.length) {
+      return [];
+    }
+    
+    // Get specialties for these providers
+    const providerIds = data.map((p: any) => p.provider_id);
+    
+    const { data: providerSpecialties, error: specialtyError } = await supabase
+      .from('providers')
+      .select('specialty')
+      .in('provider_id', providerIds);
+      
+    if (specialtyError) {
+      return [];
+    }
+    
+    // Count and sort specialties by frequency
+    const specialtyCounts: Record<string, number> = {};
+    providerSpecialties.forEach((p: any) => {
+      if (!p.specialty) return;
+      specialtyCounts[p.specialty] = (specialtyCounts[p.specialty] || 0) + 1;
+    });
+    
+    // Sort specialties by frequency and return top 5
+    return Object.entries(specialtyCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([specialty]) => specialty);
+  } catch (error) {
+    console.error('Error getting recommended specialties:', error);
+    return [];
+  }
+}

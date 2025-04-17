@@ -1,0 +1,1 @@
+id,provider_id,patient_id,medication_id,medication_name,medication_category,prescription_date,fill_date,quantity,days_supply,refills,refill_number,is_new,batch_id,created_at
